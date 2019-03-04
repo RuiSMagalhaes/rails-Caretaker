@@ -15,6 +15,20 @@ ActiveRecord::Schema.define(version: 2019_03_04_171121) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "diseases", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "event_types", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.datetime "start_time"
@@ -33,7 +47,36 @@ ActiveRecord::Schema.define(version: 2019_03_04_171121) do
     t.boolean "notify_done"
     t.boolean "notify_missed"
     t.bigint "user_id"
+    t.bigint "event_type_id"
+    t.index ["event_type_id"], name: "index_events_on_event_type_id"
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.boolean "dismissed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_notifications_on_event_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
+  create_table "relations", force: :cascade do |t|
+    t.integer "caretaker_user_id"
+    t.integer "patient_user_id"
+    t.boolean "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_diseases", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "disease_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["disease_id"], name: "index_user_diseases_on_disease_id"
+    t.index ["user_id"], name: "index_user_diseases_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,5 +91,10 @@ ActiveRecord::Schema.define(version: 2019_03_04_171121) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "event_types"
   add_foreign_key "events", "users"
+  add_foreign_key "notifications", "events"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "user_diseases", "diseases"
+  add_foreign_key "user_diseases", "users"
 end
