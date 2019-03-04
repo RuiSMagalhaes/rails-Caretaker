@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :profiles, only: [:home, :show, :edit] do
+  resources :profiles, only: [:index, :show, :edit] do
     resources :events
   end
   resources :notifications, only: [:show, :dismissed]
