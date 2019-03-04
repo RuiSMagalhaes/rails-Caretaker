@@ -1,4 +1,4 @@
-class MeetingPolicy < ApplicationPolicy
+class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -7,15 +7,15 @@ class MeetingPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    false
   end
 
   def show?
-    true
+    false
   end
 
   def create?
-    true
+    false
   end
 
   def new?
@@ -23,7 +23,7 @@ class MeetingPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    false
   end
 
   def edit?
@@ -31,7 +31,7 @@ class MeetingPolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
+    false
   end
 
   class Scope
