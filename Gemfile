@@ -17,6 +17,8 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'carrierwave', '~> 1.2'
+gem 'cloudinary', '~> 1.9.1'
 
 gem "simple_calendar", "~> 2.0"
 
