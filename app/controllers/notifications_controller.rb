@@ -2,8 +2,6 @@ class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show]
 
   def create
-
-
   end
 
   def show
