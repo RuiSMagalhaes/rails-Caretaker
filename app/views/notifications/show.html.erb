@@ -1,0 +1,23 @@
+<h1>Notifications</h1>
+
+
+<p>This notification is related too: <%= @notification.user.email%></p>
+
+<p>Notification relative to the patient: <%= @notification.event.user.email%></p>
+
+<p>description of event = description of notifications: <%= @notification.event.description %></p>
+
+<h2>TIME DESCRIPTION</h2>
+
+<p><%= @notification.dismissed %></p>
+
+
+<!-- Se notification.event.done for true, ele faz o seguinte: -->
+  <!-- diz que foi DONE x tempo atras (subtrai a presente hora com a notification.event.start_time -->
+
+
+
+<!-- Se notification.event.done for falso, ele faz o seguinte: -->
+  <!-- diz que foi missed x tempo atras (subtrai a presente hora com a notification.event.start_time -->
+
+<%= link_to "DISMISS NOTIFICATION", notification_dismissed_path(@notification) %>
