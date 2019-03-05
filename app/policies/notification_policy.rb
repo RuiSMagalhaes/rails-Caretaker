@@ -1,8 +1,7 @@
 class NotificationPolicy < ApplicationPolicy
   def show?
-    true
+    user == record.user
   end
-
 
 
 

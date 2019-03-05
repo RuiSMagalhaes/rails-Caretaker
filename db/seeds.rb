@@ -56,7 +56,7 @@ user_end_id = User.last.id
 puts "creating 50 notifications..."
 #Create 50 notifications
 50.times do
-  notification = Notification.new(dismissed: true)
+  notification = Notification.new(dismissed: false)
   notification.event =Event.find(rand(event_start_id...event_end_id))
   notification.user = User.find(rand(user_start_id...user_end_id))
   notification.save
