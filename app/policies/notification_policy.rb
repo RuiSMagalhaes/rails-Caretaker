@@ -1,4 +1,8 @@
 class NotificationPolicy < ApplicationPolicy
+  def create?
+    true
+  end
+
   def show?
     return false if record.dismissed == true
 
