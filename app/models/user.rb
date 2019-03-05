@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :caretaker_relationships, foreign_key: :patient_id, class_name: 'Relation'
   has_many :caretakers, through: :caretaker_relationships, source: :caretaker
 
-  validates :first_name, :last_name, :email, :password, :photo, presence: true
+  validates :first_name, :last_name, :email, :password, presence: true
 
   private
 

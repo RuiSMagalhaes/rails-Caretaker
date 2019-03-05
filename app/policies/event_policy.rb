@@ -4,7 +4,8 @@ class EventPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    # if event belongs to corrent user or if event belongs to a current user patient
+    record.user == user || record.user.caretakers.include?(user)
   end
 
   def create?
@@ -25,18 +26,5 @@ class EventPolicy < ApplicationPolicy
 
   def destroy?
     true
-  end
-
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      scope.all
-    end
   end
 end

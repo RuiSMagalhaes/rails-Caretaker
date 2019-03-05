@@ -1,4 +1,7 @@
 class UserPolicy < ApplicationPolicy
+  def index?
+    true
+  end
   def show?
     # verify if profile is from a user that is patient of current user
     patient = !user.patients.where(id: record.id).blank?
