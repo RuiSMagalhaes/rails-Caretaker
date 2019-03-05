@@ -33,11 +33,11 @@ event_type_end_id = EventType.last.id
   user = User.new(first_name:Faker::Artist.name ,last_name:Faker::App.author , email:Faker::Internet.safe_email, simple_view: true, password:"123456" )
   user.save
 
-  #CREATE 5 EVENTS FOR EACH USER WITH NAME, DESCRIPTION, RECURRING, USER_ID AND EVENT_TYPE_ID.
+  #CREATE 5 EVENTS FOR EACH USER WITH RECURRING FALSE. MINUTES, HOURS, DAYS, WEEKS, MONTHS, START_ID NOT POPULATED
   puts "Creating 5 events for this user..."
   5.times do
     #event_type_id assigned randomly
-    event = Event.new(name:Faker::Esport.event ,description:Faker::Lorem.sentence , recurring: false, user_id: user.id, event_type_id:rand(event_type_start_id...event_type_end_id) )
+    event = Event.new(name:Faker::Esport.event, description:Faker::Lorem.sentence, start_time: Faker::Time.between(Time.now, Time.now + 1), end_time: Faker::Time.between(Time.now + 2, Time.now + 3 ), recurring: false, notify_before:[true, false].sample, notify_done:[true, false].sample, notify_missed:[true, false].sample, user_id: user.id, event_type_id:rand(event_type_start_id...event_type_end_id), done:[true, false].sample )
     event.save
   end
 end
