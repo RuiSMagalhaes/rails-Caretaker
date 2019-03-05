@@ -15,12 +15,13 @@ class User < ApplicationRecord
 
   has_many :events
 
-
   has_many :patient_relationships, foreign_key: :caretaker_id, class_name: 'Relation'
   has_many :patients, through: :patient_relationships, source: :patient
 
   has_many :caretaker_relationships, foreign_key: :patient_id, class_name: 'Relation'
   has_many :caretakers, through: :caretaker_relationships, source: :caretaker
+
+  validates :first_name, :last_name, :email, presence: true
 
   private
 

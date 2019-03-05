@@ -1,42 +1,26 @@
 class EventPolicy < ApplicationPolicy
-  def index?
-    true
-  end
+  # def index?
+  #   record.first.user.caretakers.include?(user) || record.first.user == user
+  # end
 
-  def show?
-    true
-  end
+  # def show?
+  #   # if event belongs to corrent user or if event belongs to a current user patient
+  #   record.user == user || record.user.caretakers.include?(user)
+  # end
 
-  def create?
-    true
-  end
+  # def create?
+  #   show?
+  # end
 
-  def new?
-    create?
-  end
+  # def update?
+  #   show?
+  # end
 
-  def update?
-    true
-  end
+  # def edit?
+  #   show?
+  # end
 
-  def edit?
-    update?
-  end
-
-  def destroy?
-    true
-  end
-
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      scope.all
-    end
-  end
+  # def destroy?
+  #   show?
+  # end
 end
