@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:index, :show, :edit] do
     resources :events
   end
-  resources :notifications, only: [:show, :destroy]
+  resources :notifications, only: [:show]
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
