@@ -22,7 +22,6 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    authorize @event
     authorize @profile
   end
 
@@ -34,8 +33,8 @@ class EventsController < ApplicationController
     authorize @profile
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
+        format.html { redirect_to profile_event_path(@profile, @event), notice: 'Event was successfully created.' }
+        format.json { render :show, status: :created, location: profile_event_path(@profile, @event) }
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -49,8 +48,8 @@ class EventsController < ApplicationController
     authorize @profile
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
+        format.html { redirect_to profile_event_path(@profile, @event), notice: 'Event was successfully updated.' }
+        format.json { render :show, status: :ok, location: profile_event_path(@profile, @event) }
       else
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
