@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_092726) do
+ActiveRecord::Schema.define(version: 2019_03_05_161825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_092726) do
     t.boolean "notify_missed"
     t.bigint "user_id"
     t.bigint "event_type_id"
+    t.boolean "done", default: false
     t.index ["event_type_id"], name: "index_events_on_event_type_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_092726) do
     t.boolean "dismissed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
     t.index ["event_id"], name: "index_notifications_on_event_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
