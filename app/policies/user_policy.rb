@@ -1,6 +1,8 @@
 class UserPolicy < ApplicationPolicy
   def show?
-    caretaker = !Relation.where(caretaker_user_id: user.id, patient_user_id: record.id).blank?
-    record == user || caretaker
+    # verify if profile is from a user that is patient of current user
+    patient = !user.patients.where(id: record.id).blank?
+    # chek if profile is from current user or if is from a patient
+    record == user || patient
   end
 end

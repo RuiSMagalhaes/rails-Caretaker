@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
-  before_action :set_patients, :set_user, only: [:index, :show]
+  before_action :set_patients, only: [:index, :show]
+  before_action :set_user, only: [:show]
   # skip_after_action :verify_policy_scoped, only: :index
 
   def index
