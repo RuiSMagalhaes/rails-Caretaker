@@ -27,20 +27,8 @@ class EventsController < ApplicationController
 
   def edit
     authorize @profile
-<<<<<<< HEAD
-    @event = Event.new(event_params)
-    @event.user = @profile
-    if @event.save
-      #if saved, call the job_event_to_notification method
-      job_event_to_notification(@profile, @event)
-      redirect_to profile_event_path(@profile, @event), notice: 'Event was successfully created.'
-    else
-      render :new
-    end
-=======
     # select the first event of a series of events so the displayed info relates to the first one
     @event = @events.where(start_id: @event.start_id).first
->>>>>>> master
   end
 
   def update
