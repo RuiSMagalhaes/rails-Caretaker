@@ -2,6 +2,26 @@
 
 <h1>Events</h1>
 
+<div class="calendar-day">
+  <%= calendar number_of_days: 1, events: @events do |date, events| %>
+    <% events.each do |event| %>
+      <div>
+        <p><%= event.start_time.strftime("%H:%M") %> | <%= link_to event.name, profile_event_path(@profile, event) %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="calendar-week">
+  <%= week_calendar number_of_weeks: 1, events: @events do |date, events| %>
+    <% events.each do |event| %>
+      <div>
+        <p><%= event.start_time.strftime("%H:%M") %> | <%= link_to event.name, profile_event_path(@profile, event) %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
 <%= month_calendar events: @events do |date, events| %>
   <%= date %>
   <% events.each do |event| %>
@@ -25,9 +45,9 @@
       <tr>
         <td><%= event.name %></td>
         <td><%= event.start_time %></td>
-        <td><%= link_to 'Show', profile_event_path(id: event.id) %></td>
-        <td><%= link_to 'Edit', edit_profile_event_path(id: event.id) %></td>
-        <td><%= link_to 'Destroy', profile_event_path(id: event.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', profile_event_path(@profile, event) %></td>
+        <td><%= link_to 'Edit', edit_profile_event_path(@profile, event) %></td>
+        <td><%= link_to 'Destroy', profile_event_path(@profile, event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

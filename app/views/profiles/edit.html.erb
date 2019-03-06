@@ -1,1 +1,12 @@
-
+<h1>Edit page of <%= link_to @profile.email, profile_path(@profile) %></h1>
+<%= link_to "Edit #{@profile.email} User", edit_user_registration_path if @user == @profile %>
+<h2>Patients</h2>
+<p><%= "No patients" if @patients.empty? %></p>
+<% @patients.each do |patient| %>
+  <p><%= link_to patient.email, profile_path(patient) %></p>
+<% end %>
+<h2>Caretakers</h2>
+<p><%= "No caretackers" if @profile.caretakers.empty? %></p>
+<% @profile.caretakers.each do |caretaker| %>
+  <p><%= link_to caretaker.email, profile_path(caretaker) %></p>
+<% end %>

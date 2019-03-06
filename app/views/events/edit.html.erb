@@ -1,6 +1,8 @@
 <h1>Editing Event</h1>
 
-<%= render 'form', profile: @profile, event: @event %>
+<%= simple_form_for(@event, url: profile_event_path(@profile), method: 'patch') do |f| %>
+  <%= render 'form', f: f %>
+<% end %>
 
 <%= link_to 'Show', profile_event_path(@profile, @event) %> |
 <%= link_to 'Back', profile_events_path %>
