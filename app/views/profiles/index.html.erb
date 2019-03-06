@@ -12,10 +12,10 @@
 <h2>Events</h2>
 <p>Event Name | Event User</p>
 <% @events.each do |event| %>
-  <p><%= link_to event.name, profile_event_path(event.user, event) %> | <%= link_to event.user.email, profile_path(event.user.email) %></p>
+  <p><%= link_to event.name, profile_event_path(event.user, event) %> | <%= link_to event.user.email, profile_path(event.user) %></p>
 <% end %>
 <h2>Notifications</h2>
 <p>Notification Name | Notification Regarding User</p>
 <% @notifications.each do |notification| %>
-  <p><%= link_to notification.event.name, notification_path(notification) %> | <%= link_to notification.event.user.email, profile_path(notification.event.user.email) %></p>
+  <p><%= link_to notification.event.name, notification_path(notification) %> | <%= link_to notification.event.user.email, profile_path(notification.event.user) %></p>
 <% end %>

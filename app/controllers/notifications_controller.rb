@@ -10,7 +10,7 @@ class NotificationsController < ApplicationController
     # get the event relative to this notification
     event = @notification.event
     # update the event.done to true
-    event.done.update(done: true)
+    event.update(done: true)
     # if the option: "notify if done" is turned on, a notification has to be sent to every caretaker when the event turn to : done
     if event.notify_done
       # iterate through caretakers and create a notification for each one
@@ -20,6 +20,7 @@ class NotificationsController < ApplicationController
         notification.save
       end
     end
+    redirect_to notification_path
   end
 
   def destroy
