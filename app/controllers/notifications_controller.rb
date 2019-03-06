@@ -1,6 +1,10 @@
 class NotificationsController < ApplicationController
-  before_action :set_notification, only: [:show, :update]
-
+  before_action :set_notification, only: [:show, :update, :destroy]
+  
+  def show
+    authorize @notification
+  end
+  
   def update
     authorize @notification
     # get the event relative to this notification
@@ -16,20 +20,16 @@ class NotificationsController < ApplicationController
         notification.save
       end
     end
-
   end
 
-  def show
+  def destroy
     authorize @notification
-  end
-
-  def dismissed
-    @notification = Notification.find(params[:notification_id])
     @notification.update(dismissed: true)
-    authorize @notification
     redirect_to notification_path(@notification)
   end
-
+  
+  private
+  
   def set_notification
     @notification = Notification.find(params[:id])
   end
