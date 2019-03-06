@@ -7,9 +7,16 @@
 
 <p>description of event = description of notifications: <%= @notification.event.description %></p>
 
+<p>This notification is the type: <%= @notification.notification_type%></p>
+
 <h2>TIME DESCRIPTION</h2>
 
-<p><%= @notification.dismissed %></p>
+<p>Created at: <%= @notification.created_at %></p>
+<p>Updated at: <%= @notification.updated_at %></p>
+
+<p>DISMISSED? <%= @notification.dismissed %></p>
+<p>EVENT DONE? <%= @notification.event.done %></p>
+
 
 <!-- Se notification.event.done for true, ele faz o seguinte: -->
   <!-- diz que foi DONE x tempo atras (subtrai a presente hora com a notification.event.start_time -->
