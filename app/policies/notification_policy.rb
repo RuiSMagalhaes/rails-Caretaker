@@ -2,7 +2,7 @@ class NotificationPolicy < ApplicationPolicy
   def index?
     true
   end
-  
+
   def create?
     true
   end
@@ -15,6 +15,10 @@ class NotificationPolicy < ApplicationPolicy
 
   def dismissed?
     show?
+  end
+
+  def update?
+    user == record.event.user
   end
 
   class Scope < Scope

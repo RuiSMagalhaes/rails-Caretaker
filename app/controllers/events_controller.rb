@@ -149,14 +149,9 @@ class EventsController < ApplicationController
       NotifyCaretakerAndEventUserBeforeJob.set(wait_until: event.start_time - event.minutes).perform_later(event.id)
     end
     # If notify_missed is true, the user of the event has to be notified as well as all his caretakers
-    if event.notify_missed
-      # TODO: Call a Job to create notifications for the user of the event his caretakers 15 minutes after the event.start_time (if done == false => check this on the Job only)
-      NotifyCaretakerAndEventUserMissedJob.set(wait_until: event.start_time + 15.minute).perform_later(event.id)
-    end
-
-    # if notify_done is true, all the caretakers of the user of the event have to be notified
-    if notify_done
-
-    end
+    # TODO: Call a Job to create notifications for the user of the event his caretakers 15 minutes after the event.start_time (if done == false => check this on the Job only)
+    NotifyCaretakerAndEventUserMissedJob.set(wait_until: event.start_time + 15.minute).perform_later(event.id) if event.notify_missed
+    # if notify_done is true, all the caretakers of the user of the event need to be notified when the user of the event press the button "Done"
+    # this logic is on the notification controller
   end
 end
