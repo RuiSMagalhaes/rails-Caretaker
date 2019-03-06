@@ -5,13 +5,12 @@ puts "Destroying every seed...."
 Disease.destroy_all
 UserDisease.destroy_all
 Relation.destroy_all
-Notification.destroy_all
 Event.destroy_all
+Notification.destroy_all
 EventType.destroy_all
 User.destroy_all
 
 puts "Every seed destroyed"
-
 
 puts "Creating 5 events type...."
 #CREATING EVENT_TYPE SEEDS
@@ -42,6 +41,7 @@ i = 1
     )
   user.remote_photo_url = "https://thispersondoesnotexist.com/image"
   user.save
+  puts "User #{i} created successfully!"
   i += 1
   #CREATE 5 EVENTS FOR EACH USER WITH RECURRING FALSE. MINUTES, HOURS, DAYS, WEEKS, MONTHS, START_ID NOT POPULATED
   puts "Creating 5 events for this user..."
@@ -61,31 +61,14 @@ i = 1
       done:[true, false].sample
       )
     event.save
+    puts "Event #{event.id} for user #{i} created successfully!"
   end
 end
 
-
-#start id og event_type
-event_start_id = Event.first.id
-#end id og event_type
-event_end_id = Event.last.id
+puts "creating 1 relation for first pair of users (caretacker > patient)..."
 
 #start id og event_type
 user_start_id = User.first.id
-#end id og event_type
-user_end_id = User.last.id
-
-puts "creating 50 notifications..."
-#Create 50 notifications
-50.times do
-  notification = Notification.new(dismissed: false)
-  notification.event = Event.find(rand(event_start_id...event_end_id))
-  notification.user = User.find(rand(user_start_id...user_end_id))
-  notification.save
-end
-
-
-puts "creating 1 relation for first pair of users (caretacker > patient)..."
 
 1.times do
   relation = Relation.new()
