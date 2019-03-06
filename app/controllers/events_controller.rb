@@ -87,7 +87,7 @@ class EventsController < ApplicationController
                                   :end_time,
                                   :recurring,
                                   :notify_before,
-                                  :nofity_done,
+                                  :notify_done,
                                   :done,
                                   :notify_missed,
                                   :minutes,
