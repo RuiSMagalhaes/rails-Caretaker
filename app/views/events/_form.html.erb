@@ -10,7 +10,7 @@
   <%= f.input :notify_before?, as: :boolean,
               hint:"  If you want to be notified 15mins before the event." %>
   <%= f.input :minutes,
-              collection: [0,15,30,45],
+              collection: [15,30,45],
               hint:"  Time space between events in minutes." %>
   <%= f.input :notify_done?, as: :boolean,
               hint:"  If you want the caretaker to be notified when event is marked as done." %>
@@ -21,7 +21,7 @@
   <%= f.input :recurring_times,
               collection: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
               hint:"  Number of times that you want the event to happen.",
-              wrap_with: { tag: 'div', class: 'hidden' } %>
+              class: 'hidden' %>
   <%= f.input :hours,
               collection: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
               hint:"  Time space between events in hours." %>
