@@ -1,17 +1,13 @@
 class NotificationsController < ApplicationController
-  before_action :set_notification, only: [:show]
-
-  def create
-  end
+  before_action :set_notification, only: [:show, :update, :destroy]
 
   def show
     authorize @notification
   end
 
-  def dismissed
-    @notification = Notification.find(params[:notification_id])
-    @notification.update(dismissed: true)
+  def destroy
     authorize @notification
+    @notification.update(dismissed: true)
     redirect_to notification_path(@notification)
   end
 
