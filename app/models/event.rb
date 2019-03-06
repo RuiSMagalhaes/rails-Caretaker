@@ -21,9 +21,12 @@ class Event < ApplicationRecord
       # TODO: Call a Job to create a notification to the user and to his caretakers some time (defined by event.minutes) before the event.start_time
       # if a user do not populate the minutes field, it's 15min as a default. this notification will pop up 15 min before the start time of the event
       self.minutes = 15 if self.minutes.nil?
-      self.minutes = (self.self.start_time - Time.now).to_i if self.start_time > Time.now - self.minutes
+      if self.start_time - self.minutes.minutes < Time.now
+        NotifyCaretakerAndEventUserBeforeJob.perform_later(self.id)
+      else
       # call the Job the the caretakers of the user and for the user of the event
-      NotifyCaretakerAndEventUserBeforeJob.set(wait_until: self.start_time - self.minutes.minutes).perform_later(self.id)
+        NotifyCaretakerAndEventUserBeforeJob.set(wait_until: self.start_time - self.minutes.minutes).perform_later(self.id)
+      end
     end
     # If notify_missed is true, the user of the event has to be notified as well as all his caretakers
     # TODO: Call a Job to create notifications for the user of the event his caretakers 15 minutes after the event.start_time (if done == false => check this on the Job only)
