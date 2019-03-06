@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% if user_signed_in? %>
+  <script type="text/javascript">
+    window.location.href="/profiles"  // put your correct path in a string here
+  </script>
+<% else %>
+  <%= link_to "LOG IN", new_user_session_path %>
+<% end %>
