@@ -1,15 +1,12 @@
 class EventsController < ApplicationController
   before_action :set_user, :set_profile
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  # GET /events
-  # GET /events.json
+  before_action :set_event, :set_events, only: [:show, :edit, :update, :destroy]
+
   def index
     authorize @profile, :show?
     set_events
   end
 
-  # GET /events/1
-  # GET /events/1.json
   def show
     authorize @profile
   end
@@ -20,40 +17,28 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
-  # GET /events/1/edit
-  def edit
-    authorize @profile
-  end
-
-  # POST /events
-  # POST /events.json
   def create
     authorize @profile
     @event = Event.new(event_params)
-    @event.user = @profile
-    if @event.save
-      redirect_to profile_event_path(@profile, @event), notice: 'Event was successfully created.'
-    else
-      render :new
-    end
+    create_first(@event)
   end
 
-  # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
+  def edit
+    authorize @profile
+    @event = @events.where(start_id: @event.start_id).first
+  end
+
   def update
     authorize @profile
-    if @event.update(event_params)
-      redirect_to profile_event_path(@profile, @event), notice: 'Event was successfully updated.'
-    else
-      render :edit
-    end
+    @events = @events.where(start_id: @event.start_id)
+    @events.destroy_all
+    @event = Event.new(event_params)
+    create_first(@event)
   end
 
-  # DELETE /events/1
-  # DELETE /events/1.json
   def destroy
     authorize @profile
-    @event.destroy
+    @events.where(start_id: @event.start_id).destroy_all
     redirect_to profile_events_path(@profile), notice: 'Event was successfully destroyed.'
   end
 
@@ -77,6 +62,41 @@ class EventsController < ApplicationController
     @events = policy_scope(@profile.events)
   end
 
+  def create_first(event)
+    # add profile user to the event
+    @event = event
+    @event.user = @profile
+    # validation if saved
+    if @event.save
+      # add start_id to event
+      @event.start_id = @event.id
+      @event.save
+      # call creation of multiple events
+      create_multiple(@event) if @event.recurring
+      # redirect to event
+      redirect_to profile_event_path(@profile, @event), notice: 'Event was successfully created.'
+    else
+      render :new
+    end
+  end
+
+  def create_multiple(event)
+    # defining number of times
+    times = event.recurring_times - 1
+    until times.zero?
+      next_event = event.dup
+      next_event.hours.nil? ? hours = 0.hours : hours = next_event.hours.hours
+      next_event.days.nil? ? days = 0.days : days = next_event.days.days
+      next_event.weeks.nil? ? weeks = 0.weeks : weeks = next_event.weeks.weeks
+      next_event.months.nil? ? months = 0.months : months = next_event.months.months
+      next_event.start_time = next_event.start_time + hours + days + weeks + months
+      next_event.end_time = next_event.end_time + hours + days + weeks + months
+      next_event.save
+      event = next_event
+      times -= 1
+    end
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
     params.require(:event).permit(:name,
@@ -86,6 +106,7 @@ class EventsController < ApplicationController
                                   :event_type_id,
                                   :end_time,
                                   :recurring,
+                                  :recurring_times,
                                   :notify_before,
                                   :notify_done,
                                   :done,
