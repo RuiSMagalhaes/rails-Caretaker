@@ -11,4 +11,5 @@
 </p>
 
 <%= link_to 'Edit', edit_profile_event_path(@profile, @event) %> |
-<%= link_to 'Back', profile_events_path %>
+<%= link_to 'Back', profile_events_path %> |
+<%= link_to 'Delete', profile_event_path(@profile, @event), method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -85,8 +85,14 @@ puts "creating 50 notifications..."
 end
 
 
+puts "creating 1 relation for first pair of users (caretacker > patient)..."
 
-
+1.times do
+  relation = Relation.new()
+  relation.caretaker = User.find(user_start_id)
+  relation.patient = User.find(user_start_id + 1)
+  relation.save
+end
 
 
 

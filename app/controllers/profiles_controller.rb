@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_user, :set_patients, :set_notifications, only: [:index, :show]
+  before_action :set_user, :set_patients, :set_notifications, only: [:index, :show, :edit]
   before_action :set_profile, only: [:show, :edit]
   # skip_after_action :verify_policy_scoped, only: :index
 
