@@ -1,4 +1,4 @@
-class NotifyEventUserBeforeJob < ApplicationJob
+class NotifyCaretakerAndEventUserBeforeJob < ApplicationJob
   queue_as :default
 
   def perform(event_id)
@@ -10,6 +10,12 @@ class NotifyEventUserBeforeJob < ApplicationJob
       notification = Notification.new(event_id: @event.id, user_id: @event.user.id)
       notification.type = "Before"
       notification.save
+      # notify all the caretakers
+      @event.user.caretakers.each do |caretaker|
+        notification = Notification.new(event_id: @event.id, user_id: caretaker.id)
+        notification.type = "Before"
+        notification.save
+      end
     end
   end
 end
