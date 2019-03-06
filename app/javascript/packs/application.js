@@ -9,6 +9,13 @@ if (eventsEdit || eventsNew) {
   const eventWeeks = document.querySelector('.event_weeks');
   const eventMonths = document.querySelector('.event_months');
   const checkBox = document.getElementById('event_recurring');
+  document.addEventListener("DOMContentLoaded", (event) => {
+    recurringTimes.classList.add("hidden");
+    eventHours.classList.add("hidden");
+    eventDays.classList.add("hidden");
+    eventWeeks.classList.add("hidden");
+    eventMonths.classList.add("hidden");
+  })
   checkBox.addEventListener('change', (event) => {
     recurringTimes.classList.toggle("hidden");
     eventHours.classList.toggle("hidden");
