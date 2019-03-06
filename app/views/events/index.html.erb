@@ -13,7 +13,7 @@
 </div>
 
 <div class="calendar-week">
-  <%= week_calendar number_of_weeks: 1, end_attribute: :end_date, events: @events do |date, events| %>
+  <%= week_calendar number_of_weeks: 1, events: @events do |date, events| %>
     <% events.each do |event| %>
       <div>
         <p><%= event.start_time.strftime("%H:%M") %> | <%= link_to event.name, profile_event_path(@profile, event) %></p>
