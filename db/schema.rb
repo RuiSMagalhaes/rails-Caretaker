@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_112328) do
+
+ActiveRecord::Schema.define(version: 2019_03_06_114602) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_03_06_112328) do
     t.bigint "user_id"
     t.bigint "event_type_id"
     t.boolean "done", default: false
+    t.integer "recurring_times", default: 0
     t.index ["event_type_id"], name: "index_events_on_event_type_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end

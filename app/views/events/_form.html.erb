@@ -10,17 +10,21 @@
   <%= f.input :start_time %>
   <%= f.input :recurring?, as: :boolean,
               hint:"  If this event occur multiple times." %>
-  <%= f.input :minutes,
+  <%= f.input :duration_minutes,
+              collection: [15,30,45],
               hint:"  Time space between events in minutes." %>
-  <%= f.input :hours,
+  <%= f.input :duration_hours,
+              collection: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
               hint:"  Time space between events in hours." %>
-  <%= f.input :days,
+  <%= f.input :duration_days,
+              collection: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
               hint:"  Time space between events in days." %>
-  <%= f.input :weeks,
+  <%= f.input :duration_weeks,
+              collection: [1,2,3,4],
               hint:"  Time space between events in weeks." %>
-  <%= f.input :months,
+  <%= f.input :duration_months,
+              collection: [1,2,3,4,5,6,7,8,9,10,11],
               hint:"  Time space between events in months." %>
-  <%= f.input :end_time %>
   <%= f.input :notify_before?, as: :boolean,
               hint:"  If you want to be notified 15mins before the event." %>
   <%= f.input :notify_done?, as: :boolean,
