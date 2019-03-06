@@ -8,12 +8,12 @@ class NotifyCaretakerAndEventUserBeforeJob < ApplicationJob
       @event = Event.find(event_id)
       # Notify the event user
       notification = Notification.new(event_id: @event.id, user_id: @event.user.id)
-      notification.type = "Before"
+      notification.notification_type = "Before"
       notification.save
       # notify all the caretakers
       @event.user.caretakers.each do |caretaker|
         notification = Notification.new(event_id: @event.id, user_id: caretaker.id)
-        notification.type = "Before"
+        notification.notification_type = "Before"
         notification.save
       end
     end

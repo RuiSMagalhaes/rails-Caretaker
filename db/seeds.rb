@@ -37,7 +37,8 @@ i = 1
     last_name:Faker::App.author,
     email:"email#{i}@caretaker.pt",
     simple_view: true,
-    password:"123456"
+    password:"123456",
+    admin: i == 1
     )
   user.remote_photo_url = "https://thispersondoesnotexist.com/image"
   user.save
@@ -50,15 +51,14 @@ i = 1
     event = Event.new(
       name:Faker::Esport.event,
       description:Faker::Lorem.sentence,
-      start_time: Faker::Time.between(Time.now, Time.now + 1),
-      end_time: Faker::Time.between(Time.now + 2, Time.now + 3 ),
+      start_time: Time.now + 1.hour,
+      end_time: Time.now + 2.hour,
       recurring: false,
       notify_before:[true, false].sample,
       notify_done:[true, false].sample,
       notify_missed:[true, false].sample,
       user_id: user.id,
-      event_type_id:rand(event_type_start_id...event_type_end_id),
-      done:[true, false].sample
+      event_type_id:rand(event_type_start_id...event_type_end_id)
       )
     event.save
     puts "Event #{event.id} for user #{i} created successfully!"

@@ -1,10 +1,10 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :update, :destroy]
-  
+
   def show
     authorize @notification
   end
-  
+
   def update
     authorize @notification
     # get the event relative to this notification
@@ -16,7 +16,7 @@ class NotificationsController < ApplicationController
       # iterate through caretakers and create a notification for each one
       event.user.caretakers.each do |caretaker|
         notification = Notification.new(event_id: event.id, user_id: caretaker.id)
-        notification.type = "done"
+        notification.notification_type = "done"
         notification.save
       end
     end
@@ -27,9 +27,9 @@ class NotificationsController < ApplicationController
     @notification.update(dismissed: true)
     redirect_to notification_path(@notification)
   end
-  
+
   private
-  
+
   def set_notification
     @notification = Notification.find(params[:id])
   end
