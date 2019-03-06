@@ -9,7 +9,7 @@ class NotifyEventUserDoJob < ApplicationJob
       # notify the event user if he did not mark the event as done on the before job
       unless @event.done
         notification = Notification.new(event_id: @event.id, user_id: @event.user.id)
-        notification.type = "Do"
+        notification.notification_type = "Do"
         notification.save
       end
     end

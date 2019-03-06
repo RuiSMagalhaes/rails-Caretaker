@@ -10,12 +10,12 @@ class NotifyCaretakerAndEventUserMissedJob < ApplicationJob
       unless @event.done
         # Notify the event user
         notification = Notification.new(event_id: @event.id, user_id: @event.user.id)
-        notification.type = "missed"
+        notification.notification_type = "missed"
         notification.save
         # notify all the caretakers
         @event.user.caretakers.each do |caretaker|
           notification = Notification.new(event_id: @event.id, user_id: caretaker.id)
-          notification.type = "missed"
+          notification.notification_type = "missed"
           notification.save
         end
       end
