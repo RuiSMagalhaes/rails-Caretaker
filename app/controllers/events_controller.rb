@@ -19,25 +19,33 @@ class EventsController < ApplicationController
 
   def create
     authorize @profile
+    # create new event with params from form
     @event = Event.new(event_params)
+    # call create first event to process at least one event
     create_first(@event)
   end
 
   def edit
     authorize @profile
+    # select the first event of a series of events so the displayed info relates to the first one
     @event = @events.where(start_id: @event.start_id).first
   end
 
   def update
     authorize @profile
+    # select all events with the start id
     @events = @events.where(start_id: @event.start_id)
+    # clean db so previous events will removed
     @events.destroy_all
+    # create new event with params from form
     @event = Event.new(event_params)
+    # call create first event to process at least one event
     create_first(@event)
   end
 
   def destroy
     authorize @profile
+    # destroy all events with the same start id
     @events.where(start_id: @event.start_id).destroy_all
     redirect_to profile_events_path(@profile), notice: 'Event was successfully destroyed.'
   end
@@ -81,18 +89,25 @@ class EventsController < ApplicationController
   end
 
   def create_multiple(event)
-    # defining number of times
+    # defining number of times that event is recurring
     times = event.recurring_times - 1
+    # run the event save until number of times is 0
     until times.zero?
+      # duplicate last event added
       next_event = event.dup
+      # define hours, days, weeks and months
       next_event.hours.nil? ? hours = 0.hours : hours = next_event.hours.hours
       next_event.days.nil? ? days = 0.days : days = next_event.days.days
       next_event.weeks.nil? ? weeks = 0.weeks : weeks = next_event.weeks.weeks
       next_event.months.nil? ? months = 0.months : months = next_event.months.months
+      # sum the time space to start_time and end_time
       next_event.start_time = next_event.start_time + hours + days + weeks + months
       next_event.end_time = next_event.end_time + hours + days + weeks + months
+      # save event to db
       next_event.save
+      # define the event as the last saved event
       event = next_event
+      # remove on time from iteration
       times -= 1
     end
   end
