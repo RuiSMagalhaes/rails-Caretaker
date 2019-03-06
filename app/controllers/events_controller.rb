@@ -32,7 +32,8 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = @profile
     if @event.save
-      job_event_to_notification
+      #if saved, call the job_event_to_notification method
+      job_event_to_notification(@profile)
       redirect_to profile_event_path(@profile, @event), notice: 'Event was successfully created.'
     else
       render :new
@@ -98,7 +99,21 @@ class EventsController < ApplicationController
                                   :months)
   end
 
-  def job_event_to_notification
-    EventJob
+  def job_event_to_notification(profile)
+    # Call a Job for the user of the event (event.user) to notify him on time = event.start_time if event.done == false
+    # Call a Job for the caretakers of the user of the event (event.user.caretakers) to notify them on time = event.start_time if event.done == false
+
+    # If profile.notify_before is true, the user of the event has to be notified as well as all his caretakers
+    if profile.notify_before
+      # TODO: Call a Job to create a notification to the user and to his caretakers some time (defined by event.minutes) before the event.start_time
+      # call the Job for the user of the event (event.user)
+      # call the Job the the caretakers of the user of the event (event.user.caretakers)
+    end
+
+    # If profile.notify_missed is true, the user of the event has to be notified as well as all his caretakers
+    if profile.notify_missed
+      # TODO: Call a Job to create a notification to his caretakers 15 minutes after the event.start_time if done == false
+
+    end
   end
 end
