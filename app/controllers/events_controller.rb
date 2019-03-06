@@ -77,10 +77,9 @@ class EventsController < ApplicationController
     # validation if saved
     if @event.save
       # add start_id to event
-      @event.start_id = @event.id
-      @event.save
+      @event.update(start_id: @event.id)
       # call the jobs methods
-      job_event_to_notification(@event)
+      # job_event_to_notification(@event)
       # call creation of multiple events
       create_multiple(@event) if @event.recurring
       # redirect to event
@@ -108,7 +107,7 @@ class EventsController < ApplicationController
       # save event to db
       next_event.save
       # call the jobs methods
-      job_event_to_notification(next_event)
+      # job_event_to_notification(next_event)
       # define the event as the last saved event
       event = next_event
       # remove on time from iteration

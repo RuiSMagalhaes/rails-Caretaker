@@ -13,7 +13,7 @@
 <h2>Events</h2>
 <p>Event Name | Event User</p>
 <% @events.each do |event| %>
-  <p><%= event.name %> | <%= link_to event.user.email, profile_path(event.user.email) %></p>
+  <p><%= event.name %> | <%= link_to event.user.email, profile_path(event.user) %></p>
 <% end %>
 <h2>Notifications</h2>
 <p>Notification Name | Notification Regarding User</p>
