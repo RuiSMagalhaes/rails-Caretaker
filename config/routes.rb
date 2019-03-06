@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:index, :show, :edit] do
     resources :events
   end
-  resources :notifications, only: [:show, :create] do
-    get 'dismissed' , to: 'notifications#dismissed'
+  resources :notifications, only: [:show, :create, :update, :destroy] do
   end
 
   root to: 'pages#home'

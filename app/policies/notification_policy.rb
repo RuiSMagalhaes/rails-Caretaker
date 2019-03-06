@@ -1,19 +1,14 @@
 class NotificationPolicy < ApplicationPolicy
-  def index?
-    true
-  end
-  
-  def create?
-    true
-  end
 
   def show?
-    return false if record.dismissed == true
-
     user == record.user
   end
 
-  def dismissed?
+  def update?
+    user == record.event.user
+  end
+
+  def destroy?
     show?
   end
 
