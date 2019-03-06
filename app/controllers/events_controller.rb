@@ -32,6 +32,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = @profile
     if @event.save
+      job_event_to_notification
       redirect_to profile_event_path(@profile, @event), notice: 'Event was successfully created.'
     else
       render :new
@@ -95,5 +96,9 @@ class EventsController < ApplicationController
                                   :days,
                                   :weeks,
                                   :months)
+  end
+
+  def job_event_to_notification
+    EventJob
   end
 end
