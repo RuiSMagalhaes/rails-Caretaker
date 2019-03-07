@@ -1,7 +1,11 @@
-<div class="card-notification-do">
+<div class="card-notification-before">
   <div class="notification-infos">
     <div class="notification-title">
-      <p>You</p>
+        <% if @notification.event.user == current_user %>
+          <p>You</p>
+        <%else %>
+          <p><%= @notification.event.user.first_name + " " + @notification.event.user.last_name  %></p>
+        <% end %>
     </div>
     <div class="notification-infos-event">
       <!-- Change this image for the one of notification.event.event_type.description -->
@@ -9,16 +13,17 @@
       <div class="info-event-name-time">
         <h5><%= @notification.event.name %> </h5>
         <p> <%= @notification.event.start_time.strftime("At %I:%M%p") %> </p>
-
       </div>
     </div>
     <div class="item-description">
       <p><%= @notification.event.description %></p>
     </div>
     <div class="buttons">
-      <% unless @notification.event.done%>
-        <%= link_to notification_path(@notification), method: :patch, class: "no-decoration" do %>
-          <p class="button-done">Mark as done</p>
+      <% unless @notification.event.done %>
+        <% if @notification.event.user == current_user %>
+          <%= link_to notification_path(@notification), method: :patch, class: "no-decoration" do %>
+            <p class="button-done">Mark as done</p>
+          <% end %>
         <% end %>
       <% end %>
       <% unless @notification.dismissed %>
