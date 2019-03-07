@@ -18,6 +18,8 @@ class NotificationsController < ApplicationController
     event = @notification.event
     # update the event.done to true
     event.update(done: true)
+    # Dismiss notification of the user of the event
+    @notification.update(dismissed: true)
     # if the option: "notify if done" is turned on, a notification has to be sent to every caretaker when the event turn to : done
     if event.notify_done
       # iterate through caretakers and create a notification for each one
@@ -27,7 +29,8 @@ class NotificationsController < ApplicationController
         notification.save
       end
     end
-    redirect_to notification_path
+    refer = params[:refer].nil? ? request.referrer : params[:refer]
+    redirect_to refer
   end
 
   def destroy
