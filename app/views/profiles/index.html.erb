@@ -3,7 +3,10 @@
     <div class="profiles-list-header">
       <span>People</span>
     </div>
-    <%= render 'shared/profile-card', user: @user, notifications: @notifications.count %>
+    <%=
+      render 'shared/profile-card',
+      user: @user,
+      notifications: @notifications.where(event_id: @user.events.pluck(:id)).count %>
     <% @patients.each do |patient| %>
       <%=
         render 'shared/profile-card',
