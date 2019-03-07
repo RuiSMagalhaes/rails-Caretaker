@@ -6,30 +6,13 @@
     <% end %>
   </div>
   <div class="notifications-list col-xs-12 col-md-4">
-
+    <% @notifications[0..4].each do |notification| %>
+      <%= render 'shared/notification-card', notification: notification %>
+    <% end %>
+    <p><%= link_to "See more", notifications_path if @notifications.size > 4 %></p>
   </div>
   <div class="events-list col-xs-12 col-md-4">
+    <div><%= render 'shared/calendar-day', events: @events[0..4] %></div>
+    <p><%= link_to "See more", events_path if @events.size > 4 %></p>
   </div>
 </div>
-
-<h1>Home page of <%= link_to @user.email, profile_path(@user) %></h1>
-<h2>Patients</h2>
-<p><%= "No patients" if @patients.empty? %></p>
-<% @patients.each do |patient| %>
-  <p><%= link_to patient.email, profile_path(patient) %></p>
-<% end %>
-<h2>Caretakers</h2>
-<p><%= "No caretackers" if @user.caretakers.empty? %></p>
-<% @user.caretakers.each do |caretaker| %>
-  <p><%= link_to caretaker.email, profile_path(caretaker) %></p>
-<% end %>
-<h2>Events</h2>
-<p>Event Name | Event User</p>
-<% @events.each do |event| %>
-  <p><%= link_to event.name, profile_event_path(event.user, event) %> | <%= link_to event.user.email, profile_path(event.user) %></p>
-<% end %>
-<h2>Notifications</h2>
-<p>Notification Name | Notification Regarding User</p>
-<% @notifications.each do |notification| %>
-  <p><%= link_to notification.event.name, notification_path(notification) %> | <%= link_to notification.event.user.email, profile_path(notification.event.user) %></p>
-<% end %>

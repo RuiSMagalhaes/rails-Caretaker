@@ -31,8 +31,10 @@ class NotificationsController < ApplicationController
 
   def destroy
     authorize @notification
+    # change value notification to dismissed
     @notification.update(dismissed: true)
-    redirect_to notification_path(@notification)
+    # redirecto to the page where the action is implemented
+    redirect_to request.referrer
   end
 
   private

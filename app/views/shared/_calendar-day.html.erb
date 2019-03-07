@@ -1,0 +1,11 @@
+<div class="calendar-day">
+  <%= calendar number_of_days: 1, events: events do |date, events| %>
+    <% events.each do |event| %>
+      <div class="calendar-day-event">
+        <%= link_to "", profile_event_path(event.user, event), class: "calendar-day-event-link" %>
+        <p><strong><%= event.name %></strong></p>
+        <span><%= event.start_time.strftime("%H:%M") %> | <%= event.user.first_name %></span>
+      </div>
+    <% end %>
+  <% end %>
+</div>
