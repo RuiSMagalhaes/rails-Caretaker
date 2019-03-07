@@ -1,10 +1,21 @@
 class EventsController < ApplicationController
-  before_action :set_user, :set_profile
+  before_action :set_user
+  before_action :set_profile, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :set_event, :set_events, only: [:show, :edit, :update, :destroy]
 
   def index
     authorize @profile, :show?
-    set_events
+    @events = set_events
+  end
+
+  def schedule
+    authorize @user, :show?
+    # geting user events
+    @events = set_all_events(@user)
+    # set patients
+    @patients = set_patients
+    # geting all events for each patient
+    @patients.each { |patient| @events += set_all_events(patient) }
   end
 
   def show
@@ -68,6 +79,16 @@ class EventsController < ApplicationController
   def set_events
     # get events with given user
     @events = policy_scope(@profile.events)
+  end
+
+  def set_patients
+    # get all patientes for current user
+    @patients = policy_scope(@user.patients)
+  end
+
+  def set_all_events(user)
+    # get events with given user
+    @events = user.events
   end
 
   def create_first(event)

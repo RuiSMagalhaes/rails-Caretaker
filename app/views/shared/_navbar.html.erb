@@ -13,33 +13,10 @@
     <div class="navbar-caretaker-right hidden-xs hidden-sm">
 
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-caretaker-item navbar-caretaker-link" %>
-      <%= link_to "Trips", "#", class: "navbar-caretaker-item navbar-caretaker-link" %>
-      <%= link_to "Messages", "#", class: "navbar-caretaker-item navbar-caretaker-link" %>
-
-      <!-- Avatar with dropdown menu -->
-      <div class="navbar-caretaker-item">
-        <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-caretaker-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-caretaker-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <%= link_to "Dashboard", profiles_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
+      <%= link_to "Events", "#", class: "navbar-caretaker-item navbar-caretaker-link" %>
+      <%= link_to "Notifications", "#", class: "navbar-caretaker-item navbar-caretaker-link" %>
+      <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "navbar-caretaker-item navbar-caretaker-link" %>
     </div>
 
     <!-- Dropdown list appearing on mobile only -->
