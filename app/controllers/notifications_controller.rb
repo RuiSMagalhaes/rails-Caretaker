@@ -1,6 +1,12 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :update, :destroy]
 
+  def index
+    set_user
+    authorize @user, :show?
+    set_notifications
+  end
+
   def show
     authorize @notification
   end
@@ -30,7 +36,17 @@ class NotificationsController < ApplicationController
 
   private
 
+  def set_user
+    # set this user
+    @user = current_user
+  end
+
   def set_notification
     @notification = Notification.find(params[:id])
+  end
+
+  def set_notifications
+    # get all notifications for current user
+    @notifications = policy_scope(@user.notifications)
   end
 end

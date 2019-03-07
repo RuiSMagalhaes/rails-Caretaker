@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # to have a index events page (with all events caretaker and all patients)
   get '/events', to: 'events#schedule'
 
-  resources :notifications, only: [:show, :update, :destroy]
+  resources :notifications, only: [:index, :show, :update, :destroy]
 
   root to: 'pages#home'
 

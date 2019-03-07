@@ -14,19 +14,20 @@
 
       <!-- Links when logged in -->
       <%= link_to "Dashboard", profiles_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
-      <%= link_to "Events", "#", class: "navbar-caretaker-item navbar-caretaker-link" %>
-      <%= link_to "Notifications", "#", class: "navbar-caretaker-item navbar-caretaker-link" %>
-      <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "navbar-caretaker-item navbar-caretaker-link" %>
+      <%= link_to "Events", events_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
+      <%= link_to "Notifications", notifications_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
+      <%#= link_to "Log Out", destroy_user_session_path, method: :delete, class: "navbar-caretaker-item navbar-caretaker-link" %>
     </div>
 
     <!-- Dropdown list appearing on mobile only -->
-    <div class="navbar-caretaker-item hidden-md hidden-lg">
+    <div class="navbar-caretaker-item">
       <div class="dropdown">
         <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
         <ul class="dropdown-menu dropdown-menu-right navbar-caretaker-dropdown-menu">
-          <li><a href="#">Some mobile link</a></li>
-          <li><a href="#">Other one</a></li>
-          <li><a href="#">Other one</a></li>
+          <li><a class="hidden-md hidden-lg" href="#">Dashboard</a></li>
+          <li><a class="hidden-md hidden-lg" href="#">Events</a></li>
+          <li><a class="hidden-md hidden-lg" href="#">Notifications</a></li>
+          <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
         </ul>
       </div>
     </div>
