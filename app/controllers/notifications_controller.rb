@@ -33,21 +33,21 @@ class NotificationsController < ApplicationController
       # iterate through caretakers and create a notification for each one
       event.user.caretakers.each do |caretaker|
         # Dismiss every notification of this event for the caretakers of the type "before". I want to see the missed ones.
-        Notification.all.where(event_id: @event.id, user_id: caretaker.id, notification_type: "before").update(dismissed: true)
+        Notification.all.where(event_id: event.id, user_id: caretaker.id, notification_type: "before").update(dismissed: true) unless Notification.all.where(event_id: event.id, user_id: caretaker.id, notification_type: "before").nil?
         # notify every caretaker of the event that the patient missed
         notification = Notification.new(event_id: event.id, user_id: caretaker.id)
         notification.notification_type = "done"
         notification.save
       end
     end
-    refer = params[:refer].nil? ? request.referrer : params[:refer]
+    params[:refer].nil? ? refer = request.referrer : refer = params[:refer]
     redirect_to refer
   end
 
   def destroy
     authorize @notification
     # declare where you came before show page
-    refer = params[:refer].nil? ? request.referrer : params[:refer]
+    params[:refer].nil? ? refer = request.referrer : refer = params[:refer]
     # change value notification to dismissed
     @notification.update(dismissed: true)
     # redirecto to the page where the action is implemented

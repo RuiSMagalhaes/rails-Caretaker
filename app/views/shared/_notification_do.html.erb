@@ -18,13 +18,8 @@
     </div>
     <div class="buttons">
       <% unless @notification.event.done%>
-        <%= link_to notification_path(@notification), method: :patch, class: "no-decoration" do %>
+        <%= link_to notification_path(@notification, refer: @refer), method: :patch, class: "no-decoration" do %>
           <p class="button-done">Mark as done</p>
-        <% end %>
-      <% end %>
-      <% unless @notification.dismissed %>
-        <%= link_to notification_path(@notification, refer: @refer), method: :delete, class: "no-decoration" do %>
-          <p class="button-dismiss">Dismiss</p>
         <% end %>
       <% end %>
     </div>
