@@ -1,0 +1,39 @@
+.calendar-week{
+}
+.calendar-week table{
+  margin-bottom: 0px;
+}
+.calendar-week td {
+  padding: 8px 0 0 0 !important;
+}
+.calendar-week .calendar-heading{
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.calendar-week .day{
+  background-color: transparent!important;
+}
+.calendar-week-event {
+  padding: 10px 18px;
+  align-items: center;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 2px;
+  margin-bottom: 8px;
+  position: relative;
+  transition: 0.5s ease;
+  text-align: center;
+}
+.calendar-week-event:hover {
+  transform: scale(1.03)
+}
+.calendar-week-event-link{
+  width: 100%;
+  display: block;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}

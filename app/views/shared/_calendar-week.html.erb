@@ -1,0 +1,15 @@
+<div class="calendar-week">
+  <%= week_calendar number_of_weeks: 1, events: events do |date, events| %>
+    <% events.each do |event| %>
+      <div class="calendar-week-event">
+        <%= link_to "", profile_event_path(event.user, event), class: "calendar-day-event-link" %>
+        <p><strong><%= event.name %></strong></p>
+        <span>
+          <%= event.start_time.strftime("%H:%M") %>
+          <%= " | " %>
+          <%= event.user == current_user ? "You" : event.user.first_name %>
+        </span>
+      </div>
+    <% end %>
+  <% end %>
+</div>
