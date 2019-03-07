@@ -5,7 +5,11 @@
     </div>
     <%= render 'shared/profile-card', user: @user, notifications: @notifications.count %>
     <% @patients.each do |patient| %>
-      <%= render 'shared/profile-card', user: patient, notifications: patient.notifications.count %>
+      <%=
+        render 'shared/profile-card',
+        user: patient,
+        notifications: @notifications.where(event_id: patient.events.pluck(:id)).count
+      %>
     <% end %>
   </div>
   <div class="notifications-list col-xs-12 col-md-4">
