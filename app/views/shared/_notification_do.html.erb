@@ -1,9 +1,25 @@
 <div class="card-notification-do">
-  <div class="notification-do">
+  <div class="notification-infos-do">
+    <div class="notification-title-do">
+        <p> Patient: <%= @notification.event.user.first_name + " " + @notification.event.user.last_name  %></p>
+    </div>
+    <div class="notification-infos-event-do">
+      <!-- Change this image for the one of notification.event.event_type.description -->
+      <img src="https://images.unsplash.com/photo-1515350540008-a3f566782a3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="info-event-type">
+      <div class="info-event-name-time">
+        <h5><%= @notification.event.name %> </h5>
+        <p> <%= @notification.event.start_time.strftime("At %I:%M%p") %> </p>
 
+      </div>
+    </div>
+    <div class="item-description">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam debitis commodi magnam atque, molestias ratione, mollitia corrupti quae culpa nam est consequuntur distinctio velit illo ducimus! Aliquam omnis, odio reprehenderit.</p>
+    </div>
+    <div class="buttons">
+      <%= link_to "Mark as done" %>
 
+    </div>
 
-  <p>asfddddddddqfhsdjbgskdfbksjdfbksdjgbkjsdbgkjsdbgkjdsbgjksbgkdsbgkjdbgkjsbgfkjsdbgkjsbdgjksbdgkjsbdfgkjsdbgkjbs</p>
 
 
   </div>
