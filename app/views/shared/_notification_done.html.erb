@@ -1,12 +1,8 @@
-<!-- Notification for Caretakers and for Users of the event -->
-<div class="card-notification-missed">
+<!-- Notification only to caretakers -->
+<div class="card-notification-done">
   <div class="notification-infos">
     <div class="notification-title">
-        <% if @notification.event.user == current_user %>
-          <p>You</p>
-        <%else %>
-          <p><%= @notification.event.user.first_name + " " + @notification.event.user.last_name  %></p>
-        <% end %>
+      <p><%= @notification.event.user.first_name + " " + @notification.event.user.last_name  %></p>
     </div>
     <div class="notification-infos-event">
       <!-- Change this image for the one of notification.event.event_type.description -->
@@ -20,19 +16,10 @@
       <p><%= @notification.event.description %></p>
     </div>
     <div class="buttons">
-      <% unless @notification.event.done %>
-        <% if @notification.event.user == current_user %>
-          <%= link_to notification_path(@notification, refer: @refer), method: :patch, class: "no-decoration" do %>
-            <p class="button-done">Mark as done</p>
-          <% end %>
-        <% end %>
-      <% end %>
       <% unless @notification.dismissed %>
-        <% if @notification.event.user != current_user %>
           <%= link_to notification_path(@notification, refer: @refer), method: :delete, class: "no-decoration" do %>
             <p class="button-dismiss">Dismiss</p>
           <% end %>
-        <% end %>
       <% end %>
     </div>
   </div>
