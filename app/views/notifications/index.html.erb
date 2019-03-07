@@ -1,0 +1,5 @@
+<h2>Notifications</h2>
+<p>Notification Name | Notification Regarding User</p>
+<% @notifications.each do |notification| %>
+  <p><%= link_to notification.event.name, notification_path(@user, notification) %> | <%= link_to notification.event.user.email, profile_path(notification.event.user) %></p>
+<% end %>
