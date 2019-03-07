@@ -21,7 +21,7 @@
     <% end %>
     <div class="notifications-list-see-more">
       <p>
-        <% if @notifications.size > 4 %>
+        <% if @notifications.size > 5 %>
           <%= link_to notifications_path do %>
             <i class="fas fa-plus"></i>
           <% end %>
@@ -33,7 +33,7 @@
     <div><%= render 'shared/calendar-day', events: @events[0..4] %></div>
     <div class="events-list-see-more">
       <p>
-        <% if @events.size > 4 %>
+        <% if @events.size > 5 %>
           <%= link_to events_path do %>
             <i class="fas fa-plus"></i>
           <% end %>
