@@ -1,43 +1,11 @@
 <div class="full-height container-notification">
-  <% if @notification.notification_type %>
-
-  <% end %>
+  <% if @notification.notification_type == "do"%>
     <%= render "shared/notification_do" %>
+  <% elsif @notification.notification_type == "before"  %>
+    <%= render "shared/notification_before" %>
+  <% elsif @notification.notification_type == "missed"  %>
+    <%= render "shared/notification_missed" %>
+  <% elsif @notification.notification_type == "done"  %>
+    <%= render "shared/notification_done" %>
+  <% end %>
 </div>
-
-
-
-
-
-
-<h1>Notifications</h1>
-
-
-
-
-
-<p>This notification for user: <%= @notification.user.email%></p>
-
-<p>Notification relative to the event from patient: <%= @notification.event.user.email%></p>
-
-<p>description of event = description of notifications: <%= @notification.event.description %></p>
-
-<p>This notification is the type: <%= @notification.notification_type%></p>
-
-<h2>TIME DESCRIPTION</h2>
-
-<p>Created at: <%= @notification.created_at %></p>
-<p>Updated at: <%= @notification.updated_at %></p>
-
-<p>DISMISSED? <%= @notification.dismissed %></p>
-<p>EVENT DONE? <%= @notification.event.done %></p>
-
-
-<!-- Se notification.event.done for true, ele faz o seguinte: -->
-  <!-- diz que foi DONE x tempo atras (subtrai a presente hora com a notification.event.start_time -->
-
-<!-- Se notification.event.done for falso, ele faz o seguinte: -->
-  <!-- diz que foi missed x tempo atras (subtrai a presente hora com a notification.event.start_time -->
-
-<%= link_to 'DISMISS', notification_path(@notification, refer: @refer), method: :delete, data: { confirm: 'Dismiss Notification?' } %>
-<%= link_to 'DONE', notification_path(@notification), method: :patch %>
