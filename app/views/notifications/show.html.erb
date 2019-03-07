@@ -3,6 +3,8 @@
     <%= render "shared/notification_do" %>
   <% elsif @notification.notification_type == "before"  %>
     <%= render "shared/notification_before" %>
+  <% elsif @notification.notification_type == "missed"  %>
+    <%= render "shared/notification_missed" %>
   <% end %>
 
 </div>
