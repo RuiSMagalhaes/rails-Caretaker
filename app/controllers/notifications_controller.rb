@@ -5,11 +5,19 @@ class NotificationsController < ApplicationController
     set_user
     authorize @user, :show?
     set_notifications
+    set_profile
+    # if you have profile display only notifications for that profile
+    unless @profile.nil?
+      # get events for that profile
+      set_events(@profile)
+      # get notifications refering to that events
+      @notifications = @notifications.where(event_id: @events.pluck(:id))
+    end
   end
 
   def show
     authorize @notification
-    @refer = request.referrer
+    set_from
   end
 
   def update
@@ -37,8 +45,9 @@ class NotificationsController < ApplicationController
   end
 
   def destroy
-    refer = params[:refer].nil? ? request.referrer : params[:refer]
     authorize @notification
+    # declare where you came before show page
+    refer = params[:refer].nil? ? request.referrer : params[:refer]
     # change value notification to dismissed
     @notification.update(dismissed: true)
     # redirecto to the page where the action is implemented
@@ -52,12 +61,28 @@ class NotificationsController < ApplicationController
     @user = current_user
   end
 
+  def set_profile
+    # get profile user if you have the params
+    unless params[:profile_id].nil?
+      @profile = User.find(params[:profile_id])
+    end
+  end
+
   def set_notification
     @notification = Notification.find(params[:id])
   end
 
   def set_notifications
     # get all notifications for current user
-    @notifications = policy_scope(@user.notifications).where(dismissed: false).order(created_at: :asc)
+    @notifications = policy_scope(@user.notifications).where(dismissed: false).order(created_at: :desc)
+  end
+
+  def set_events(user)
+    # get events with given user
+    @events = user.events
+  end
+
+  def set_from
+    @refer = request.referrer
   end
 end

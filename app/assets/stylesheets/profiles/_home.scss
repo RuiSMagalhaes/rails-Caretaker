@@ -7,3 +7,29 @@
 .events-list{
   margin-bottom: 20px;
 }
+.notifications-list-header{
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 8px;
+}
+.notifications-list-header span{
+  font-size: 20px;
+}
+.profiles-list-header{
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 8px;
+}
+.profiles-list-header span{
+  font-size: 20px;
+}
+.notifications-list-see-more{
+  display: flex;
+  justify-content: space-around;
+}
+.events-list-see-more{
+  display: flex;
+  justify-content: space-around;
+}
