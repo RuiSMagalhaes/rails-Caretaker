@@ -24,9 +24,9 @@
         <div class="dropdown">
           <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
           <ul class="dropdown-menu dropdown-menu-right navbar-caretaker-dropdown-menu">
-            <li><a class="hidden-md hidden-lg" href="#">Dashboard</a></li>
-            <li><a class="hidden-md hidden-lg" href="#">Events</a></li>
-            <li><a class="hidden-md hidden-lg" href="#">Notifications</a></li>
+            <li><a class="hidden-md hidden-lg" href="<%= profiles_path %>">Dashboard</a></li>
+            <li><a class="hidden-md hidden-lg" href="<%= events_path %>">Events</a></li>
+            <li><a class="hidden-md hidden-lg" href="<%= notifications_path %>">Notifications</a></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
