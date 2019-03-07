@@ -1,22 +1,37 @@
-<h1>Profile page of <%= link_to @profile.email, profile_path(@profile) %></h1>
-<%= link_to "Edit #{@profile.email} profile", edit_profile_path(@profile) %>
-<h2>Patients</h2>
-<p><%= "No patients" if @patients.empty? %></p>
-<% @patients.each do |patient| %>
-  <p><%= link_to patient.email, profile_path(patient) %></p>
-<% end %>
-<h2>Caretakers</h2>
-<p><%= "No caretackers" if @profile.caretakers.empty? %></p>
-<% @profile.caretakers.each do |caretaker| %>
-  <p><%= link_to caretaker.email, profile_path(caretaker) %></p>
-<% end %>
-<h2>Events</h2>
-<p>Event Name | Event User</p>
-<% @events.each do |event| %>
-  <p><%= link_to event.name, profile_event_path(event.user, event) %> | <%= link_to event.user.email, profile_path(event.user) %></p>
-<% end %>
-<h2>Notifications</h2>
-<p>Notification Name | Notification Regarding User</p>
-<% @notifications.each do |notification| %>
-  <p><%= link_to notification.event.name, notification_path(notification) %> | <%= link_to notification.event.user.email, profile_path(notification.event.user.email) %></p>
-<% end %>
+<div class="dashboard-container">
+  <div class="profiles-list col-xs-12 col-md-4">
+    <div class="profiles-list-header">
+      <span>People</span>
+    </div>
+    <%= render 'shared/profile-card', user: @profile, notifications: @notifications.count %>
+  </div>
+  <div class="notifications-list col-xs-12 col-md-4">
+    <div class="notifications-list-header">
+      <span>Latest Notifications</span>
+    </div>
+    <% @notifications[0..4].each do |notification| %>
+      <%= render 'shared/notification-card', notification: notification %>
+    <% end %>
+    <div class="notifications-list-see-more">
+      <p>
+        <% if @notifications.size > 4 %>
+          <%= link_to notifications_path do %>
+            <i class="fas fa-plus"></i>
+          <% end %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+  <div class="events-list col-xs-12 col-md-4">
+    <div><%= render 'shared/calendar-day', events: @events[0..4] %></div>
+    <div class="events-list-see-more">
+      <p>
+        <% if @events.size > 4 %>
+          <%= link_to events_path do %>
+            <i class="fas fa-plus"></i>
+          <% end %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
