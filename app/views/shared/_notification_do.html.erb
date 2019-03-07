@@ -16,7 +16,10 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam debitis commodi magnam atque, molestias ratione, mollitia corrupti quae culpa nam est consequuntur distinctio velit illo ducimus! Aliquam omnis, odio reprehenderit.</p>
     </div>
     <div class="buttons">
-      <%= link_to "Mark as done" %>
+      <% unless @notification.event.done == true%>
+        <p> <%= link_to "Mark as done", notification_path, method: :patch, class: "btn btn-success" %></p>
+      <% end %>
+
 
     </div>
 
