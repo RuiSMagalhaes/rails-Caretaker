@@ -40,8 +40,8 @@ class ProfilesController < ApplicationController
   end
 
   def set_notifications
-    # get all notifications for current user
-    @notifications = policy_scope(@user.notifications)
+    # get all notifications for current user only not dismissed and ordered by date
+    @notifications = policy_scope(@user.notifications).where(dismissed: false).order(created_at: :desc)
   end
 
   def set_events(user)

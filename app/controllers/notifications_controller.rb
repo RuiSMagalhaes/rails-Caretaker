@@ -9,6 +9,7 @@ class NotificationsController < ApplicationController
 
   def show
     authorize @notification
+    @refer = request.referrer
   end
 
   def update
@@ -30,9 +31,12 @@ class NotificationsController < ApplicationController
   end
 
   def destroy
+    refer = params[:refer].nil? ? request.referrer : params[:refer]
     authorize @notification
+    # change value notification to dismissed
     @notification.update(dismissed: true)
-    redirect_to notifications_path
+    # redirecto to the page where the action is implemented
+    redirect_to refer
   end
 
   private

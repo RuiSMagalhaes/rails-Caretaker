@@ -1,0 +1,63 @@
+.notification-flash {
+  padding: 10px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 2px;
+  margin-bottom: 8px;
+  position: relative;
+  transition: 0.5s ease;
+}
+
+.notification-flash:hover {
+  transform: scale(1.03)
+}
+
+.notification-flash-link{
+  width: 100%;
+  display: block;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+.notification-flash-content {
+  text-align: center;
+  width: 100%;
+}
+.notification-flash-content p {
+  color: $gray;
+}
+
+.notification-flash-success {
+  border: 2px solid $green;
+  color: $green;
+}
+
+.notification-flash-warning {
+  border: 2px solid $orange;
+  color: $orange;
+}
+
+.notification-flash-danger {
+  border: 2px solid $red;
+  color: $red;
+}
+
+.notification-flash-do {
+  border: 2px solid $blue;
+  color: $blue;
+}
+
+.notification-flash-normal {
+  border: 2px solid $gray;
+  color: $gray;
+}
+
+.notification-flash .dismiss {
+  z-index: 2;
+  display: block;
+}

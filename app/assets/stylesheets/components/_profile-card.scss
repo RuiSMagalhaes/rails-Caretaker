@@ -1,0 +1,52 @@
+.profile-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  box-shadow: 0 0 8px 0px rgba(0,0,0,0.2);
+  position: relative;
+  border-radius: 2px;
+  transition: 0.5s ease;
+}
+
+.profile-card:hover {
+  transform: scale(1.03)
+}
+
+.profile-card-link{
+  width: 100%;
+  display: block;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.profile-card .profile-card-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.profile-card p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.profile-card small {
+  color: $blue;
+  font-weight: bold;
+}
+.profile-card-notifications-badge{
+  background-color: #D7263D;
+  color: white;
+  border-radius: 100%;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

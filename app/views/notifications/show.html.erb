@@ -39,5 +39,5 @@
 <!-- Se notification.event.done for falso, ele faz o seguinte: -->
   <!-- diz que foi missed x tempo atras (subtrai a presente hora com a notification.event.start_time -->
 
-<%= link_to 'DISMISS', notification_path(@notification), method: :delete, data: { confirm: 'Dismiss Notification?' } %>
+<%= link_to 'DISMISS', notification_path(@notification, refer: @refer), method: :delete, data: { confirm: 'Dismiss Notification?' } %>
 <%= link_to 'DONE', notification_path(@notification), method: :patch %>
