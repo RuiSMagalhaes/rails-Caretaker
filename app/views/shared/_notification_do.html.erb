@@ -1,7 +1,11 @@
 <div class="card-notification-do">
   <div class="notification-infos-do">
     <div class="notification-title-do">
-        <p> Patient: <%= @notification.event.user.first_name + " " + @notification.event.user.last_name  %></p>
+        <% if @notification.event.user = current_user %>
+          <p>You</p>
+        <%else %>
+          <p> Patient: <%= @notification.event.user.first_name + " " + @notification.event.user.last_name  %></p>
+        <% end %>
     </div>
     <div class="notification-infos-event-do">
       <!-- Change this image for the one of notification.event.event_type.description -->
