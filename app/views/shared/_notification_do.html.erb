@@ -22,7 +22,7 @@
         <% end %>
       <% end %>
       <% unless @notification.dismissed %>
-        <%= link_to notification_path(@notification), method: :delete, class: "no-decoration" do %>
+        <%= link_to notification_path(@notification, refer: @refer), method: :delete, class: "no-decoration" do %>
           <p class="button-dismiss">Dismiss</p>
         <% end %>
       <% end %>

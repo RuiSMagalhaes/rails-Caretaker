@@ -52,6 +52,6 @@ class NotificationsController < ApplicationController
 
   def set_notifications
     # get all notifications for current user
-    @notifications = policy_scope(@user.notifications)
+    @notifications = policy_scope(@user.notifications).where(dismissed: false).order(created_at: :asc)
   end
 end
