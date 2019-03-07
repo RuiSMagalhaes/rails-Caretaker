@@ -22,7 +22,7 @@
 <div class='notification-flash <%= type_class %>'>
   <%= link_to "", notification_path(notification), class: "notification-flash-link" %>
   <div class="notification-flash-content">
-    <p><%= notification.event.name %></p>
+    <p><strong><%= notification.event.name %></strong></p>
     <span><%= type %> <%= notification.event.start_time.strftime('at %H:%M') %> | <%=
     notification.event.user == current_user ? "You" : notification.event.user.first_name %></span>
   </div>
