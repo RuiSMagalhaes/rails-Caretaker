@@ -5,7 +5,7 @@
     </div>
     <div class="notification-infos-event-do">
       <!-- Change this image for the one of notification.event.event_type.description -->
-      <img src="https://images.unsplash.com/photo-1515350540008-a3f566782a3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="info-event-type">
+      <!-- <img src="#" class="info-event-type"> -->
       <div class="info-event-name-time">
         <h5><%= @notification.event.name %> </h5>
         <p> <%= @notification.event.start_time.strftime("At %I:%M%p") %> </p>
@@ -13,21 +13,19 @@
       </div>
     </div>
     <div class="item-description">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam debitis commodi magnam atque, molestias ratione, mollitia corrupti quae culpa nam est consequuntur distinctio velit illo ducimus! Aliquam omnis, odio reprehenderit.</p>
+      <p><%= @notification.event.description %></p>
     </div>
     <div class="buttons">
-      <% unless @notification.event.done == true%>
-        <p> <%= link_to "Mark as done", notification_path, method: :patch, class: "btn btn-success" %></p>
+      <% unless @notification.event.done%>
+        <%= link_to notification_path(@notification), method: :patch, class: "no-decoration" do %>
+          <p class="button-done">Mark as done</p>
+        <% end %>
       <% end %>
-
-
+      <% unless @notification.dismissed %>
+        <%= link_to notification_path(@notification), method: :delete, class: "no-decoration" do %>
+          <p class="button-dismiss">Dismiss</p>
+        <% end %>
+      <% end %>
     </div>
-
-
-
   </div>
-
-
-
-
 </div>

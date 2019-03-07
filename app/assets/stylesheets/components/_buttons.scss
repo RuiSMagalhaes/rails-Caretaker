@@ -13,16 +13,16 @@
 }
 
 .btn-flat {
-  color: white;
+  color: $light-gray;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #1EDD88;
+  background: $green;
   transition: background 0.3s ease;
 }
 
 .btn-flat:hover {
   background: #1BCB7F;
-  color: white;
+  color: $light-gray;
 }
 
 .btn-gradient {
@@ -38,4 +38,32 @@
 .btn-gradient:hover {
   background: linear-gradient(#147EFF, #0F67DA);
   color: white;
+}
+
+.button-done{
+  text-align: center;
+  color: $light-gray;
+  padding: 8px 24px;
+  border-radius: 1px;
+  background: $green;
+  transition: background 0.3s ease;
+}
+
+.button-done:hover{
+  background: #1BCB7F;
+  color: $light-gray;
+}
+
+.button-dismiss{
+  text-align: center;
+  color: $light-gray;
+  padding: 8px 24px;
+  border-radius: 1px;
+  background: $red;
+  transition: background 0.3s ease;
+}
+
+.button-dismiss:hover{
+  background: #ce0a0f;
+  color: $light-gray;
 }
