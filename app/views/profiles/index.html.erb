@@ -1,3 +1,17 @@
+<div class="dashboard-container">
+  <div class="profiles-list col-xs-12 col-md-4">
+    <%= render 'shared/profile-card', user: @user, notifications: @notifications.count %>
+    <% @patients.each do |patient| %>
+      <%= render 'shared/profile-card', user: patient, notifications: patient.notifications.count %>
+    <% end %>
+  </div>
+  <div class="notifications-list col-xs-12 col-md-4">
+
+  </div>
+  <div class="events-list col-xs-12 col-md-4">
+  </div>
+</div>
+
 <h1>Home page of <%= link_to @user.email, profile_path(@user) %></h1>
 <h2>Patients</h2>
 <p><%= "No patients" if @patients.empty? %></p>

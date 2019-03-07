@@ -1,0 +1,13 @@
+<div class="profile-card">
+  <%= link_to "", profile_path(user), class: "profile-card-link" %>
+  <img src='<%= cloudinary_url(user.photo) %>' class="avatar-large"/>
+  <div class="profile-card-content">
+    <h4><%= user.first_name %></h4>
+    <p><small><%= user == current_user ? "You" : "Patient" %></small></p>
+  </div>
+  <% if !notifications.zero? %>
+    <div class="profile-card-notifications-badge">
+      <p><strong><%= notifications %></strong></p>
+    </div>
+  <% end %>
+</div>
