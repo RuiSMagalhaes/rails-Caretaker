@@ -1,0 +1,19 @@
+.events-header{
+  display: flex;
+  align-items: center;
+}
+.events-title{
+  width: 100%;
+  text-align: center;
+}
+.events-title-left{
+  width: 100%;
+  text-align: left;
+}
+.events-title-right{
+  width: 100%;
+  text-align: right;
+}
+.events-add-event:hover{
+  text-decoration: none;
+}
