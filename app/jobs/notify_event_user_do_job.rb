@@ -8,7 +8,7 @@ class NotifyEventUserDoJob < ApplicationJob
       @event = Event.find(event_id)
       # notify the event user if he did not mark the event as done on the before job
       unless @event.done
-        Notification.all.where(event_id: @event_id, user_id: @event.user.id, notification_type: "before").update(dismissed: true)
+        Notification.all.where(event_id: @event.id, user_id: @event.user.id, notification_type: "before").update(dismissed: true)
         notification = Notification.new(event_id: @event.id, user_id: @event.user.id)
         notification.notification_type = "do"
         notification.save

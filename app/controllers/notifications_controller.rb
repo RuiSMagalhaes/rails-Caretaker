@@ -33,7 +33,7 @@ class NotificationsController < ApplicationController
       # iterate through caretakers and create a notification for each one
       event.user.caretakers.each do |caretaker|
         # Dismiss every notification of this event for the caretakers of the type "before". I want to see the missed ones.
-        Notification.all.where(event_id: @event_id, user_id: caretaker.id, notification_type: "before").update(dismissed: true)
+        Notification.all.where(event_id: @event.id, user_id: caretaker.id, notification_type: "before").update(dismissed: true)
         # notify every caretaker of the event that the patient missed
         notification = Notification.new(event_id: event.id, user_id: caretaker.id)
         notification.notification_type = "done"
