@@ -1,7 +1,11 @@
+.notifications-list{
+  max-width: 600px;
+  margin: auto;
+}
+
 .container-notification{
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-
 }
