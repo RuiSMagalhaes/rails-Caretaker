@@ -26,11 +26,7 @@
     <div><%= render 'shared/calendar-day', events: @events[0..4] %></div>
     <div class="events-list-see-more">
       <p>
-        <% if @events.size > 5 %>
-          <%= link_to profile_events_path(@profile) do %>
-            <i class="fas fa-plus"></i>
-          <% end %>
-        <% end %>
+        <%= link_to "See full schedule", profile_events_path(@profile) %>
       </p>
     </div>
   </div>
