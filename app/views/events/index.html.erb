@@ -1,1 +1,6 @@
-<%= render 'calendar' %>
+<div class="events-list hidden-md hidden-lg">
+  <div><%= render 'shared/calendar-day', events: @events[0..4] %></div>
+</div>
+<div class="events-list hidden-xs hidden-sm">
+  <div><%= render 'shared/calendar-week', events: @events %></div>
+</div>
