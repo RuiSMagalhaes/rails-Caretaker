@@ -10,25 +10,26 @@
     <% end %>
 
     <!-- Right Navigation -->
-    <div class="navbar-caretaker-right hidden-xs hidden-sm">
+    <div class="navbar-caretaker-right">
+      <div class="navbar-caretaker-right-links hidden-xs hidden-sm">
+        <!-- Links when logged in -->
+        <%= link_to "Dashboard", profiles_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
+        <%= link_to "Events", events_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
+        <%= link_to "Notifications", notifications_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
+        <%#= link_to "Log Out", destroy_user_session_path, method: :delete, class: "navbar-caretaker-item navbar-caretaker-link" %>
+      </div>
 
-      <!-- Links when logged in -->
-      <%= link_to "Dashboard", profiles_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
-      <%= link_to "Events", events_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
-      <%= link_to "Notifications", notifications_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
-      <%#= link_to "Log Out", destroy_user_session_path, method: :delete, class: "navbar-caretaker-item navbar-caretaker-link" %>
-    </div>
-
-    <!-- Dropdown list appearing on mobile only -->
-    <div class="navbar-caretaker-item">
-      <div class="dropdown">
-        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-        <ul class="dropdown-menu dropdown-menu-right navbar-caretaker-dropdown-menu">
-          <li><a class="hidden-md hidden-lg" href="#">Dashboard</a></li>
-          <li><a class="hidden-md hidden-lg" href="#">Events</a></li>
-          <li><a class="hidden-md hidden-lg" href="#">Notifications</a></li>
-          <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-        </ul>
+      <!-- Dropdown list -->
+      <div class="navbar-caretaker-item">
+        <div class="dropdown">
+          <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu dropdown-menu-right navbar-caretaker-dropdown-menu">
+            <li><a class="hidden-md hidden-lg" href="#">Dashboard</a></li>
+            <li><a class="hidden-md hidden-lg" href="#">Events</a></li>
+            <li><a class="hidden-md hidden-lg" href="#">Notifications</a></li>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
