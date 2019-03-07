@@ -32,7 +32,7 @@ class NotificationsController < ApplicationController
   def destroy
     authorize @notification
     @notification.update(dismissed: true)
-    redirect_to notification_path(@notification)
+    redirect_to notifications_path
   end
 
   private

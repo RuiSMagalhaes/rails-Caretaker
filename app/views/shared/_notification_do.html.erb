@@ -1,0 +1,31 @@
+<div class="card-notification-do">
+  <div class="notification-infos-do">
+    <div class="notification-title-do">
+        <p> Patient: <%= @notification.event.user.first_name + " " + @notification.event.user.last_name  %></p>
+    </div>
+    <div class="notification-infos-event-do">
+      <!-- Change this image for the one of notification.event.event_type.description -->
+      <!-- <img src="#" class="info-event-type"> -->
+      <div class="info-event-name-time">
+        <h5><%= @notification.event.name %> </h5>
+        <p> <%= @notification.event.start_time.strftime("At %I:%M%p") %> </p>
+
+      </div>
+    </div>
+    <div class="item-description">
+      <p><%= @notification.event.description %></p>
+    </div>
+    <div class="buttons">
+      <% unless @notification.event.done%>
+        <%= link_to notification_path(@notification), method: :patch, class: "no-decoration" do %>
+          <p class="button-done">Mark as done</p>
+        <% end %>
+      <% end %>
+      <% unless @notification.dismissed %>
+        <%= link_to notification_path(@notification), method: :delete, class: "no-decoration" do %>
+          <p class="button-dismiss">Dismiss</p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
