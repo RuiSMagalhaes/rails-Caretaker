@@ -1,8 +1,8 @@
-<!-- Notification only for Users of the event -->
-<div class="card-notification-do">
+<!-- Notification only to caretakers -->
+<div class="card-notification-done">
   <div class="notification-infos">
     <div class="notification-title">
-      <p>You</p>
+      <p><%= @notification.event.user.first_name + " " + @notification.event.user.last_name  %></p>
     </div>
     <div class="notification-infos-event">
       <!-- Change this image for the one of notification.event.event_type.description -->
@@ -10,22 +10,16 @@
       <div class="info-event-name-time">
         <h5><%= @notification.event.name %> </h5>
         <p> <%= @notification.event.start_time.strftime("At %I:%M%p") %> </p>
-
       </div>
     </div>
     <div class="item-description">
       <p><%= @notification.event.description %></p>
     </div>
     <div class="buttons">
-      <% unless @notification.event.done%>
-        <%= link_to notification_path(@notification), method: :patch, class: "no-decoration" do %>
-          <p class="button-done">Mark as done</p>
-        <% end %>
-      <% end %>
       <% unless @notification.dismissed %>
-        <%= link_to notification_path(@notification, refer: @refer), method: :delete, class: "no-decoration" do %>
-          <p class="button-dismiss">Dismiss</p>
-        <% end %>
+          <%= link_to notification_path(@notification, refer: @refer), method: :delete, class: "no-decoration" do %>
+            <p class="button-dismiss">Dismiss</p>
+          <% end %>
       <% end %>
     </div>
   </div>

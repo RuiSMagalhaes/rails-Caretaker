@@ -26,16 +26,22 @@ class NotificationsController < ApplicationController
     event = @notification.event
     # update the event.done to true
     event.update(done: true)
+    # Dismiss notification of the user of the event
+    @notification.update(dismissed: true)
     # if the option: "notify if done" is turned on, a notification has to be sent to every caretaker when the event turn to : done
     if event.notify_done
       # iterate through caretakers and create a notification for each one
       event.user.caretakers.each do |caretaker|
+        # Dismiss every notification of this event for the caretakers of the type "before". I want to see the missed ones.
+        Notification.all.where(event_id: @event_id, user_id: caretaker.id, notification_type: "before").update(dismissed: true)
+        # notify every caretaker of the event that the patient missed
         notification = Notification.new(event_id: event.id, user_id: caretaker.id)
         notification.notification_type = "done"
         notification.save
       end
     end
-    redirect_to notification_path
+    refer = params[:refer].nil? ? request.referrer : params[:refer]
+    redirect_to refer
   end
 
   def destroy
