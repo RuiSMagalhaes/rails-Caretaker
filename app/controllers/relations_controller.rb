@@ -13,13 +13,16 @@ class RelationsController < ApplicationController
     # find user for caretaker
     caretaker = User.find_by(email: user_email)
     # handle user not found
-    redirect_to profile_new_caretaker_path(profile_id: @profile), alert: "User not found!" if caretaker.nil?
-    relation = Relation.new(caretaker_id: caretaker.id, patient_id: @profile.id, state: false)
-    if relation.save
-      redirect_to profile_path(@profile),
-      notice: "You added #{caretaker.first_name} as caretaker to #{@profile.first_name}"
+    if caretaker.nil?
+      redirect_to profile_new_caretaker_path(@profile), alert: "User not found!"
     else
-      redirect_to profile_new_caretaker_path(profile_id: @profile), alert: "#{caretaker.first_name} is already a caretaker!"
+      relation = Relation.new(caretaker_id: caretaker.id, patient_id: @profile.id, state: false)
+      if relation.save
+        redirect_to profile_path(@profile),
+        notice: "You added #{caretaker.first_name} as caretaker to #{@profile.first_name}"
+      else
+        redirect_to profile_new_caretaker_path(profile_id: @profile), alert: "#{caretaker.first_name} is already a caretaker!"
+      end
     end
   end
 
@@ -35,13 +38,16 @@ class RelationsController < ApplicationController
     # find user for caretaker
     patient = User.find_by(email: user_email)
     # handle user not found
-    redirect_to profile_new_patient_path(profile_id: @profile), alert: "User not found!" if patient.nil?
-    relation = Relation.new(caretaker_id: @profile.id, patient_id: patient.id, state: false)
-    if relation.save
-      redirect_to profile_path(@profile),
-      notice: "You added #{patient.first_name} as patient to #{@profile.first_name}"
+    if patient.nil?
+      redirect_to profile_new_patient_path(profile_id: @profile), alert: "User not found!"
     else
-      redirect_to profile_new_patient_path(profile_id: @profile), alert: "#{patient.first_name} is already a patient!"
+      relation = Relation.new(caretaker_id: @profile.id, patient_id: patient.id, state: false)
+      if relation.save
+        redirect_to profile_path(@profile),
+        notice: "You added #{patient.first_name} as patient to #{@profile.first_name}"
+      else
+        redirect_to profile_new_patient_path(profile_id: @profile), alert: "#{patient.first_name} is already a patient!"
+      end
     end
   end
 
