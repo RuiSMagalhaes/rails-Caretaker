@@ -11,11 +11,11 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    authorize @profile
     # geting events for this profile
     @events = set_events(@profile)
     # geting notifications for this profile
     @notifications = @notifications.where(event_id: @events.pluck(:id))
-    authorize @profile
   end
 
   def edit
@@ -46,6 +46,6 @@ class ProfilesController < ApplicationController
 
   def set_events(user)
     # get events with given user
-    @events = user.events
+    @events = policy_scope(user.events)
   end
 end

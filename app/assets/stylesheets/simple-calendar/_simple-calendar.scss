@@ -38,6 +38,10 @@
 
   .has-events {}
 }
-.d-flex{
-    display: flex;
+
+@media (min-width: 768px) {
+  .d-flex{
+      display: flex;
+  }
 }
+
