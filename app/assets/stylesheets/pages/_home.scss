@@ -1,1 +1,21 @@
 // Specific CSS for your home-page
+.landing-page{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: $light-gray;
+  background-image: linear-gradient(rgba(55, 59, 68, 0.6),rgba(66, 134, 244, 0.3)), url(bg-landing-page.jpg);
+}
+.landing-page-container{
+  text-align: center;
+}
+.landing-page-container p{
+  margin: 30px 0;
+}

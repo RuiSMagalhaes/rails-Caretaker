@@ -3,5 +3,12 @@
     window.location.href="/profiles"  // put your correct path in a string here
   </script>
 <% else %>
-  <%= link_to "LOG IN", new_user_session_path %>
+  <div class="landing-page">
+    <div class="landing-page-container">
+      <h1>CARETAKER</h1>
+      <h3>Helper for life</h3>
+      <p><%= link_to "Sign Up", new_user_registration_path, class: "btn-blue" %></p>
+      <p>Already a user? Please <%= link_to "Sign In", new_user_session_path %></p>
+    </div>
+  </div>
 <% end %>
