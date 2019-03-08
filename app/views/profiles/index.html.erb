@@ -28,14 +28,31 @@
           <%= link_to "See all notifications", notifications_path %>
         <% end %>
       </p>
+      <% if @notifications.empty? %>
+        <p>
+          <strong>Yay!</strong> 🎉 you don't have any notifications.
+        </p>
+      <% end %>
     </div>
   </div>
   <div class="events-list col-xs-12 col-md-4">
+    <div class="events-list-header hidden-md hidden-lg">
+      <p>Schedule</p>
+    </div>
     <div><%= render 'shared/calendar-day', events: @events[0..4] %></div>
     <div class="events-list-see-more">
-      <p>
-        <%= link_to "See full schedule", events_path %>
-      </p>
+      <% if @events.empty? %>
+        <p>
+          <strong>Ooh!</strong> 🤔 you don't have any event today.
+        </p>
+        <p>
+          <%= link_to "Add one in Schedule", profile_events_path(@user) %>
+        </p>
+      <% else %>
+        <p>
+          <%= link_to "See full schedule", events_path %>
+        </p>
+      <% end %>
     </div>
   </div>
 </div>
