@@ -1,0 +1,17 @@
+.form-card{
+  max-width: 90%;
+  width: 650px;
+  word-wrap: break-word;
+  background-color: white;
+  border: 2px solid $blue;
+  padding: 15px;
+  border-radius: 4px ;
+  box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
+  color: $gray;
+}
+.form-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

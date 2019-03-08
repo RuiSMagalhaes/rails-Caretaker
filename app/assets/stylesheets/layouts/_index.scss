@@ -20,3 +20,8 @@ body{
 .events-list{
   margin-bottom: 20px;
 }
+
+// remove all decoration for links
+*:hover{
+  text-decoration: none!important;
+}

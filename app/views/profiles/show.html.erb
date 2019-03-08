@@ -4,6 +4,17 @@
       <span>People</span>
     </div>
     <%= render 'shared/profile-card', user: @profile, notifications: @notifications.count %>
+    <% if @profile == current_user %>
+      <div class="btn-container-full-width">
+        <%= link_to "Edit my profile", edit_user_registration_path, class: "btn-blue" %>
+      </div>
+    <% end %>
+    <div class="btn-container-full-width">
+      <%= link_to "Add caretaker", edit_user_registration_path, class: "btn-blue" %>
+    </div>
+    <div class="btn-container-full-width">
+      <%= link_to "Add patients", edit_user_registration_path, class: "btn-blue" %>
+    </div>
   </div>
   <div class="notifications-list col-xs-12 col-md-4">
     <div class="notifications-list-header">
@@ -15,9 +26,7 @@
     <div class="notifications-list-see-more">
       <p>
         <% if @notifications.size > 5 %>
-          <%= link_to notifications_path(profile_id: @profile.id) do %>
-            <i class="fas fa-plus"></i>
-          <% end %>
+          <%= link_to "See all notifications", notifications_path(profile_id: @profile.id) %>
         <% end %>
       </p>
     </div>
