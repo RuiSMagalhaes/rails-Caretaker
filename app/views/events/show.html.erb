@@ -1,15 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @event.start_time %>
-</p>
-
-<%= link_to 'Edit', edit_profile_event_path(@profile, @event) %> |
-<%= link_to 'Back', profile_events_path %> |
-<%= link_to 'Delete', profile_event_path(@profile, @event), method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="event-container full-height">
+  <div class="event-card">
+    <div class="event-title">
+      <h1><%= @event.name %> </h1>
+      <% if @event.user == current_user %>
+        <p>For You</p>
+      <%else %>
+        <p><%= @event.user.first_name + " " + @event.user.last_name  %></p>
+      <% end %>
+    </div>
+    <div class="event-infos-event">
+      <!-- Change this image for the one of event.event.event_type.description -->
+      <!-- <img src="#" class="info-event-type"> -->
+      <div class="info-event-name-time">
+        <p> <%= @event.start_time.strftime("At %H:%M") %> </p>
+      </div>
+    </div>
+    <div class="item-description">
+      <p><%= @event.description %></p>
+    </div>
+    <div class="btn-container-full-width">
+      <%= link_to "Edit", edit_profile_event_path(@profile, @event), class: "btn-blue" %>
+    </div>
+    <div class="btn-container-full-width">
+      <%= link_to "Delete", profile_event_path(@profile, @event), method: :delete, class: "btn-red", data: { confirm: 'Are you sure?' } %>
+    </div>
+    <%= link_to 'Back', profile_events_path(@profile) %>
+  </div>
+</div>
