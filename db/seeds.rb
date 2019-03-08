@@ -12,60 +12,179 @@ User.destroy_all
 
 puts "Every seed destroyed"
 
-puts "Creating 5 events type...."
+
+
+
+
 #CREATING EVENT_TYPE SEEDS
-5.times do
+puts "Creating events types...."
+
+puts "Creating 1st event type...."
   event_type = EventType.new(
-    name:Faker::Job.title,
+    name:"Pill",
     description:Faker::Food.description
     )
   event_type.save
-end
+
+puts "Creating 2nd event type...."
+  event_type = EventType.new(
+    name:"Shot",
+    description:Faker::Food.description
+    )
+  event_type.save
+
+puts "Creating 3rd event type...."
+  event_type = EventType.new(
+    name:"Medical appointment",
+    description:Faker::Food.description
+    )
+  event_type.save
+
+puts "Creating 4th event type...."
+  event_type = EventType.new(
+    name:"Other",
+    description:Faker::Food.description
+    )
+  event_type.save
 
 #start id og event_type
 event_type_start_id = EventType.first.id
-#end id og event_type
-event_type_end_id = EventType.last.id
 
 
-i = 1
-#CREATING 3 USERS WITHOUT PHOTO
-3.times do
-  puts "Creating user...."
-  user = User.new(
-    first_name:Faker::Artist.name,
-    last_name:Faker::App.author,
-    email:"email#{i}@caretaker.pt",
-    simple_view: true,
-    password:"123456",
-    admin: i == 1
-    )
-  user.remote_photo_url = "https://thispersondoesnotexist.com/image"
-  user.save
-  puts "User #{i} created successfully!"
-  i += 1
-  #CREATE 5 EVENTS FOR EACH USER WITH RECURRING FALSE. MINUTES, HOURS, DAYS, WEEKS, MONTHS, START_ID NOT POPULATED
-  puts "Creating 5 events for this user..."
-  5.times do
-    #event_type_id assigned randomly
-    event = Event.new(
-      name:Faker::Esport.event,
-      description:Faker::Lorem.sentence,
-      start_time: Time.now + 1.hour,
-      end_time: Time.now + 2.hour,
-      recurring: false,
-      notify_before:[true, false].sample,
-      notify_done:[true, false].sample,
-      notify_missed:[true, false].sample,
-      user_id: user.id,
-      event_type_id:rand(event_type_start_id...event_type_end_id)
-      )
-    event.save
-    puts "Event #{event.id} for user #{i} created successfully!"
-  end
-end
 
-puts "creating 1 relation for first pair of users (caretacker > patient)..."
+
+
+#CREATING 3 USERS
+puts "Creating users...."
+
+#1st User
+puts "Creating 1st user...."
+user = User.new(
+  first_name:"Rui",
+  last_name:"Magalhães",
+  email:"rui.magalhaes@gmail.com",
+  simple_view: false,
+  password:"123456",
+  admin: true
+  )
+user.remote_photo_url = "https://avatars2.githubusercontent.com/u/45366558?v=4"
+user.save
+puts "User 'Rui Magalhães' created successfully!"
+
+
+#CREATE 3 EVENTS FOR THE 1 ST USER WITH RECURRING FALSE.
+puts "Creating 3 events for the 1st user..."
+puts "Creating 1st event for the 1st user..."
+event = Event.new(
+  name:"Take 1 brufene",
+  description:"brufene needed for healing your flu!",
+  start_time: Time.now + 20.minutes,
+  end_time: Time.now + 1.hour + 20.minutes,
+  recurring: false,
+  notify_before: true,
+  notify_done:false,
+  notify_missed:true,
+  user_id: user.id,
+  event_type_id: event_type_start_id
+  )
+event.save
+event.update(start_id: event.id)
+
+puts "Creating 2nd event for the 1st user..."
+event = Event.new(
+  name:"Blood test",
+  description:"appointment on 'hospital da luz' on Lisbon. Blood test!",
+  start_time: Time.now + 3.day,
+  end_time: Time.now + 3.day + 1.hour,
+  recurring: false,
+  notify_before: true,
+  minutes: 30,
+  notify_done:false,
+  notify_missed:true,
+  user_id: user.id,
+  event_type_id: event_type_start_id + 2
+  )
+event.save
+event.update(start_id: event.id)
+
+puts "Creating 3rd event for the 1st user..."
+event = Event.new(
+  name:"Blood test results",
+  description:"appointment on 'hospital da luz' on Lisbon to receive my blood test resuls!",
+  start_time: Time.now + 3.day + 1.week ,
+  end_time: Time.now + 3.day + 1.week + 1.hour,
+  recurring: false,
+  notify_before: true,
+  minutes: 30,
+  notify_done:false,
+  notify_missed:true,
+  user_id: user.id,
+  event_type_id: event_type_start_id + 2
+  )
+event.save
+event.update(start_id: event.id)
+
+
+
+
+
+#2nd User (Father of the 1st)
+puts "Creating 2nd user...."
+user = User.new(
+  first_name:"Manuel",
+  last_name:"Magalhães",
+  email:"manuel.magalhaes@gmail.com",
+  simple_view: false,
+  password:"123456",
+  admin: false
+  )
+user.remote_photo_url = "https://images.unsplash.com/photo-1523278669709-c05da80b6a65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&h=800"
+user.save
+puts "User 'Manuel Magalhães' created successfully!"
+
+#CREATE EVENTS FOR THE 2ND USER.
+puts "Creating 1 event for the 2nd user..."
+puts "Creating event for the 2nd user..."
+event = Event.new(
+  name:"Take flu vaccine",
+  description:"Flu vaccine at 'hospital da luz' on Lisbon.",
+  start_time: Time.now + 4.day,
+  end_time: Time.now + 4.day + 1.hour,
+  recurring: false,
+  notify_before: true,
+  notify_done:true,
+  notify_missed:true,
+  user_id: user.id,
+  event_type_id: event_type_start_id + 1
+  )
+event.save
+event.update(start_id: event.id)
+
+
+
+
+
+#3rd User (Grandmother of the 1st)
+puts "Creating 3rd user...."
+user = User.new(
+  first_name:"Maria",
+  last_name:"Santos",
+  email:"maria.santos@gmail.com",
+  simple_view: true,
+  password:"123456",
+  admin: false
+  )
+user.remote_photo_url = "https://images.unsplash.com/photo-1442458370899-ae20e367c5d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&h=800"
+user.save
+puts "User 'Maria Santos' created successfully!"
+
+#No events for the 3rd user
+
+
+
+
+
+puts "creating the relation between Rui and Manuel. Rui is caretaker of Manuel and Manuel patient of Rui."
 
 #start id og event_type
 user_start_id = User.first.id
