@@ -78,8 +78,8 @@ puts "Creating 1st event for the 1st user..."
 event = Event.new(
   name:"Take 1 brufene",
   description:"brufene needed for healing your flu!",
-  start_time: Time.now + 20.minutes,
-  end_time: Time.now + 1.hour + 20.minutes,
+  start_time: Time.now + 17.minutes,
+  end_time: Time.now + 1.hour + 17.minutes,
   recurring: false,
   notify_before: true,
   notify_done:false,
@@ -142,9 +142,22 @@ user.remote_photo_url = "https://images.unsplash.com/photo-1523278669709-c05da80
 user.save
 puts "User 'Manuel Magalhães' created successfully!"
 
+
+puts "creating the relation between Rui and Manuel. Rui is caretaker of Manuel and Manuel patient of Rui."
+
+#start id og event_type
+user_start_id = User.first.id
+
+1.times do
+  relation = Relation.new()
+  relation.caretaker = User.find(user_start_id)
+  relation.patient = User.find(user_start_id + 1)
+  relation.save
+end
+
 #CREATE EVENTS FOR THE 2ND USER.
-puts "Creating 1 event for the 2nd user..."
-puts "Creating event for the 2nd user..."
+puts "Creating 2 events for the 2nd user..."
+puts "Creating 1st event for the 2nd user..."
 event = Event.new(
   name:"Take flu vaccine",
   description:"Flu vaccine at 'hospital da luz' on Lisbon.",
@@ -156,6 +169,22 @@ event = Event.new(
   notify_missed:true,
   user_id: user.id,
   event_type_id: event_type_start_id + 1
+  )
+event.save
+event.update(start_id: event.id)
+
+puts "Creating 2nd event for the 2nd user..."
+event = Event.new(
+  name:"Take high blood pressure pill",
+  description:"take 1 blood pressure pill every 24 hours!",
+  start_time: Time.now - 12.minutes,
+  end_time: Time.now - 12.minutes + 20.minutes,
+  recurring: false,
+  notify_before: true,
+  notify_done:true,
+  notify_missed:true,
+  user_id: user.id,
+  event_type_id: event_type_start_id
   )
 event.save
 event.update(start_id: event.id)
@@ -184,17 +213,7 @@ puts "User 'Maria Santos' created successfully!"
 
 
 
-puts "creating the relation between Rui and Manuel. Rui is caretaker of Manuel and Manuel patient of Rui."
 
-#start id og event_type
-user_start_id = User.first.id
-
-1.times do
-  relation = Relation.new()
-  relation.caretaker = User.find(user_start_id)
-  relation.patient = User.find(user_start_id + 1)
-  relation.save
-end
 
 
 
