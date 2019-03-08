@@ -67,3 +67,24 @@
   background: #b12134;
   color: $light-gray;
 }
+
+.btn-blue{
+  width: 100%;
+  text-align: center;
+  color: $light-gray;
+  padding: 8px 24px;
+  border-radius: 1px;
+  background: $blue;
+  transition: background 0.3s ease;
+  margin-bottom: 8px;
+}
+
+.btn-blue:hover{
+  background: #137dad;
+  color: $light-gray;
+}
+.btn-container-full-width{
+  display: flex;
+  width: 100%;
+
+}
