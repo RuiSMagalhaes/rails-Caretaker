@@ -5,17 +5,18 @@ class ProfilesController < ApplicationController
 
   def index
     # geting user events
-    @events = set_events(@user)
+    set_events(@user)
     # geting all events for each patient
     @patients.each { |patient| @events += set_events(patient) }
+    @events.sort_by { |start_time| start_time[:start_time]}
   end
 
   def show
     authorize @profile
     # geting events for this profile
-    @events = set_events(@profile)
+    set_events(@profile)
     # geting notifications for this profile
-    @notifications = @notifications.where(event_id: @events.pluck(:id))
+    @notifications = @notifications.where(event_id: @events.pluck(:id)).order(created_at: :desc)
   end
 
   def edit
@@ -46,6 +47,6 @@ class ProfilesController < ApplicationController
 
   def set_events(user)
     # get events with given user
-    @events = policy_scope(user.events)
+    @events = policy_scope(user.events).order(start_time: :asc)
   end
 end

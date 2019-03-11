@@ -11,5 +11,12 @@
         </span>
       </div>
     <% end %>
+    <div class="events-list-see-more">
+      <% if events.empty? %>
+        <p>
+          <strong>Ooh!</strong> 🤔 you don't have any events.
+        </p>
+      <% end %>
+    </div>
   <% end %>
 </div>
