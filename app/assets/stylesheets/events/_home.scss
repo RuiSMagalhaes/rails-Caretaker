@@ -17,3 +17,32 @@
 .events-add-event:hover{
   text-decoration: none;
 }
+.events-all-conatiner{
+}
+.events-all-header{
+  width: 100%;
+  text-align: center;
+}
+.events-all-filters{
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+}
+.events-all-filters.closed{
+  height: 88px;
+}
+.events-all-filters-button.col-xs-12.col-md-6 {
+  padding: 0 4px 0 4px;
+}
+.events-all-filters-button{
+}
+.events-all{
+  width: 100%;
+  padding: 0 4px;
+}
+
+@media only screen and (min-width: 992px) {
+  .events-all-filters.closed{
+    height: 49px;
+  }
+}

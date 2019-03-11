@@ -1,0 +1,42 @@
+<div class="notifications-all-conatiner">
+  <div class="notifications-all-header">
+    <h3>
+      <% if @profile.nil? %>
+        All notifications
+      <% elsif @profile == current_user %>
+        Your notifications
+      <% else %>
+        <%= "#{@profile.first_name}'s" %> notifications
+      <% end %>
+    </h3>
+  </div>
+  <div class="notifications-all-filters closed">
+    <% if @profile.nil? %>
+      <div class="notifications-all-filters-button col-xs-12 col-md-6">
+        <%= link_to "Your notifications", profile_notifications_path(@user), class: "btn-blue" %>
+      </div>
+    <% else %>
+      <div class="notifications-all-filters-button col-xs-12 col-md-6">
+        <%= link_to "All notifications", notifications_path, class: "btn-blue" %>
+      </div>
+      <% unless @user == @profile %>
+        <div class="notifications-all-filters-button col-xs-12 col-md-6">
+          <%= link_to "Your notifications", profile_notifications_path(@profile), class: "btn-blue" %>
+        </div>
+      <% end %>
+    <% end %>
+    <% @user.patients.each do |patient| %>
+      <% unless patient == @profile %>
+        <div class="notifications-all-filters-button col-xs-12 col-md-6">
+          <%= link_to "#{patient.first_name}'s' notifications", profile_notifications_path(patient), class: "btn-blue" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= link_to "More patients", '#', id: "show-more" if @user.patients.size > 1 %>
+  <div class="notifications-all">
+  <% @notifications.each do |notification| %>
+    <%= render 'shared/notification-card', notification: notification %>
+  <% end %>
+  </div>
+</div>

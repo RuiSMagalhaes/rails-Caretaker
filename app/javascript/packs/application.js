@@ -24,3 +24,22 @@ if (eventsEdit || eventsNew) {
     eventMonths.classList.toggle("hidden");
   })
 }
+
+const profileNotifications = document.querySelector('.notifications.index');
+const allNotifications = document.querySelector('.notifications.full_index');
+if (profileNotifications || allNotifications) {
+  const notificationsAllFilters = document.querySelector('.notifications-all-filters');
+  const showMore = document.querySelector('#show-more');
+  showMore.addEventListener('click', (event) => {
+    notificationsAllFilters.classList.toggle("closed");
+  })
+}
+const profileEvents = document.querySelector('.events.index')
+const allEvents = document.querySelector('.events.full_index')
+if (profileEvents || allEvents) {
+  const eventsAllFilters = document.querySelector('.events-all-filters');
+  const showMore = document.querySelector('#show-more');
+  showMore.addEventListener('click', (event) => {
+    eventsAllFilters.classList.toggle("closed");
+  })
+}
