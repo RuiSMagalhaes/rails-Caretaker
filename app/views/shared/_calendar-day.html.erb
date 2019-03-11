@@ -3,7 +3,7 @@
     <% events.each do |event| %>
       <div class="calendar-day-event">
         <%= link_to "", profile_event_path(event.user, event), class: "calendar-day-event-link" %>
-        <p><strong><%= event.name %></strong></p>
+        <p><i class="fas <%=event.event_type.description%>"></i><strong><%=" " +  event.name %></strong></p>
         <span>
           <%= event.start_time.strftime("%H:%M") %>
           <%= " | " %>

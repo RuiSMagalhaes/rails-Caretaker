@@ -8,7 +8,7 @@
       <!-- Change this image for the one of notification.event.event_type.description -->
       <!-- <img src="#" class="info-event-type"> -->
       <div class="info-event-name-time">
-        <h5><%= @notification.event.name %> </h5>
+        <h5><i class="fas <%=@notification.event.event_type.description%>"></i><%= " " + @notification.event.name %> </h5>
         <p> <%= @notification.event.start_time.strftime("At %I:%M%p") %> </p>
 
       </div>

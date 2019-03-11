@@ -1,7 +1,7 @@
 <div class="event-container full-height">
   <div class="event-card">
     <div class="event-title">
-      <h1><%= @event.name %> </h1>
+      <h1><i class="fas <%=@event.event_type.description%>"></i><%= " " + @event.name %> </h1>
       <% if @event.user == current_user %>
         <p>For You</p>
       <%else %>
