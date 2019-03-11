@@ -12,10 +12,7 @@
       </div>
     <% end %>
     <div class="btn-container-full-width">
-      <%= link_to "Add caretaker", profile_new_caretaker_path(profile_id: @profile), class: "btn-blue" %>
-    </div>
-    <div class="btn-container-full-width">
-      <%= link_to "Add patient", profile_new_patient_path(profile_id: @profile), class: "btn-blue" %>
+      <%= link_to "Edit relations", profile_relations_path(profile_id: @profile), class: "btn-blue" %>
     </div>
   </div>
   <div class="notifications-list col-xs-12 col-md-4">

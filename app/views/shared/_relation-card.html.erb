@@ -1,0 +1,20 @@
+<div class="relation-card">
+  <%= link_to "", profile_path(user), class: "relation-card-link" if relation.state %>
+  <img src='<%= cloudinary_url(user.photo) %>' class="avatar-large"/>
+  <div class="relation-card-content">
+    <h4><%= user.first_name %></h4>
+    <p><small><%= 'As: ' + role if !relation.state %></small></p>
+  </div>
+  <% if relation.state %>
+    <%= link_to profile_relation_path(@profile, relation), method: :delete, data: { confirm: 'Are you sure?' }, class: "relation-card-action-delete" do %>
+      <i class="far fa-times-circle"></i>
+    <% end %>
+  <% else %>
+    <%= link_to profile_relation_path(@profile, relation), method: :patch, data: { confirm: 'Are you sure?' }, class: "relation-card-action-accept" do %>
+      <i class="far fa-check-circle"></i>
+    <% end %>
+    <%= link_to profile_relation_path(@profile, relation), method: :delete, data: { confirm: 'Are you sure?' }, class: "relation-card-action-delete" do %>
+      <i class="far fa-times-circle"></i>
+    <% end %>
+  <% end %>
+</div>

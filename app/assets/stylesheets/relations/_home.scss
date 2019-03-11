@@ -1,0 +1,51 @@
+.relations-caretakers-list-header{
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 8px;
+}
+.relations-caretakers-list-header span{
+  font-size: 20px;
+}
+.relations-caretakers-list{
+  margin-bottom: 20px;
+}
+.relations-caretakers-list-container{
+  max-height: 500px;
+  overflow-y: overlay;
+  padding: 0 2px;
+}
+.relations-patients-list-header{
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 8px;
+}
+.relations-patients-list-header span{
+  font-size: 20px;
+}
+.relations-patients-list{
+  margin-bottom: 20px;
+}
+.relations-patients-list-container{
+  max-height: 500px;
+  overflow-y: overlay;
+  padding: 0 2px;
+}
+.relations-pending-list-header{
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 8px;
+}
+.relations-pending-list-header span{
+  font-size: 20px;
+}
+.relations-pending-list{
+  margin-bottom: 20px;
+}
+.relations-pending-list-container{
+  max-height: 500px;
+  overflow-y: overlay;
+  padding: 0 2px;
+}
