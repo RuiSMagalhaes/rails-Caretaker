@@ -22,13 +22,13 @@
     <div class="buttons">
       <% unless @notification.event.done %>
         <% if @notification.event.user == current_user %>
-          <%= link_to notification_path(@notification, refer: @refer), method: :patch, class: "no-decoration" do %>
+          <%= link_to profile_notification_path(@notification.event.user, @notification, refer: @refer), method: :patch, class: "no-decoration" do %>
             <p class="button-done">Mark as done</p>
           <% end %>
         <% end %>
       <% end %>
       <% unless @notification.dismissed %>
-        <%= link_to notification_path(@notification, refer: @refer), method: :delete, class: "no-decoration" do %>
+        <%= link_to profile_notification_path(@notification.event.user, @notification, refer: @refer), method: :delete, class: "no-decoration" do %>
           <p class="button-dismiss">Dismiss</p>
         <% end %>
       <% end %>
