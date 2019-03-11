@@ -1,0 +1,72 @@
+.relation-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8.5px;
+  background: white;
+  padding: 8px 16px;
+  box-shadow: 0 0 8px 0px rgba(0,0,0,0.2);
+  position: relative;
+  border-radius: 2px;
+  transition: 0.5s ease;
+}
+
+.relation-card:hover {
+  background: $light-blue;
+}
+
+.relation-card-link{
+  width: 100%;
+  display: block;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+.relation-card .relation-card-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.relation-card p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.relation-card small {
+  color: $blue;
+  font-weight: bold;
+}
+.relation-card-action-delete{
+  background-color: #D7263D;
+  color: white;
+  border-radius: 100%;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 2;
+}
+.relation-card-action-accept{
+  background-color: $green;
+  color: white;
+  border-radius: 100%;
+  position: absolute;
+  right: 50px;
+  top: 15px;
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.relation-card h4 {
+  margin: 8px 0;
+}

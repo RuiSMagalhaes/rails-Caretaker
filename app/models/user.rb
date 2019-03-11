@@ -23,10 +23,17 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :email, presence: true
 
+  def pending_caretaker_requests
+    patient_relationships.where(state: false)
+  end
+
+  def pending_patient_requests
+    caretaker_relationships.where(state: false)
+  end
+
   private
 
   def send_welcome_email
     UserMailer.welcome(self).deliver_now
   end
-
 end

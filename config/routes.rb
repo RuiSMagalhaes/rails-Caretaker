@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:index, :show] do
     resources :events
     resources :notifications, only: [:index, :show, :update, :destroy]
+    resources :relations, only: [:index, :update, :destroy]
     get '/relations/new_caretaker', to: 'relations#new_caretaker', as: 'new_caretaker'
     post '/relations/new_caretaker', to: 'relations#create_caretaker', as: 'create_caretaker'
     get '/relations/new_patient', to: 'relations#new_patient', as: 'new_patient'

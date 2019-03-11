@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_191429) do
+ActiveRecord::Schema.define(version: 2019_03_11_172731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_03_06_191429) do
     t.boolean "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sender_id"
     t.index ["caretaker_id", "patient_id"], name: "index_relations_on_caretaker_id_and_patient_id", unique: true
     t.index ["caretaker_id"], name: "index_relations_on_caretaker_id"
     t.index ["patient_id"], name: "index_relations_on_patient_id"

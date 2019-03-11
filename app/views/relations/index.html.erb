@@ -1,0 +1,60 @@
+<div class="relations-container">
+  <div class="relations-caretakers-list col-xs-12 col-md-4">
+    <div class="relations-caretakers-list-header">
+      <span>Caretakers</span>
+    </div>
+    <div class="relations-caretaker-list-container">
+      <% @caretaker_relations.each do |relation| %>
+        <%=
+          render 'shared/relation-card',
+          user: relation.caretaker,
+          relation: relation
+        %>
+      <% end %>
+    </div>
+    <div class="btn-container-full-width">
+      <%= link_to "Add caretaker", profile_new_caretaker_path(@profile), class: "btn-blue" %>
+    </div>
+  </div>
+  <div class="relations-patients-list col-xs-12 col-md-4">
+    <div class="relations-patients-list-header">
+      <span>Patients</span>
+    </div>
+    <div class="relations-patients-list-container">
+      <% @patient_relations.each do |relation| %>
+        <%=
+          render 'shared/relation-card',
+          user: relation.patient,
+          relation: relation
+        %>
+      <% end %>
+    </div>
+    <div class="btn-container-full-width">
+      <%= link_to "Add patient", profile_new_patient_path(@profile), class: "btn-blue" %>
+    </div>
+  </div>
+  <div class="relations-pending-list col-xs-12 col-md-4">
+    <div class="relations-pending-list-header">
+      <span>Pending Requests</span>
+    </div>
+    <div class="relations-pending-list-container">
+      <% @pendings.each do |relation| %>
+        <%
+          if relation.caretaker == @profile
+            other_user = relation.patient
+            role = 'Patient'
+          else
+            other_user = relation.caretaker
+            role = 'Caretaker'
+          end
+        %>
+        <%=
+          render 'shared/relation-card',
+          user: other_user,
+          role: role,
+          relation: relation
+        %>
+      <% end %>
+    </div>
+  </div>
+</div>
