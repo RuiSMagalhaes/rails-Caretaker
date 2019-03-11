@@ -13,19 +13,16 @@
   border-bottom: 1px solid #ddd;
   margin-bottom: 8px;
 }
+.events-list-header{
+  font-size: 20px;
+  text-align: center;
+}
 .profiles-list-header span{
   font-size: 20px;
 }
 .notifications-list-see-more{
-  justify-content: space-around;
-}
-.events-list-see-more{
   text-align: center;
 }
-.events-list-see-more a:hover{
-  text-decoration: none;
-}
-.events-list-header{
-  font-size: 20px;
+.events-list-see-more{
   text-align: center;
 }

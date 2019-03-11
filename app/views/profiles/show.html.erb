@@ -3,7 +3,9 @@
     <div class="profiles-list-header">
       <span>People</span>
     </div>
-    <%= render 'shared/profile-card', user: @profile, notifications: @notifications.count %>
+    <div class="profiles-list-container">
+      <%= render 'shared/profile-card', user: @profile, notifications: @notifications.count %>
+    </div>
     <% if @profile == current_user %>
       <div class="btn-container-full-width">
         <%= link_to "Edit my profile", edit_user_registration_path, class: "btn-blue" %>
@@ -20,23 +22,31 @@
     <div class="notifications-list-header">
       <span>Latest Notifications</span>
     </div>
-    <% @notifications[0..4].each do |notification| %>
-      <%= render 'shared/notification-card', notification: notification %>
-    <% end %>
+    <div class="notifications-list-container">
+      <% @notifications.each do |notification| %>
+        <%= render 'shared/notification-card', notification: notification %>
+      <% end %>
+    </div>
     <div class="notifications-list-see-more">
-      <p>
-        <% if @notifications.size > 5 %>
+      <% if @notifications.empty? %>
+        <p>
+          <strong>Yay!</strong> 🎉 you don't have any notifications.
+        </p>
+      <% end %>
+      <% if @notifications.size > 5 %>
+        <p>
           <%= link_to "See all notifications", notifications_path(profile_id: @profile.id) %>
-        <% end %>
-      </p>
+        </p>
+      <% end %>
     </div>
   </div>
   <div class="events-list col-xs-12 col-md-4">
-    <div><%= render 'shared/calendar-day', events: @events[0..4] %></div>
+    <div class="events-list-container">
+      <%= render 'shared/calendar-day', events: @events %>
+    </div>
     <div class="events-list-see-more">
-      <p>
-        <%= link_to "See full schedule", profile_events_path(@profile) %>
-      </p>
+      <%= link_to "Add event", new_profile_event_path(@profile), class: "btn-blue" %>
+      <%= link_to "See #{@profile == current_user ? 'your' : @profile.first_name} schedule", profile_events_path(@profile), class: "btn-blue" %>
     </div>
   </div>
 </div>

@@ -3,34 +3,38 @@
     <div class="profiles-list-header">
       <span>People</span>
     </div>
-    <%=
-      render 'shared/profile-card',
-      user: @user,
-      notifications: @notifications.where(event_id: @user.events.pluck(:id)).count %>
-    <% @patients.each do |patient| %>
+    <div class="profile-list-container">
       <%=
         render 'shared/profile-card',
-        user: patient,
-        notifications: @notifications.where(event_id: patient.events.pluck(:id)).count
-      %>
-    <% end %>
+        user: @user,
+        notifications: @notifications.where(event_id: @user.events.pluck(:id)).count %>
+      <% @patients.each do |patient| %>
+        <%=
+          render 'shared/profile-card',
+          user: patient,
+          notifications: @notifications.where(event_id: patient.events.pluck(:id)).count
+        %>
+      <% end %>
+    </div>
   </div>
   <div class="notifications-list col-xs-12 col-md-4">
     <div class="notifications-list-header">
       <span>Latest Notifications</span>
     </div>
-    <% @notifications[0..4].each do |notification| %>
-      <%= render 'shared/notification-card', notification: notification %>
-    <% end %>
+    <div class="notifications-list-container">
+      <% @notifications.each do |notification| %>
+        <%= render 'shared/notification-card', notification: notification %>
+      <% end %>
+    </div>
     <div class="notifications-list-see-more">
-      <p>
-        <% if @notifications.size > 5 %>
-          <%= link_to "See all notifications", notifications_path %>
-        <% end %>
-      </p>
       <% if @notifications.empty? %>
         <p>
           <strong>Yay!</strong> 🎉 you don't have any notifications.
+        </p>
+      <% end %>
+      <% if @notifications.size > 5 %>
+        <p>
+          <%= link_to "See all notifications", notifications_path %>
         </p>
       <% end %>
     </div>
@@ -39,20 +43,13 @@
     <div class="events-list-header hidden-md hidden-lg">
       <p>Schedule</p>
     </div>
-    <div><%= render 'shared/calendar-day', events: @events[0..4] %></div>
-    <div class="events-list-see-more">
-      <% if @events.empty? %>
-        <p>
-          <strong>Ooh!</strong> 🤔 you don't have any event today.
-        </p>
-        <p>
-          <%= link_to "Add one in Schedule", profile_events_path(@user) %>
-        </p>
-      <% else %>
-        <p>
-          <%= link_to "See full schedule", events_path %>
-        </p>
-      <% end %>
+    <div class="events-list-container">
+      <div>
+        <%= render 'shared/calendar-day', profile: @user, events: @events %>
+      </div>
+      <div class="events-list-see-more">
+        <%= link_to "See full schedule", events_path, class: "btn-blue" %>
+    </div>
     </div>
   </div>
 </div>
