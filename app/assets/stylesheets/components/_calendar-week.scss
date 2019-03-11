@@ -26,7 +26,7 @@
   text-align: center;
 }
 .calendar-week-event:hover {
-  transform: scale(1.03)
+  background: $light-blue;
 }
 .calendar-week-event-link{
   width: 100%;

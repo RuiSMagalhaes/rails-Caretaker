@@ -4,9 +4,9 @@
       <% if @profile.nil? %>
         All events
       <% elsif @profile == current_user %>
-        Your events
+        Your schedule
       <% else %>
-        <%= "#{@profile.first_name}'s" %> events
+        <%= "#{@profile.first_name}'s" %> schedule
       <% end %>
     </h3>
   </div>

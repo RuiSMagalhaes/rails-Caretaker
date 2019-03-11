@@ -1,19 +1,8 @@
 <%= render 'events-list' %>
-<div class="events-header">
-  <div class="events-title-left"></div>
-  <div class="events-title hidden-md hidden-lg">
-    <h4>Day Schedule</h4>
-  </div>
-  <div class="events-title hidden-xs hidden-sm">
-    <h4>Week Schedule</h4>
-  </div>
-  <div class="events-title-right">
-    <%= link_to "Add Event", new_profile_event_path(@profile), class: "events-add-event" %>
-  </div>
-</div>
 <div class="events-list hidden-md hidden-lg">
   <div><%= render 'shared/calendar-day', events: @events %></div>
 </div>
 <div class="events-list hidden-xs hidden-sm">
   <div><%= render 'shared/calendar-week', events: @events %></div>
 </div>
+<%= link_to "Add Event", new_profile_event_path(@profile), class: "btn-blue" %>
