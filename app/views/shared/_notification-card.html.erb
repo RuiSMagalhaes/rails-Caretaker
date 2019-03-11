@@ -23,7 +23,7 @@
   <%= link_to "", profile_notification_path(notification.event.user, notification), class: "notification-flash-link" %>
   <div class="notification-flash-content">
     <p><i class="fas <%=notification.event.event_type.description%>"></i><strong><%=" " + notification.event.name %></strong></p>
-    <span><%= type %> <%= notification.event.start_time.strftime('at %H:%M') %> | <%=
+    <span><%= type %> <%= notification.event.start_time.strftime('At %H:%M') %> | <%=
     notification.event.user == current_user ? "You" : notification.event.user.first_name %></span>
   </div>
   <%= link_to profile_notification_path(notification.event.user, notification), method: :delete, data: { confirm: 'Dismiss Notification?' }, class: "dismiss" do %>

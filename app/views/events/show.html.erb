@@ -1,18 +1,18 @@
 <div class="event-container full-height">
   <div class="event-card">
     <div class="event-title">
-      <h1><i class="fas <%=@event.event_type.description%>"></i><%= " " + @event.name %> </h1>
       <% if @event.user == current_user %>
-        <p>For You</p>
+        <p>For you</p>
       <%else %>
-        <p><%= @event.user.first_name + " " + @event.user.last_name  %></p>
+        <p><%="For " + @event.user.first_name + " " + @event.user.last_name  %></p>
       <% end %>
     </div>
     <div class="event-infos-event">
       <!-- Change this image for the one of event.event.event_type.description -->
       <!-- <img src="#" class="info-event-type"> -->
       <div class="info-event-name-time">
-        <p> <%= @event.start_time.strftime("At %H:%M") %> </p>
+        <h5><i class="fas <%=@event.event_type.description%>"></i><%= " " + @event.name %> </h5>
+        <p> <%= @event.start_time.strftime('At %H:%M') %> </p>
       </div>
     </div>
     <div class="item-description">
