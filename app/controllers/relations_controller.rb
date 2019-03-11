@@ -1,6 +1,6 @@
 class RelationsController < ApplicationController
   before_action :set_user, :set_profile
-  before_action :relation_params, :set_relation, only: [:edit, :destroy]
+  before_action :set_relation, only: [:update, :destroy]
 
   def index
     authorize @user, :show?
@@ -11,7 +11,7 @@ class RelationsController < ApplicationController
     @pendings += @profile.pending_patient_requests.where.not(sender_id: @profile.id)
   end
 
-  def edit
+  def update
     authorize @user, :show?
     @relation.state = true
       if @relation.save
@@ -31,7 +31,7 @@ class RelationsController < ApplicationController
   def create_caretaker
     authorize @user, :show?
     # get email from input
-    user_email = set_email[:email]
+    user_email = params[:email]
     # find user for caretaker
     caretaker = User.find_by(email: user_email)
     # handle user not found
@@ -56,14 +56,14 @@ class RelationsController < ApplicationController
   def create_patient
     authorize @user, :show?
     # get email from input
-    user_email = set_email[:email]
+    user_email = params.dig(:relation, :email)
     # find user for caretaker
     patient = User.find_by(email: user_email)
     # handle user not found
     if patient.nil?
       redirect_to profile_new_patient_path(profile_id: @profile), alert: "User not found!"
     else
-      relation = Relation.new(caretaker_id: @profile.id, patient_id: patient.id, state: false, sender_id: patient.id)
+      relation = Relation.new(caretaker_id: @profile.id, patient_id: patient.id, state: false, sender_id: @profile.id)
       if relation.save
         redirect_to profile_relations_path(@profile),
         notice: "You added #{patient.first_name} as patient to #{@profile.first_name}"
@@ -95,7 +95,7 @@ class RelationsController < ApplicationController
   end
 
   def set_relation
-    @relation = Relation.find[params[:id]]
+    @relation = Relation.find(params[:id])
   end
 
   def set_notifications
@@ -104,11 +104,4 @@ class RelationsController < ApplicationController
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def relation_params
-    params.require(:relation).permit(:id)
-  end
-
-  def set_email
-    params.require(:relation).permit(:email)
-  end
 end
