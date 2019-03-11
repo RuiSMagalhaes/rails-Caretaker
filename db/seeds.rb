@@ -22,28 +22,28 @@ puts "Creating events types...."
 puts "Creating 1st event type...."
   event_type = EventType.new(
     name:"Pill",
-    description:Faker::Food.description
+    description:"fa-capsules"
     )
   event_type.save
 
 puts "Creating 2nd event type...."
   event_type = EventType.new(
     name:"Shot",
-    description:Faker::Food.description
+    description:"fa-user-md"
     )
   event_type.save
 
 puts "Creating 3rd event type...."
   event_type = EventType.new(
     name:"Medical appointment",
-    description:Faker::Food.description
+    description:"fa-calendar-plus"
     )
   event_type.save
 
 puts "Creating 4th event type...."
   event_type = EventType.new(
     name:"Other",
-    description:Faker::Food.description
+    description:"fa-bell"
     )
   event_type.save
 
