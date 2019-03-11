@@ -27,15 +27,59 @@
   text-align: center;
 }
 
-
 .container-buttons{
   width: 100%;
   display: flex;
-  justify-content: space-around;
-  align-items: top;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $gray;
+  height: auto;
+  color: $light-gray;
+  margin-top: 10px;
+  text-align: center;
+
 }
 
-.buttons-simple-view{
-
-
+.schedule-button{
+  width: auto;
+  margin: 150px 30px;
 }
+
+.schedule-button a{
+  text-align: center;
+  color: $light-gray;
+  padding: 70px 90px;
+  border-radius: 1px;
+  background-color: $green;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+
+.schedule-button a:hover{
+  background: #1BCB7F;
+  color: $light-gray;
+}
+
+
+.notification-button{
+  width: auto;
+  margin: 150px 30px;
+}
+
+.notification-button a{
+  text-align: center;
+  color: $light-gray;
+  padding: 70px 90px;
+  border-radius: 1px;
+  background-color: $green;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+
+.notification-button a:hover{
+  background: #1BCB7F;
+  color: $light-gray;
+}
+
