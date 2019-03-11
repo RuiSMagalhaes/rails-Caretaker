@@ -1,18 +1,16 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :update, :destroy]
+  before_action :set_user, :set_notifications, only: [:index, :full_index]
 
   def index
-    set_user
-    authorize @user, :show?
-    set_notifications
     set_profile
-    # if you have profile display only notifications for that profile
-    unless @profile.nil?
-      # get events for that profile
-      set_events(@profile)
-      # get notifications refering to that events
-      @notifications = @notifications.where(event_id: @events.pluck(:id))
-    end
+    authorize @profile, :show?
+    set_events(@profile)
+    @notifications = @notifications.where(event_id: @events.pluck(:id))
+  end
+
+  def full_index
+    authorize @user, :show?
   end
 
   def show
@@ -63,9 +61,7 @@ class NotificationsController < ApplicationController
 
   def set_profile
     # get profile user if you have the params
-    unless params[:profile_id].nil?
-      @profile = User.find(params[:profile_id])
-    end
+    @profile = User.find(params[:profile_id])
   end
 
   def set_notification

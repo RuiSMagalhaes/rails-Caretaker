@@ -34,9 +34,7 @@
         </p>
       <% end %>
       <% if @notifications.size > 5 %>
-        <p>
-          <%= link_to "See all notifications", notifications_path(profile_id: @profile.id) %>
-        </p>
+        <%= link_to "See #{@profile == current_user ? 'your' : @profile.first_name} notifications", profile_notifications_path(@profile), class: "btn-blue" %>
       <% end %>
     </div>
   </div>

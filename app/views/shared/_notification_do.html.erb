@@ -18,7 +18,7 @@
     </div>
     <div class="buttons">
       <% unless @notification.event.done%>
-        <%= link_to notification_path(@notification, refer: @refer), method: :patch, class: "no-decoration" do %>
+        <%= link_to profile_notification_path(@notification.event.user, @notification, refer: @refer), method: :patch, class: "no-decoration" do %>
           <p class="button-done">Mark as done</p>
         <% end %>
       <% end %>

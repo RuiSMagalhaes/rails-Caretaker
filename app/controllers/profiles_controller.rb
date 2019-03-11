@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_user, :set_patients, :set_notifications, only: [:index, :show, :edit]
+  before_action :set_user, :set_patients, :set_notifications, only: [:index, :show]
   before_action :set_profile, only: [:show, :edit]
   # skip_after_action :verify_policy_scoped, only: :index
 
@@ -17,10 +17,6 @@ class ProfilesController < ApplicationController
     set_events(@profile)
     # geting notifications for this profile
     @notifications = @notifications.where(event_id: @events.pluck(:id)).order(created_at: :desc)
-  end
-
-  def edit
-    authorize @profile
   end
 
   private

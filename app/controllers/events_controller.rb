@@ -5,10 +5,10 @@ class EventsController < ApplicationController
 
   def index
     authorize @profile, :show?
-    @events = set_events
+    set_events
   end
 
-  def schedule
+  def full_index
     authorize @user, :show?
     # geting user events
     @events = set_all_events(@user)
