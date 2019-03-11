@@ -33,10 +33,8 @@
           <strong>Yay!</strong> 🎉 you don't have any notifications.
         </p>
       <% end %>
-      <% if @notifications.size > 5 %>
-        <p>
-          <%= link_to "See all notifications", notifications_path(profile_id: @profile.id) %>
-        </p>
+      <% if @notifications.size > 0 %>
+        <%= link_to "See #{@profile == current_user ? 'your' : @profile.first_name} notifications", profile_notifications_path(@profile), class: "btn-blue" %>
       <% end %>
     </div>
   </div>
