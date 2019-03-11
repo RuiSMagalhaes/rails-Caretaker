@@ -1,0 +1,32 @@
+.notifications-all-conatiner{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 700px;
+}
+.notifications-all-header{
+  width: 100%;
+  text-align: center;
+}
+.notifications-all-filters{
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+}
+.notifications-all-filters.closed{
+  height: 88px;
+}
+.notifications-all-filters-button.col-xs-12.col-md-6 {
+  padding: 0 4px 0 4px;
+}
+.notifications-all-filters-button{
+}
+.notifications-all{
+  width: 100%;
+  padding: 0 4px;
+}
+
+@media only screen and (min-width: 992px) {
+  .notifications-all-filters.closed{
+    height: 49px;
+  }
+}
