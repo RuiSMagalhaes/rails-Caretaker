@@ -7,4 +7,6 @@
 <div class="events-list hidden-xs hidden-sm">
   <div><%= render 'shared/calendar-week', events: @events %></div>
 </div>
-<%= link_to "Add Event", new_profile_event_path(@profile), class: "btn-blue" %>
+<%=  unless current_user.simple_view
+   link_to "Add Event", new_profile_event_path(@profile), class: "btn-blue"
+    end %>

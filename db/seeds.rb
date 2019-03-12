@@ -152,6 +152,7 @@ user_start_id = User.first.id
   relation = Relation.new()
   relation.caretaker = User.find(user_start_id)
   relation.patient = User.find(user_start_id + 1)
+  relation.state = true
   relation.save
 end
 
