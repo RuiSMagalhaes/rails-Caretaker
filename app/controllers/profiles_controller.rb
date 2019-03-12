@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
 
   def update
     @user = current_user
-    authorize @user
+    authorize @user, :show?
     @user.simple_view ? @user.update(simple_view: false) : @user.update(simple_view: true)
     redirect_to profiles_path
   end
