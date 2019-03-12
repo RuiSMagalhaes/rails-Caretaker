@@ -1,5 +1,3 @@
-import "flatpickr/dist/flatpickr.css"
-
 import flatpickr from 'flatpickr';
 
 const startDateinput = document.getElementById('event_start_time');
