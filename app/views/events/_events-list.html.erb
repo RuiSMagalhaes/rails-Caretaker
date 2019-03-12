@@ -10,28 +10,30 @@
       <% end %>
     </h3>
   </div>
-  <div class="events-all-filters closed">
-    <% if @profile.nil? %>
-      <div class="events-all-filters-button col-xs-12 col-md-6">
-        <%= link_to "Your events", profile_events_path(@user), class: "btn-blue" %>
-      </div>
-    <% else %>
-      <div class="events-all-filters-button col-xs-12 col-md-6">
-        <%= link_to "All events", events_path, class: "btn-blue" %>
-      </div>
-      <% unless @user == @profile %>
+  <% unless current_user.patients.empty? || current_user.simple_view  %>
+    <div class="events-all-filters closed">
+      <% if @profile.nil? %>
         <div class="events-all-filters-button col-xs-12 col-md-6">
           <%= link_to "Your events", profile_events_path(@user), class: "btn-blue" %>
         </div>
-      <% end %>
-    <% end %>
-    <% @user.patients.each do |patient| %>
-      <% unless patient == @profile %>
+      <% else %>
         <div class="events-all-filters-button col-xs-12 col-md-6">
-          <%= link_to "#{patient.first_name}'s' events", profile_events_path(patient), class: "btn-blue" %>
+          <%= link_to "All events", events_path, class: "btn-blue" %>
         </div>
+        <% unless @user == @profile %>
+          <div class="events-all-filters-button col-xs-12 col-md-6">
+            <%= link_to "Your events", profile_events_path(@user), class: "btn-blue" %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-  <%= link_to "More patients", '#', id: "show-more" if @user.patients.size > 1 %>
+      <% @user.patients.each do |patient| %>
+        <% unless patient == @profile %>
+          <div class="events-all-filters-button col-xs-12 col-md-6">
+            <%= link_to "#{patient.first_name}'s' events", profile_events_path(patient), class: "btn-blue" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <%= link_to "More patients", '#', id: "show-more" if @user.patients.size > 1 %>
+  <% end %>
 </div>
