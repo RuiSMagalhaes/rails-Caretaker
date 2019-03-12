@@ -5,8 +5,10 @@
   <%= f.input :name %>
   <%= f.input :description  %>
   <%= f.association :event_type %>
-  <%= f.input :start_time %>
-  <%= f.input :end_time %>
+  <%= f.input :start_time,
+              as: :string %>
+  <%= f.input :end_time,
+              as: :string %>
   <%= f.input :notifications, as: :boolean,
               hint:"  Manage notifications." %>
   <%= f.input :notify_before?, as: :boolean,
