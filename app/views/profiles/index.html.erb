@@ -1,26 +1,25 @@
 <% if @user.simple_view %>
 
-<div class="full-height container-notification">
-  <div class="container-buttons container">
-    <div class="row">
-      <div class="schedule-button-element col-sm-6">
+<div >
+  <div class="container-buttons">
+
+      <div class="schedule-button-element">
         <div class="schedule-button" >
           <%= link_to profile_events_path(@user) do  %>
             <p>Schedule</p>
           <%end %>
         </div>
       </div>
-      <div class="notification-button-element col-sm-6">
+      <div class="notification-button-element">
         <div class="notification-button">
           <%= link_to profile_notifications_path(@user) do %>
-            <p>Notification</p>
+            <p>Notifications</p>
           <% end %>
         </div>
       </div>
-    </div>
+
   </div>
 </div>
-
 <% else %>
   <div class="dashboard-container">
     <div class="profiles-list col-xs-12 col-md-4">
