@@ -39,7 +39,7 @@
   font-weight: bold;
 }
 .relation-card-action-delete{
-  background-color: #D7263D;
+  background-color: $red;
   color: white;
   border-radius: 100%;
   position: absolute;
@@ -47,11 +47,15 @@
   top: 15px;
   width: 30px;
   height: 30px;
-  font-size: 15px;
+  font-size: 25px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   z-index: 2;
+}
+.relation-card-action-delete:hover{
+  color: $light-gray;
+  background-color: #b12134;
 }
 .relation-card-action-accept{
   background-color: $green;
@@ -62,10 +66,14 @@
   top: 15px;
   width: 30px;
   height: 30px;
-  font-size: 15px;
+  font-size: 25px;
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+.relation-card-action-accept:hover{
+  color: $light-gray;
+  background-color: #1BCB7F;
 }
 .relation-card h4 {
   margin: 8px 0;

@@ -10,7 +10,7 @@ class NotificationsController < ApplicationController
   end
 
   def full_index
-    authorize @user, :show?
+    authorize @user, :edit?
   end
 
   def show

@@ -18,12 +18,16 @@
     <div class="item-description">
       <p><%= @event.description %></p>
     </div>
-    <div class="btn-container-full-width">
-      <%= link_to "Edit", edit_profile_event_path(@profile, @event), class: "btn-blue" %>
-    </div>
-    <div class="btn-container-full-width">
-      <%= link_to "Delete", profile_event_path(@profile, @event), method: :delete, class: "btn-red", data: { confirm: 'Are you sure?' } %>
-    </div>
-    <%= link_to 'Back', profile_events_path(@profile) %>
+    <% unless @user.simple_view %>
+      <div class="btn-container-full-width">
+        <%= link_to "Edit", edit_profile_event_path(@profile, @event), class: "btn-blue" %>
+      </div>
+      <div class="btn-container-full-width">
+        <%= link_to "Delete", profile_event_path(@profile, @event), method: :delete, class: "btn-red", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+    <%= link_to :back, class: "btn-close" do %>
+      <i class="far fa-times-circle"></i>
+    <% end %>
   </div>
 </div>

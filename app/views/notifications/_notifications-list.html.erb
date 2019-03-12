@@ -21,7 +21,7 @@
       </div>
       <% unless @user == @profile %>
         <div class="notifications-all-filters-button col-xs-12 col-md-6">
-          <%= link_to "Your notifications", profile_notifications_path(@profile), class: "btn-blue" %>
+          <%= link_to "Your notifications", profile_notifications_path(@user), class: "btn-blue" %>
         </div>
       <% end %>
     <% end %>

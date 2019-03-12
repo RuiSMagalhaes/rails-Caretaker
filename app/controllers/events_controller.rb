@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   end
 
   def full_index
-    authorize @user, :show?
+    authorize @user, :edit?
     # geting user events
     @events = set_all_events(@user)
     # set patients
@@ -19,17 +19,17 @@ class EventsController < ApplicationController
   end
 
   def show
-    authorize @profile
+    authorize @profile, :show?
   end
 
   # GET /events/new
   def new
-    authorize @profile
+    authorize @profile, :edit?
     @event = Event.new
   end
 
   def create
-    authorize @profile
+    authorize @profile, :edit?
     # create new event with params from form
     @event = Event.new(event_params)
     # call create first event to process at least one event
@@ -37,13 +37,13 @@ class EventsController < ApplicationController
   end
 
   def edit
-    authorize @profile
+    authorize @profile, :edit?
     # select the first event of a series of events so the displayed info relates to the first one
     @event = @events.where(start_id: @event.start_id).first
   end
 
   def update
-    authorize @profile
+    authorize @profile, :edit?
     # select all events with the start id
     @events = @events.where(start_id: @event.start_id)
     # clean db so previous events will removed
@@ -55,7 +55,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    authorize @profile
+    authorize @profile, :edit?
     # destroy all events with the same start id
     @events.where(start_id: @event.start_id).destroy_all
     redirect_to profile_events_path(@profile), notice: 'Event was successfully destroyed.'
