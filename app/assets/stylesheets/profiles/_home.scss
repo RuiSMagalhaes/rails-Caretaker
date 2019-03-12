@@ -27,63 +27,82 @@
   text-align: center;
 }
 
+
+
+
+
 .container-buttons{
   width: 100%;
-  height:33% !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: $gray;
   height: auto;
   color: $light-gray;
-  margin-top: 10px;
   text-align: center;
-
+  padding: 40px;
 }
 
 .row{
   width:100%;
-  height: 100%;
-  border: 2px solid red;
-
+  height: auto;
+  padding: 0;
+  margin: 0;
 }
+
+
+
+
 
 .schedule-button-element {
   color: $light-gray;
-  height: 40%;
-  border: 2px solid red;
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: $gray;
-  margin-bottom: 20px;
 
 }
 
 .schedule-button {
   border: 2px solid red;
-
+  width:100%;
+  padding: 60px 100px;
 }
+
+.schedule-button p {
+  padding: 0;
+  margin:0;
+}
+
+
+
 
 
 .notification-button-element {
   color: $light-gray;
-  height: 40%;
-  border: 2px solid red;
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: $gray;
-  align-self: flex-end;
-
 }
 
 
 
 .notification-button {
   border: 2px solid red;
+  width:100%;
+  padding: 60px 100px;
 }
 
 
+.notification-button p {
+  padding: 0;
+  margin:0;
+}
 
+@media (max-width: 765px) {
+.notification-button-element {
+  margin-top: 30px;
+  }
+}
 
