@@ -70,7 +70,11 @@
           <%= render 'shared/calendar-day', profile: @user, events: @events %>
         </div>
         <div class="events-list-see-more">
-          <%= link_to "See full schedule", events_path, class: "btn-blue" %>
+        <%= if current_user.patients.empty?
+            link_to "See your schedule", profile_events_path(current_user), class: "btn-blue"
+          else
+            link_to "See full schedule", events_path, class: "btn-blue"
+          end %>
       </div>
       </div>
     </div>

@@ -21,7 +21,7 @@
       </div>
       <% unless @user == @profile %>
         <div class="events-all-filters-button col-xs-12 col-md-6">
-          <%= link_to "Your events", profile_events_path(@profile), class: "btn-blue" %>
+          <%= link_to "Your events", profile_events_path(@user), class: "btn-blue" %>
         </div>
       <% end %>
     <% end %>

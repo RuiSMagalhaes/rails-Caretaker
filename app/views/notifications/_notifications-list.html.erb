@@ -10,30 +10,32 @@
       <% end %>
     </h3>
   </div>
-  <div class="notifications-all-filters closed">
-    <% if @profile.nil? %>
-      <div class="notifications-all-filters-button col-xs-12 col-md-6">
-        <%= link_to "Your notifications", profile_notifications_path(@user), class: "btn-blue" %>
-      </div>
-    <% else %>
-      <div class="notifications-all-filters-button col-xs-12 col-md-6">
-        <%= link_to "All notifications", notifications_path, class: "btn-blue" %>
-      </div>
-      <% unless @user == @profile %>
+  <% unless current_user.patients.empty? || current_user.simple_view %>
+    <div class="notifications-all-filters closed">
+      <% if @profile.nil? %>
         <div class="notifications-all-filters-button col-xs-12 col-md-6">
-          <%= link_to "Your notifications", profile_notifications_path(@profile), class: "btn-blue" %>
+          <%= link_to "Your notifications", profile_notifications_path(@user), class: "btn-blue" %>
         </div>
-      <% end %>
-    <% end %>
-    <% @user.patients.each do |patient| %>
-      <% unless patient == @profile %>
+      <% else %>
         <div class="notifications-all-filters-button col-xs-12 col-md-6">
-          <%= link_to "#{patient.first_name}'s' notifications", profile_notifications_path(patient), class: "btn-blue" %>
+          <%= link_to "All notifications", notifications_path, class: "btn-blue" %>
         </div>
+        <% unless @user == @profile %>
+          <div class="notifications-all-filters-button col-xs-12 col-md-6">
+            <%= link_to "Your notifications", profile_notifications_path(@user), class: "btn-blue" %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-  <%= link_to "More patients", '#', id: "show-more" if @user.patients.size > 1 %>
+      <% @user.patients.each do |patient| %>
+        <% unless patient == @profile %>
+          <div class="notifications-all-filters-button col-xs-12 col-md-6">
+            <%= link_to "#{patient.first_name}'s' notifications", profile_notifications_path(patient), class: "btn-blue" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <%= link_to "More patients", '#', id: "show-more" if @user.patients.size > 1 %>
+  <% end %>
   <div class="notifications-all">
   <% @notifications.each do |notification| %>
     <%= render 'shared/notification-card', notification: notification %>

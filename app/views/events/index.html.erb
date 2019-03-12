@@ -1,4 +1,6 @@
-<%= render 'events-list' %>
+<%=  unless current_user.patients.empty? || current_user.simple_view
+   render 'events-list'
+    end %>
 <div class="events-list hidden-md hidden-lg">
   <div><%= render 'shared/calendar-day', events: @events %></div>
 </div>
