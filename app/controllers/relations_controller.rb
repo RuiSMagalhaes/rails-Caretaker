@@ -31,7 +31,7 @@ class RelationsController < ApplicationController
   def create_caretaker
     authorize @profile, :edit?
     # get email from input
-    user_email = params[:email]
+    user_email = params.dig(:relation, :email)
     # find user for caretaker
     caretaker = User.find_by(email: user_email)
     # handle user not found
@@ -75,12 +75,22 @@ class RelationsController < ApplicationController
 
   def destroy
     authorize @profile, :edit?
-    if @relation.destroy
-      redirect_to profile_relations_path(@profile),
-      notice: "You deleted that relation."
+    if @relation.caretaker == @user
+      if @relation.destroy
+        redirect_to profiles_path,
+        notice: "You deleted that relation."
+      else
+        redirect_to profile_relations_path(@profile),
+        alert: "Ops! somthing whent wrong."
+      end
     else
-      redirect_to profile_relations_path(@profile),
-      alert: "Ops! somthing whent wrong."
+      if @relation.destroy
+        redirect_to profile_relations_path(@profile),
+        notice: "You deleted that relation."
+      else
+        redirect_to profile_relations_path(@profile),
+        alert: "Ops! somthing whent wrong."
+      end
     end
   end
 
