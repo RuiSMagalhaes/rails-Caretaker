@@ -26,3 +26,75 @@
 .events-list-see-more{
   text-align: center;
 }
+.container-buttons{
+  width: 100%;
+  background-color: $gray;
+  color: $light-gray;
+  text-align: center;
+  padding: 40px;
+  border-radius: 4px ;
+  box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
+}
+.schedule-button-element {
+  color: $light-gray;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $gray;
+}
+.schedule-button {
+  width:100%;
+  padding: 60px 60px;
+  height: calc( ( 100vh - 140px - 110px)/ 2 );
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 122px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(#167FFB, #0F60C4);
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+}
+.schedule-button:hover {
+  background: linear-gradient(#147EFF, #0F67DA);
+  color: white;
+}
+.schedule-button p {
+  padding: 0;
+  margin:0;
+  color: $light-gray;
+  font-size: 25px;
+}
+.notification-button-element {
+  color: $light-gray;
+  background-color: $gray;
+  margin-top: 40px;
+}
+.notification-button {
+  width:100%;
+  padding: 60px 60px;
+  height: calc( ( 100vh - 140px - 110px)/ 2 );
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 122px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(#167FFB, #0F60C4);
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+}
+.notification-button:hover {
+  background: linear-gradient(#147EFF, #0F67DA);
+  color: white;
+}
+.notification-button p {
+  padding: 0;
+  margin: 0;
+  color: $light-gray;
+  font-size: 25px;
+}
+
+
+

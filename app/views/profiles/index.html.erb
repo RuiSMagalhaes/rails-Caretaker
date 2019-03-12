@@ -1,55 +1,97 @@
-<div class="dashboard-container">
-  <div class="profiles-list col-xs-12 col-md-4">
-    <div class="profiles-list-header">
-      <span>People</span>
-    </div>
-    <div class="profile-list-container">
-      <%=
-        render 'shared/profile-card',
-        user: @user,
-        notifications: @notifications.where(event_id: @user.events.pluck(:id)).count %>
-      <% @patients.each do |patient| %>
-        <%=
-          render 'shared/profile-card',
-          user: patient,
-          notifications: @notifications.where(event_id: patient.events.pluck(:id)).count
-        %>
-      <% end %>
-    </div>
-  </div>
-  <div class="notifications-list col-xs-12 col-md-4">
-    <div class="notifications-list-header">
-      <span>Latest Notifications</span>
-    </div>
-    <div class="notifications-list-container">
-      <% @notifications.each do |notification| %>
-        <%= render 'shared/notification-card', notification: notification %>
-      <% end %>
-    </div>
-    <div class="notifications-list-see-more">
-      <% if @notifications.empty? %>
-        <p>
-          <strong>Yay!</strong> 🎉 you don't have any notifications.
-        </p>
-      <% end %>
-      <% if @notifications.size > 5 %>
-        <p>
-          <%= link_to "See all notifications", notifications_path, class: "btn-blue" %>
-        </p>
-      <% end %>
-    </div>
-  </div>
-  <div class="events-list col-xs-12 col-md-4">
-    <div class="events-list-header hidden-md hidden-lg">
-      <p>Schedule</p>
-    </div>
-    <div class="events-list-container">
-      <div>
-        <%= render 'shared/calendar-day', profile: @user, events: @events %>
+<% if @user.simple_view %>
+
+<div >
+  <div class="container-buttons">
+
+      <div class="schedule-button-element">
+        <div class="schedule-button" >
+          <%= link_to profile_events_path(@user) do  %>
+            <p>Schedule</p>
+          <%end %>
+        </div>
       </div>
-      <div class="events-list-see-more">
-        <%= link_to "See full schedule", events_path, class: "btn-blue" %>
-    </div>
-    </div>
+      <div class="notification-button-element">
+        <div class="notification-button">
+          <%= link_to profile_notifications_path(@user) do %>
+            <p>Notifications</p>
+          <% end %>
+        </div>
+      </div>
+
   </div>
 </div>
+<% else %>
+  <div class="dashboard-container">
+    <div class="profiles-list col-xs-12 col-md-4">
+      <div class="profiles-list-header">
+        <span>People</span>
+      </div>
+      <div class="profile-list-container">
+        <%=
+          render 'shared/profile-card',
+          user: @user,
+          notifications: @notifications.where(event_id: @user.events.pluck(:id)).count %>
+        <% @patients.each do |patient| %>
+          <%=
+            render 'shared/profile-card',
+            user: patient,
+            notifications: @notifications.where(event_id: patient.events.pluck(:id)).count
+          %>
+        <% end %>
+      </div>
+    </div>
+    <div class="notifications-list col-xs-12 col-md-4">
+      <div class="notifications-list-header">
+        <span>Latest Notifications</span>
+      </div>
+      <div class="notifications-list-container">
+        <% @notifications.each do |notification| %>
+          <%= render 'shared/notification-card', notification: notification %>
+        <% end %>
+      </div>
+      <div class="notifications-list-see-more">
+        <% if @notifications.empty? %>
+          <p>
+            <strong>Yay!</strong> 🎉 you don't have any notifications.
+          </p>
+        <% end %>
+        <% if @notifications.size > 5 %>
+          <p>
+            <%= link_to "See all notifications", notifications_path, class: "btn-blue" %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+    <div class="events-list col-xs-12 col-md-4">
+      <div class="events-list-header hidden-md hidden-lg">
+        <p>Schedule</p>
+      </div>
+      <div class="events-list-container">
+        <div>
+          <%= render 'shared/calendar-day', profile: @user, events: @events %>
+        </div>
+        <div class="events-list-see-more">
+          <%= link_to "See full schedule", events_path, class: "btn-blue" %>
+      </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
