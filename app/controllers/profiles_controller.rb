@@ -19,6 +19,13 @@ class ProfilesController < ApplicationController
     @notifications = @notifications.where(event_id: @events.pluck(:id)).order(created_at: :desc)
   end
 
+  def update
+    @user = current_user
+    authorize @user
+    @user.simple_view ? @user.update(simple_view: false) : @user.update(simple_view: true)
+    redirect_to profiles_path
+  end
+
   private
 
   def set_user
