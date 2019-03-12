@@ -26,7 +26,7 @@
       <div class="profiles-list-header">
         <span>People</span>
       </div>
-      <div class="profile-list-container">
+      <div class="profile-list-container" <%= "style='overflow-y: scroll;'" if @patients.size > 4 %> >
         <%=
           render 'shared/profile-card',
           user: @user,
@@ -44,7 +44,7 @@
       <div class="notifications-list-header">
         <span>Latest Notifications</span>
       </div>
-      <div class="notifications-list-container">
+      <div class="notifications-list-container" <%= "style=overflow-y:scroll;" if @notifications.size > 5 %> >
         <% @notifications.each do |notification| %>
           <%= render 'shared/notification-card', notification: notification %>
         <% end %>
