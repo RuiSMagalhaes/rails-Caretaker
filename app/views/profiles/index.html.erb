@@ -2,20 +2,19 @@
 
 <div >
   <div class="container-buttons">
-
       <div class="schedule-button-element">
-        <div class="schedule-button" >
-          <%= link_to profile_events_path(@user) do  %>
+        <%= link_to profile_events_path(@user) do  %>
+          <div class="schedule-button" >
             <p>Schedule</p>
-          <%end %>
-        </div>
+          </div>
+        <%end %>
       </div>
       <div class="notification-button-element">
-        <div class="notification-button">
-          <%= link_to profile_notifications_path(@user) do %>
+        <%= link_to profile_notifications_path(@user) do %>
+          <div class="notification-button">
             <p>Notifications</p>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
 
   </div>

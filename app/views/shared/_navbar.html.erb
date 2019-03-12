@@ -13,10 +13,17 @@
     <div class="navbar-caretaker-right">
       <div class="navbar-caretaker-right-links hidden-xs hidden-sm">
         <!-- Links when logged in -->
-        <%= link_to "Dashboard", profiles_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
-        <%= link_to "Events", events_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
-        <%= link_to "Notifications", notifications_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
-        <%#= link_to "Log Out", destroy_user_session_path, method: :delete, class: "navbar-caretaker-item navbar-caretaker-link" %>
+        <% if current_user.patients.empty?  %>
+          <%= link_to "Dashboard", profiles_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
+          <%= link_to "Events", profile_events_path(current_user), class: "navbar-caretaker-item navbar-caretaker-link" %>
+          <%= link_to "Notifications", profile_notifications_path(current_user), class: "navbar-caretaker-item navbar-caretaker-link" %>
+        <%else %>
+          <%= link_to "Dashboard", profiles_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
+          <%= link_to "Events", events_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
+          <%= link_to "Notifications", notifications_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
+          <%#= link_to "Log Out", destroy_user_session_path, method: :delete, class: "navbar-caretaker-item navbar-caretaker-link" %>
+        <% end %>
+
       </div>
 
       <!-- Dropdown list -->
