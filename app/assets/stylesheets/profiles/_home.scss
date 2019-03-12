@@ -72,6 +72,7 @@
 .schedule-button p {
   padding: 0;
   margin:0;
+  color: $light-gray;
 }
 
 
@@ -97,7 +98,8 @@
 
 .notification-button p {
   padding: 0;
-  margin:0;
+  margin: 0;
+  color: $light-gray;
 }
 
 @media (max-width: 765px) {
