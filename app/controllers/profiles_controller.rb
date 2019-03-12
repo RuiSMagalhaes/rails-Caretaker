@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    authorize @profile
+    authorize @profile, :edit?
     # geting events for this profile
     set_events(@profile)
     # geting notifications for this profile

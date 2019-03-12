@@ -3,7 +3,7 @@ class RelationsController < ApplicationController
   before_action :set_relation, only: [:update, :destroy]
 
   def index
-    authorize @user, :show?
+    authorize @profile, :edit?
     set_notifications
     @caretaker_relations = @profile.caretaker_relationships.where(state: true)
     @patient_relations = @profile.patient_relationships.where(state: true)
@@ -12,7 +12,7 @@ class RelationsController < ApplicationController
   end
 
   def update
-    authorize @user, :show?
+    authorize @profile, :edit?
     @relation.state = true
       if @relation.save
         redirect_to profile_relations_path(@profile),
@@ -24,12 +24,12 @@ class RelationsController < ApplicationController
   end
 
   def new_caretaker
-    authorize @user, :show?
+    authorize @profile, :edit?
     @relation = Relation.new
   end
 
   def create_caretaker
-    authorize @user, :show?
+    authorize @profile, :edit?
     # get email from input
     user_email = params[:email]
     # find user for caretaker
@@ -49,12 +49,12 @@ class RelationsController < ApplicationController
   end
 
   def new_patient
-    authorize @user, :show?
+    authorize @profile, :edit?
     @relation = Relation.new
   end
 
   def create_patient
-    authorize @user, :show?
+    authorize @profile, :edit?
     # get email from input
     user_email = params.dig(:relation, :email)
     # find user for caretaker
@@ -74,7 +74,7 @@ class RelationsController < ApplicationController
   end
 
   def destroy
-    authorize @user, :show?
+    authorize @profile, :edit?
     if @relation.destroy
       redirect_to profile_relations_path(@profile),
       notice: "You deleted that relation."
