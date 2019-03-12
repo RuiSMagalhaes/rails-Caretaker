@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  attr_accessor :notifications
+
   after_create :job_event_to_notification
 
   belongs_to :user
