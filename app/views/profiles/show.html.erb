@@ -19,7 +19,7 @@
     <div class="notifications-list-header">
       <span>Latest Notifications</span>
     </div>
-    <div class="notifications-list-container">
+    <div class="notifications-list-container" <%= "style=overflow-y:scroll;" if @notifications.size > 5 %>>
       <% @notifications.each do |notification| %>
         <%= render 'shared/notification-card', notification: notification %>
       <% end %>
