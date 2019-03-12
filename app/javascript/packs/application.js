@@ -1,5 +1,5 @@
 import "bootstrap";
-import "../components/datepicker"
+import "../components/datepicker";
 
 const eventsEdit = document.querySelector('.events.edit');
 const eventsNew = document.querySelector('.events.new');
