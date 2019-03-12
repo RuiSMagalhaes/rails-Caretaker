@@ -14,9 +14,6 @@
       <div class="navbar-caretaker-right-links hidden-xs hidden-sm">
         <!-- Links when logged in -->
         <% if current_user.simple_view  %>
-          <%= link_to "Dashboard", profiles_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
-          <%= link_to "Events", profile_events_path(current_user), class: "navbar-caretaker-item navbar-caretaker-link" %>
-          <%= link_to "Notifications", profile_notifications_path(current_user), class: "navbar-caretaker-item navbar-caretaker-link" %>
         <% elsif current_user.patients.empty?   %>
           <%= link_to "Dashboard", profiles_path, class: "navbar-caretaker-item navbar-caretaker-link" %>
           <%= link_to "Events", profile_events_path(current_user), class: "navbar-caretaker-item navbar-caretaker-link" %>
@@ -36,7 +33,6 @@
             <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
             <ul class="dropdown-menu dropdown-menu-right navbar-caretaker-dropdown-menu">
               <li><%= link_to "Change View", profile_path(current_user), method: :patch, clas: "hidden-md hidden-lg" %></li>
-              <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
             </ul>
           </div>
         </div>
