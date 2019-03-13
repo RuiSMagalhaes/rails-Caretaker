@@ -1,12 +1,17 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :update, :destroy]
-  before_action :set_user, :set_notifications, only: [:index, :full_index]
+  before_action :set_user, :set_notifications, only: [:index, :full_index, :last_notification]
 
   def index
     set_profile
     authorize @profile, :show?
-    set_events(@profile)
-    @notifications = @notifications.where(event_id: @events.pluck(:id))
+    set_last_notification
+    if @notification.nil?
+      set_events(@profile)
+      @notifications = @notifications.where(event_id: @events.pluck(:id))
+    else
+      redirect_to profile_notification_path(@user, @notification)
+    end
   end
 
   def full_index
@@ -15,7 +20,6 @@ class NotificationsController < ApplicationController
 
   def show
     authorize @notification
-    set_from
   end
 
   def update
@@ -38,8 +42,7 @@ class NotificationsController < ApplicationController
         notification.save
       end
     end
-    params[:refer].nil? ? refer = request.referrer : refer = params[:refer]
-    redirect_to refer
+    redirect_to profiles_path
   end
 
   def destroy
@@ -49,7 +52,7 @@ class NotificationsController < ApplicationController
     # change value notification to dismissed
     @notification.update(dismissed: true)
     # redirecto to the page where the action is implemented
-    redirect_to refer
+    redirect_to profiles_path
   end
 
   private
@@ -68,6 +71,10 @@ class NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
   end
 
+  def set_last_notification
+    @notifification = @notifications.where(notification_type: "do").last
+  end
+
   def set_notifications
     # get all notifications for current user
     @notifications = policy_scope(@user.notifications).where(dismissed: false).order(created_at: :desc)
@@ -76,9 +83,5 @@ class NotificationsController < ApplicationController
   def set_events(user)
     # get events with given user
     @events = user.events
-  end
-
-  def set_from
-    @refer = request.referrer
   end
 end
