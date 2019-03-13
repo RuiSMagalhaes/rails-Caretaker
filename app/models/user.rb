@@ -18,7 +18,6 @@ class User < ApplicationRecord
   has_many :notifications
   has_many :events_notifications, through: :events, source: :notifications
 
-
   has_many :patient_relationships, foreign_key: :caretaker_id, class_name: 'Relation'
   has_many :patients, through: :patient_relationships, source: :patient
 

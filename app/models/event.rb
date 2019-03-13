@@ -7,12 +7,18 @@ class Event < ApplicationRecord
   belongs_to :event_type
 
   has_many :notifications, dependent: :destroy
-  validate :date_range
+  validate :date_range, :start_date
+
+  validates :name, :description, :start_time, :end_time, presence: true
 
   private
 
   def date_range
-    errors.add(:end_time, ' can not be before Start time.') if end_time < start_time
+    errors.add(:end_time, ' can not be before Start time.') if end_time.nil? || (end_time < start_time)
+  end
+
+  def start_date
+    errors.add(:start_time, ' can not be before current time.') if start_time < Time.now
   end
 
   def job_event_to_notification
