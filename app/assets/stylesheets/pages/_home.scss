@@ -54,7 +54,7 @@
   margin-bottom: 20px;
 }
 .landing-featutes-container{
-  text-align:justify;
+  text-align:center;
 
 }
 .landing-featutes-container h4{
@@ -75,6 +75,20 @@
   margin:0;
 }
 
+.titles-reviews{
+  margin-top: 60px ;
+  margin-bottom: 20px;
+}
+
+.reviews-container{
+  text-align:center;
+}
+
+
+
+
+
+
 
 @media (min-width: 992px) {
   .description {
@@ -87,7 +101,7 @@
     margin-right: 20%;
     margin-left: 20%;
   }
-  .landing-featutes-container{
+  .titles-reviews{
     text-align: center;
   }
 }
