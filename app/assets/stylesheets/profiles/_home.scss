@@ -26,78 +26,45 @@
 .events-list-see-more{
   text-align: center;
 }
-.container-buttons{
-  width: 100%;
-  background-color: $gray;
-  color: $light-gray;
-  text-align: center;
-  padding: 40px;
-  border-radius: 4px ;
-  box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
-}
-.schedule-button-element {
-  color: $light-gray;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: $gray;
-
-
-}
-.schedule-button-element a {
-  width:100% !important;
-
-}
 .schedule-button {
   width:100%;
-  height: calc( ( 100vh - 140px - 110px)/ 2 );
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  height: calc( ( 100vh - 140px - 20px)/ 2 );
   min-height: 122px;
   border-radius: 4px;
   font-weight: bold;
-  background: linear-gradient(#167FFB, #0F60C4);
   transition: background 0.3s ease;
-  border: 1px solid #0F60C4;
+  border: 2px solid $blue;
+  margin-top: 20px;
+  color: $blue;
+  font-size: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow-wrap: break-word;
 }
 .schedule-button:hover {
-  background: linear-gradient(#147EFF, #0F67DA);
-  color: white;
-}
-.schedule-button p {
-  padding: 0;
-  margin:0;
-  color: $light-gray;
-  font-size: 50px;
-}
-.notification-button-element {
-  color: $light-gray;
-  background-color: $gray;
-  margin-top: 40px;
+  background: $light-blue;
+  color: $blue;
 }
 .notification-button {
   width:100%;
-  height: calc( ( 100vh - 140px - 110px)/ 2 );
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  height: calc( ( 100vh - 140px - 20px)/ 2 );
   min-height: 122px;
   border-radius: 4px;
   font-weight: bold;
-  background: linear-gradient(#167FFB, #0F60C4);
   transition: background 0.3s ease;
-  border: 1px solid #0F60C4;
-}
-.notification-button:hover {
-  background: linear-gradient(#147EFF, #0F67DA);
-  color: white;
-}
-.notification-button p {
-  padding: 0;
-  margin: 0;
+  margin-top: 20px;
   color: $light-gray;
   font-size: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: $blue;
+  overflow-wrap: break-word;
+}
+.notification-button:hover {
+  background: #137dad;
+  color: $light-gray;
 }
 
 
