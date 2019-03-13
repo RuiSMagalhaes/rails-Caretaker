@@ -1,0 +1,5 @@
+<h2>Relation request</h2>
+
+<p>Hi <%= @request_user.first_name %>, the user <%= @sender_user.first_name %> requested you to be his <%= @role %>.</p>
+<p>To accept that invitation please visit your relations page at <%= link_to "relations page", profile_relations_url(@request_user) %></p>
+<p>If you have any question or sugestion please contact us at <%= mail_to "support@caretaker.pt", "support@caretaker.pt"  %></p>

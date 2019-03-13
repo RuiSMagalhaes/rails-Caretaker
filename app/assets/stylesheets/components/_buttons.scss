@@ -101,6 +101,23 @@
   color: $light-gray;
 }
 
+.btn-orange{
+  width: 100%;
+  text-align: center;
+  color: $light-gray;
+  padding: 8px 24px;
+  border-radius: 1px;
+  background: $orange;
+  transition: background 0.3s ease;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.btn-orange:hover{
+  background: #c37729;
+  color: $light-gray;
+}
+
 .btn-container-full-width{
   display: flex;
   width: 100%;
