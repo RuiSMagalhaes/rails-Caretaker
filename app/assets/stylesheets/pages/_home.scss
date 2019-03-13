@@ -22,16 +22,10 @@
 .container-description{
   margin-top:100vh;
   background-color: $light-gray;
-  position: absolute;
-  left: 0;
-  right: 0;
+
 }
 .description{
-  text-align: center;
-  padding-top: 0;
-  padding-left: 30px;
-  padding-right: 40px;
-  padding-bottom: 40px;
+  text-align: justify;
 
 }
 .description h2{
@@ -43,8 +37,8 @@
 }
 
 .description p{
-  margin-right: 20%;
-  margin-left: 20%;
+  margin-right: 0;
+  margin-left: 0;
   font-size: 16px;
   line-height: 1.8;
   font-weight: lighter;
@@ -61,14 +55,50 @@
   padding-bottom:10px;
 }
 
+.landing-featutes-container{
+  text-align:center;
 
-@media (max-width: 765px) {
+}
+
+.landing-featutes-container div{
+  margin-top: 40px;
+
+}
+
+.featute-one{
+
+}
+
+.featute-two{
+
+
+}
+
+.featute-three{
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 992px) {
   .description {
-    text-align: justify;
+    text-align: center;
   }
 
   .description p{
-  margin-right: 0;
-  margin-left: 0;
-}
+    margin-right: 20%;
+    margin-left: 20%;
+  }
+
 }
