@@ -26,9 +26,10 @@
 }
 .description{
   text-align: justify;
+  margin-bottom: 60px;
 
 }
-.description h2{
+.container-description h2{
   margin: 0;
   color: #3E3E3E;
   font-size: 28px;
@@ -55,15 +56,20 @@
   padding-bottom:10px;
 }
 
+
+.titles-features{
+  margin-bottom: 20px;
+
+}
+
+
+
 .landing-featutes-container{
   text-align:center;
 
 }
 
-.landing-featutes-container div{
-  margin-top: 40px;
 
-}
 
 .featute-one{
 
@@ -93,6 +99,10 @@
 
 @media (min-width: 992px) {
   .description {
+    text-align: center;
+  }
+
+  .titles-features{
     text-align: center;
   }
 
