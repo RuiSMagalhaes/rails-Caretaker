@@ -1,5 +1,5 @@
-<h1>Welcome</h1>
+<h2>Welcome to Caretaker</h2>
 
-<p>
-  Hi <%= @user.email %> welcome to caretaker.
-</p>
+<p>Hi <%= @user.first_name %> welcome to caretaker.</p>
+<p>The <%= link_to "caretaker.pt", 'http://www.caretaker.pt' %> team are very happy to have you on board.</p>
+<p>If you have any question or sugestion please contact us at <%= mail_to "support@caretaker.pt", "support@caretaker.pt"  %></p>
