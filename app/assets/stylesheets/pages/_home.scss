@@ -81,10 +81,11 @@
 .reviews-container{
   text-align:center;
 }
-.reviews-container div{
+.reviews-container > div{
   padding-top: 20px;
+  padding-bottom: 20px;
   margin: 20px;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
   background-color: rgba(38,171,231,0.1);
   font-size: 16px;
   line-height: 1.8;
@@ -94,6 +95,21 @@
 }
 .reviews-container p{
   margin-top: 20px;
+  text-align: justify;
+}
+.reviews-container h4{
+  color: black;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align:left;
+  color: $blue;
+  font-weight: bold;
+  letter-spacing: .1em;
+  padding-bottom:10px;
+  padding-top: 5px;
+}
+.rating{
+  color: $orange;
 }
 @media (min-width: 992px) {
   .description {
