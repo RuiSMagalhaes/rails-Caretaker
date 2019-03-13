@@ -22,12 +22,10 @@
 .container-description{
   margin-top:100vh;
   background-color: $light-gray;
-
 }
 .description{
   text-align: justify;
   margin-bottom: 60px;
-
 }
 .container-description h2{
   margin: 0;
@@ -36,7 +34,6 @@
   padding-bottom:13px;
   line-height: 1.2;
 }
-
 .description p{
   margin-right: 0;
   margin-left: 0;
@@ -44,92 +41,53 @@
   line-height: 1.8;
   font-weight: lighter;
 }
-
 .description p strong{
   color: rgb(0,0,0);
 }
-
 .subhead{
   color: $blue;
   font-size: 14px;
   letter-spacing: .1em;
   padding-bottom:10px;
 }
-
-
 .titles-features{
   margin-bottom: 20px;
-
 }
-
-
 .landing-featutes-container{
-  text-align:center;
+  text-align:justify;
 
 }
-
 .landing-featutes-container h4{
   margin: 0;
   color: #3E3E3E;
   line-height: 1.2;
   padding-bottom:13px;
-
 }
-
 .landing-featutes-container p{
   font-size: 16px;
   line-height: 1.8;
   font-weight: lighter;
-
 }
-
 .image-feature-container{
   padding: 10px;
   font-size: 100px;
   color:$blue;
   margin:0;
-
 }
-
-
-.featute-one{
-
-}
-
-.featute-two{
-
-
-}
-
-.featute-three{
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
 
 
 @media (min-width: 992px) {
   .description {
     text-align: center;
   }
-
   .titles-features{
     text-align: center;
   }
-
   .description p{
     margin-right: 20%;
     margin-left: 20%;
   }
-
+  .landing-featutes-container{
+    text-align: center;
+  }
 }
