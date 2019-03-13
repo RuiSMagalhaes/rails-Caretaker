@@ -81,7 +81,7 @@
 .reviews-container{
   text-align:center;
 }
-.reviews-container div{
+.reviews-container > div{
   padding-top: 20px;
   margin: 20px;
   margin-bottom: 35px;
@@ -95,6 +95,26 @@
 .reviews-container p{
   margin-top: 20px;
 }
+.reviews-container h4{
+  color: black;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align:left;
+  color: $blue;
+  font-weight: bold;
+  letter-spacing: .1em;
+  padding-bottom:10px;
+  padding-top: 5px;
+}
+
+.rating{
+  color: $orange;
+}
+
+
+
+
+
 @media (min-width: 992px) {
   .description {
     text-align: center;
