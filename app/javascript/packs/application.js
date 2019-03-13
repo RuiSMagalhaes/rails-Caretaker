@@ -3,7 +3,9 @@ import "../components/datepicker";
 
 const eventsEdit = document.querySelector('.events.edit');
 const eventsNew = document.querySelector('.events.new');
-if (eventsEdit || eventsNew) {
+const eventsCreate = document.querySelector('.events.create');
+const eventsUpdate = document.querySelector('.events.udpate');
+if (eventsEdit || eventsNew || eventsCreate || eventsUpdate) {
   const recurringTimes = document.querySelector('.event_recurring_times');
   const eventHours = document.querySelector('.event_hours');
   const eventDays = document.querySelector('.event_days');

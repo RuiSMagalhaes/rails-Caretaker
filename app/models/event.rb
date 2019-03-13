@@ -18,7 +18,7 @@ class Event < ApplicationRecord
   end
 
   def start_date
-    errors.add(:start_time, ' can not be before current time.') if start_time < Time.now
+    errors.add(:start_time, ' can not be before current time.') if start_time.nil? || start_time < Time.now
   end
 
   def job_event_to_notification

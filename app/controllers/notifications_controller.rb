@@ -21,6 +21,7 @@ class NotificationsController < ApplicationController
 
   def show
     authorize @notification
+    redirect_to profiles_path if @notification.dismissed
   end
 
   def update

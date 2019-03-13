@@ -5,7 +5,7 @@
         <% if @notification.event.user == current_user %>
           <p>For you</p>
         <%else %>
-          <p><%="For" + @notification.event.user.first_name + " " + @notification.event.user.last_name  %></p>
+          <p><%="For " + @notification.event.user.first_name + " " + @notification.event.user.last_name  %></p>
         <% end %>
     </div>
     <div class="notification-infos-event">
