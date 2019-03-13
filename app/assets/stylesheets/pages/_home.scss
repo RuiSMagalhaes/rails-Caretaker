@@ -19,3 +19,99 @@
 .landing-page-container p{
   margin: 30px 0;
 }
+.container-description{
+  margin-top:100vh;
+  background-color: $light-gray;
+}
+.description{
+  text-align: justify;
+  margin-bottom: 60px;
+}
+.container-description h2{
+  margin: 0;
+  color: #3E3E3E;
+  font-size: 28px;
+  padding-bottom:13px;
+  line-height: 1.2;
+}
+.description p{
+  margin-right: 0;
+  margin-left: 0;
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: lighter;
+}
+.description p strong{
+  color: rgb(0,0,0);
+}
+.subhead{
+  color: $blue;
+  font-size: 14px;
+  letter-spacing: .1em;
+  padding-bottom:10px;
+}
+.titles-features{
+  margin-bottom: 20px;
+}
+.landing-featutes-container{
+  text-align:center;
+
+}
+.landing-featutes-container h4{
+  margin: 0;
+  color: #3E3E3E;
+  line-height: 1.2;
+  padding-bottom:13px;
+}
+.landing-featutes-container p{
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: lighter;
+}
+.image-feature-container{
+  padding: 10px;
+  font-size: 100px;
+  color:$blue;
+  margin:0;
+}
+.titles-reviews{
+  margin-top: 60px ;
+  margin-bottom: 20px;
+}
+.reviews-container{
+  text-align:center;
+}
+.reviews-container div{
+  padding-top: 20px;
+  margin: 20px;
+  margin-bottom: 35px;
+  background-color: rgba(38,171,231,0.1);
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: lighter;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 2px;
+}
+.reviews-container p{
+  margin-top: 20px;
+}
+@media (min-width: 992px) {
+  .description {
+    text-align: center;
+  }
+  .titles-features{
+    text-align: center;
+  }
+  .description p{
+    margin-right: 20%;
+    margin-left: 20%;
+  }
+  .titles-reviews{
+    text-align: center;
+  }
+  .reviews-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
