@@ -6,14 +6,20 @@
     <div class="profiles-list-container">
       <%= render 'shared/profile-card', user: @profile, notifications: @notifications.count %>
     </div>
+    <% if @pendings %>
+      <div class="btn-container-full-width">
+        <%= link_to "Edit relations", profile_relations_path(profile_id: @profile), class: "btn-blue" %>
+      </div>
+    <% else %>
+      <div class="btn-container-full-width">
+        <%= link_to "New relation request", profile_relations_path(@profile), class: "btn-orange" %>
+      </div>
+    <% end %>
     <% if @profile == current_user %>
       <div class="btn-container-full-width">
         <%= link_to "Edit my profile", edit_user_registration_path, class: "btn-blue" %>
       </div>
     <% end %>
-    <div class="btn-container-full-width">
-      <%= link_to "Edit relations", profile_relations_path(profile_id: @profile), class: "btn-blue" %>
-    </div>
   </div>
   <div class="notifications-list col-xs-12 col-md-4">
     <div class="notifications-list-header">

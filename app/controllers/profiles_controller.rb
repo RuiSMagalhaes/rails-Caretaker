@@ -9,6 +9,8 @@ class ProfilesController < ApplicationController
     # geting all events for each patient
     @patients.each { |patient| @events += set_events(patient) }
     @events.sort_by { |start_time| start_time[:start_time]}
+    # getting all pending requests
+    set_pending_requests(@user)
   end
 
   def show
@@ -17,6 +19,7 @@ class ProfilesController < ApplicationController
     set_events(@profile)
     # geting notifications for this profile
     @notifications = @notifications.where(event_id: @events.pluck(:id)).order(created_at: :desc)
+    set_pending_requests(@user)
   end
 
   def update
@@ -51,5 +54,11 @@ class ProfilesController < ApplicationController
   def set_events(user)
     # get events with given user
     @events = policy_scope(user.events).order(start_time: :asc)
+  end
+
+  def set_pending_requests(user)
+    @pendings = user.pending_caretaker_requests.where.not(sender_id: user.id)
+    @pendings += user.pending_patient_requests.where.not(sender_id: user.id)
+    @pendings = @pendings.empty?
   end
 end

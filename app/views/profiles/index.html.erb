@@ -38,6 +38,11 @@
           %>
         <% end %>
       </div>
+      <% unless @pendings %>
+        <div class="btn-container-full-width">
+          <%= link_to "New relation request", profile_relations_path(@user), class: "btn-orange" %>
+        </div>
+      <% end %>
     </div>
     <div class="notifications-list col-xs-12 col-md-4">
       <div class="notifications-list-header">
