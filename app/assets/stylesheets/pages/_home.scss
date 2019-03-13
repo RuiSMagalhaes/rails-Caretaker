@@ -63,16 +63,29 @@
 }
 
 
-
 .landing-featutes-container{
   text-align:center;
 
 }
 
+.landing-featutes-container h4{
+  margin: 0;
+  color: #3E3E3E;
+  line-height: 1.2;
+
+}
+
+.image-feature-container{
+  padding: 10px;
+  font-size: 100px;
+  color:$blue;
+  margin:0;
+
+}
 
 
 .featute-one{
-
+  border: 3px solid red;
 }
 
 .featute-two{
