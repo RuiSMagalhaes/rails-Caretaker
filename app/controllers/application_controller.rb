@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :last_notification, only: [:index, :full_index]
+  before_action :last_notification, only: [:index, :full_index, :show]
 
   include Pundit
 
@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   def last_notification
     @user = current_user
     authorize @user, :show?
-    @notification = @notifications = policy_scope(@user.events_notifications).where("events.done = ? AND notifications.dismissed = ? AND (notifications.notification_type LIKE ? OR notifications.notification_type LIKE ?)", false, false, "do", "missed").order(created_at: :asc).first
+    @notification = policy_scope(@user.events_notifications).where("events.done = ? AND notifications.dismissed = ? AND (notifications.notification_type LIKE ? OR notifications.notification_type LIKE ?)", false, false, "do", "missed").order(created_at: :asc).first
     unless @notification.nil?
       redirect_to profile_notification_path(@user, @notification)
     end

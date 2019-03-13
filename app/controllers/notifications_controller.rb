@@ -1,6 +1,7 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :update, :destroy]
   before_action :set_user, :set_notifications, only: [:index, :full_index, :last_notification]
+  skip_before_action :last_notification, only: [:show]
 
   def index
     set_profile
