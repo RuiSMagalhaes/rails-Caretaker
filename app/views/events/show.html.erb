@@ -26,7 +26,7 @@
         <%= link_to "Delete", profile_event_path(@profile, @event), method: :delete, class: "btn-red", data: { confirm: 'Are you sure?' } %>
       </div>
     <% end %>
-    <%= link_to :back, class: "btn-close" do %>
+    <%= link_to profile_events_path(@profile), class: "btn-close" do %>
       <i class="far fa-times-circle"></i>
     <% end %>
   </div>

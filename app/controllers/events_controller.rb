@@ -102,7 +102,7 @@ class EventsController < ApplicationController
       # call creation of multiple events
       create_multiple(@event) if @event.recurring
       # redirect to event
-      redirect_to profile_event_path(@profile, @event), notice: 'Event was successfully created.'
+      redirect_to profile_events_path(@profile), notice: 'Event was successfully created.'
     else
       render :new
     end

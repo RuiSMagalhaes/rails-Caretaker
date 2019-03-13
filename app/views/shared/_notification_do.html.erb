@@ -17,13 +17,13 @@
     </div>
     <div class="buttons">
       <% unless @notification.event.done%>
-        <%= link_to profile_notification_path(@notification.event.user, @notification, refer: @refer), method: :patch, class: "no-decoration" do %>
+        <%= link_to profile_notification_path(@notification.event.user, @notification), method: :patch, class: "no-decoration" do %>
           <p class="button-done">Mark as done</p>
         <% end %>
       <% end %>
     </div>
   </div>
-  <%= link_to :back, class: "btn-close" do %>
+  <%= link_to profiles_path, class: "btn-close" do %>
     <i class="far fa-times-circle"></i>
   <% end %>
 </div>

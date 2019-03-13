@@ -58,3 +58,13 @@ if (profileEvents || allEvents) {
     eventsAllFilters.classList.toggle("closed");
   })
 }
+
+// js timer to check notifications do or missed
+const index = document.querySelector('.index')
+const full_index = document.querySelector('.full_index')
+const show = document.querySelector('.show')
+if (index || full_index || show) {
+  setTimeout(function(){
+     window.location.reload(1);
+  }, 15000);
+}
