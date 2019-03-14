@@ -1,32 +1,42 @@
 .footer {
   background: #828282;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 50px;
   color: $light-gray;
   position: absolute;
   bottom: 0;
   left: 0;
+  padding: 0 15px;
   width: 100%;
 }
 .footer-copyright{
   font-size: 15px;
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  justify-content: flex-end;
 }
 .footer-links {
   display: flex;
   align-items: center;
+  min-height: 50px;
+  justify-content: flex-start;
 }
 .footer-links a {
   color: black;
   opacity: 0.15;
   text-decoration: none;
   font-size: 25px;
-  padding: 0px 10px;
+  padding: 0px 15px;
 }
 .footer-links a:hover {
   opacity: 1;
+  color: $blue;
 }
-.footer .fa-heart {
-  color: #D23333;
+
+@media (max-width: 991px) {
+  .footer-links {
+    display: none;
+  }
+  .footer-copyright{
+    justify-content: center;
+  }
 }

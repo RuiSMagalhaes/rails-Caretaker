@@ -13,39 +13,39 @@
               hint:"  Manage notifications." %>
   <%= f.input :notify_before?, as: :boolean,
               wrapper_html: {class:'hidden' },
-              hint:"  If you want to be notified before the event." %>
+              hint:"  Notify before the event." %>
   <%= f.input :minutes,
               collection: [15,30,45],
               wrapper_html: {class:'hidden' },
-              hint:"  Time space before event to get notification (default 15mins)." %>
+              hint:"  Notifications time before the event (default 15mins)." %>
   <%= f.input :notify_done?, as: :boolean,
               wrapper_html: {class:'hidden' },
-              hint:"  If you want the caretaker to be notified when event is marked as done." %>
+              hint:"  Notify caretaker(s) when event is done." %>
   <%= f.input :notify_missed?, as: :boolean,
               wrapper_html: {class:'hidden' },
-              hint:"  If you want the caretaker and the patient to be notified  15mins after the scheduled time." %>
+              hint:"  Notify 15mins after the scheduled time." %>
   <%= f.input :recurring?, as: :boolean,
-              hint:"  If this event occur multiple times." %>
+              hint:"  If event happen multiple times." %>
   <%= f.input :recurring_times,
               wrapper_html: {class:'hidden' },
               collection: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
-              hint:"  Number of times that you want the event to happen." %>
+              hint:"  Number of times the event happen." %>
   <%= f.input :hours,
               wrapper_html: {class:'hidden' },
               collection: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
-              hint:"  Time space between events in hours." %>
+              hint:"  Hours between events." %>
   <%= f.input :days,
               wrapper_html: {class:'hidden' },
               collection: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
-              hint:"  Time space between events in days." %>
+              hint:"  Days between events." %>
   <%= f.input :weeks,
               wrapper_html: {class:'hidden' },
               collection: [1,2,3,4],
-              hint:"  Time space between events in weeks." %>
+              hint:"  Weeks between events." %>
   <%= f.input :months,
               wrapper_html: {class:'hidden' },
               collection: [1,2,3,4,5,6,7,8,9,10,11],
-              hint:"  Time space between events in months." %>
+              hint:"  Months between events." %>
 </div>
 
 <div class="form-actions">
