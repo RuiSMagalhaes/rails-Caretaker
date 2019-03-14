@@ -185,7 +185,7 @@ user = User.new(
   first_name:"Maria",
   last_name:"Santos",
   email:"maria.santos@gmail.com",
-  simple_view: true,
+  simple_view: false,
   password:"1212**",
   admin: false
   )
