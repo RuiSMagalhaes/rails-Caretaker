@@ -10,7 +10,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    (record == user && !record.simple_view) || (record.caretakers.include?(user) && !record.simple_view)
+    (record == user && !record.simple_view) || record.caretakers.include?(user)
   end
 
   def update?
