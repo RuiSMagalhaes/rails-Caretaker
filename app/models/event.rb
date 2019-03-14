@@ -2,12 +2,13 @@ class Event < ApplicationRecord
   attr_accessor :notifications
 
   after_create :job_event_to_notification
+  # before_create :date_range, :start_date
 
   belongs_to :user
   belongs_to :event_type
 
   has_many :notifications, dependent: :destroy
-  validate :date_range, :start_date
+  validate :date_range, :start_date, on: [:create]
 
   validates :name, :description, :start_time, :end_time, presence: true
 
