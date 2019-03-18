@@ -139,8 +139,7 @@ In this chapter, we will present you some technicalities about this project.
   <img src="/readmeImgs/DBschema.png" width="800">
 </p>
 
-
-As you can see, we have 7 tables:
+As you can see, we have 7 tables (one model for each table):
 
 1. users
 2. events
@@ -150,14 +149,12 @@ As you can see, we have 7 tables:
 6. user_diseases
 7. diseases
 
-
 If you look at the Relations, you can see that for each user you can call `` user.patients `` or `` user.caretakers`` and the output will be all the patients or caretakers of that user!
 
 On top of that, one user can have more than one event.
 On the other hand, each event can triger more than one type of notification.
 
 For each event, a Job goes to the **sidekiq queue** to triger a notification to the user and/or to his caretakers.
-
 To triger a notification we compare `Time.now` with  ``event.start_time``.
 
 ## Authors
