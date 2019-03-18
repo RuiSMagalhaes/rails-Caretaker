@@ -2,7 +2,8 @@
 
 Rails app generated with lewagon/rails-templates, created by the Le Wagon coding bootcamp team.
 
-This app is the result of my Le Wagon's final project.It was developed by me (Rui Magalhães) and my friend Emanuel Moniz (https://github.com/emanuelmoniz/)
+This app is the result of my Le Wagon's final project. It was developed by me (Rui Magalhães) and my friend Emanuel Moniz (https://github.com/emanuelmoniz/).
+The aim of this app is to help anyone to take care of your loved ones.
 
 You can find it live on: http://www.caretaker.pt/
 
@@ -11,8 +12,9 @@ You can watch the presentation of this app on the following link: https://youtu.
 ## Table of Contents
 
 * [Getting started](#getting-started)
-* [About the app](#about-the-app)
-* [Features](#about-the-app)
+* [Features of the app](#features-of-the-app)
+* [Some technicalities of the app](#Some-technicalities-of-the-app)
+* [Authors](#authors)
 
 ## Getting Started
 
@@ -71,11 +73,85 @@ rails s
 4. Ruby
 5. Rails
 
-## About the app
+## Features of the app
 
-## Features
+This app have the following features:
+
+1. Link between users (Patient/Caretaker)
+2. Add/edit/see an event on my shedule
+3. Add/edit/see an event on my Patient schedule
+4. Add a recurring event (i.e. To add an event about a pill for 30 days, you only need to add one event, with recurring option)
+5. Receive diferent types of notifications (types: Before/ Do/ Done/ Missed) about your events or the ones of your patients
+6. Change to a simpler view
+
+### Examples
+
+I'm logged in with Rui's Account and I have Manuel as my Patient.
+Here is my dashboard (I have a section for all events and all notifications too - mines and the ones of my patients):
+
+![](/readmeImgs/dashboard.png)
+
+As you can see, I have Manuel as my patient (Relations page):
+
+![](/readmeImgs/Patientexample.png)
+
+I can see my calendar (no events):
+
+![](/readmeImgs/mySchedule.png)
+
+And, I can see Manuel calendar:
+
+![](/readmeImgs/manuelSchedule.png)
+
+Here are my last notifications (One saying that Manuel missed one event and other event saying that manuel did one event):
+
+![](/readmeImgs/dashboard.png)
+
+I can change the view to a simpler one.
+With this view I'm not able to add or edit events. I'm only able to see my events the notifications of those events!
+
+![](/readmeImgs/simpleview.png)
+
+
+**NOTE: Those examples are on a mobile view. However, the web-service is totally responsive and it work on IPAD's and computers too.**
+
+
+## Some technicalities of the app
+
+In this chapter, we will present you some technicalities about this project.
+
+The DB schema of the project is the following:
 
 ![](/readmeImgs/DBschema.png)
+
+
+As you can see, we have 7 tables:
+
+1. users
+2. events
+3. event_types
+4. notifications
+5. relations
+6. user_diseases
+7. diseases
+
+
+If you look at the Relations, you can see that for each user you can call `` user.patients `` or `` user.caretakers`` and the output will be all the patients or caretakers of that user!
+
+On top of that, one user can have more than one event.
+On the other hand, each event can triger more than one type of notification.
+
+For each event, a Job goes to the **sidekiq queue** to triger a notification to the user and/or to his caretakers.
+
+To triger a notification we compare `Time.now` with  ``event.start_time``.
+
+## Authors
+
+App developed by:
+
+* Emanuel Moniz (https://github.com/emanuelmoniz/)
+* Rui Magalhães (https://github.com/RuiSMagalhaes)
+
 
 
 
