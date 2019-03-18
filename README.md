@@ -24,7 +24,6 @@ You can watch the presentation of this app on the following link: https://youtu.
 * After cloning the project, do the following on your terminal:
 
 ```terminal
-#TERMINAL
 $ brew update
 $ bundle install
 $ Yarn instal
@@ -33,32 +32,33 @@ $ rails db: migrate
 $ rails db:seed
 ```
 * On your .env file put your claudinary key, your app email adress, your email app password and your host website:
-```
+
+```ruby
 #.ENV file
-CLOUDINARY_URL= ************************************
-EMAIL_ADDRESS=something@something.something
-EMAIL_APP_PASSWORD=**********
-HOST=www.something.something
+$ CLOUDINARY_URL= ************************************
+$ EMAIL_ADDRESS=something@something.something
+$ EMAIL_APP_PASSWORD=**********
+$ HOST=www.something.something
 ```
 * You need to install sidekiq too, to be able to do asynchronous jobs. To do that, do the following on your terminal:
-```
-#TERMINAL
-brew update
-brew install redis
-brew services start redis
-redis-cli FLUSHALL
-bundle binstub sidekiq
-bundle binstub sidekiq -- force
+
+```terminal
+$ brew update
+$ brew install redis
+$ brew services start redis
+$ redis-cli FLUSHALL
+$ bundle binstub sidekiq
+$ bundle binstub sidekiq -- force
 ```
 * Now, you are ready to see this project from your own machine.
 Do the following, on your terminal:
-```
-#TERMINAL:
+
+```terminal
 sidekiq
 ```
 * Still on the terminal, but on another tab:
-```
-#TERMINAL:
+
+```terminal
 rails s
 ```
 
