@@ -1,4 +1,4 @@
-# AIRTNT
+# CARETAKER
 
 
 
@@ -6,7 +6,7 @@
 
 1. To get this platform working on your localhost, do the following:
 
-After cloning the project, do the following on your terminal:
+1.1 After cloning the project, do the following on your terminal:
 
 ```
 #TERMINAL
@@ -17,7 +17,7 @@ rails db: create
 rails db: migrate
 rails db:seed
 ```
-On your .env file put your claudinary key, your email adress, your email app password and your host website)
+1.2 On your .env file put your claudinary key, your email adress, your email app password and your host website)
 ```
 #.ENV file
 CLOUDINARY_URL= ************************************
@@ -25,7 +25,7 @@ EMAIL_ADDRESS=something@something.something
 EMAIL_APP_PASSWORD=**********
 HOST=www.something.something
 ```
-You need to install sidekiq too, for those asynchronous jobs. To do that, do the following on your terminal:
+1.3 You need to install sidekiq too, for those asynchronous jobs. To do that, do the following on your terminal:
 ```
 #TERMINAL
 brew update
@@ -35,22 +35,21 @@ redis-cli FLUSHALL
 bundle binstub sidekiq
 bundle binstub sidekiq -- force
 ```
-Now, you are ready to see this project from your own machine.
+1.4 Now, you are ready to see this project from your own machine.
 Do the following, on your terminal:
 ```
 #TERMINAL:
 sidekiq
 ```
-Still on the terminal, but on another tab:
+1.5 Still on the terminal, but on another tab:
 ```
 #TERMINAL:
 rails s
 ```
 
-After this, you can open the app in your local server
+**After this, you can open the app in your local server**
 
-2. If you want to see the app working without any job, you can visit: https://airtnt.herokuapp.com (feel free to sign up and add seeds :)  )
-
+2. If you want to see the app working without any job, you can visit: https: www.caretaker.pt (feel free to sign up and see out features!)
 
 ### Prerequisites
 
@@ -59,10 +58,6 @@ After this, you can open the app in your local server
 3. Git
 4. Ruby
 5. Rails
-
-
-
-
 
 ## Still on construction from now on
 
