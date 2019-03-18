@@ -43,7 +43,7 @@ class ProfilesController < ApplicationController
 
   def set_patients
     # get all patientes for current user
-    @patients = policy_scope(@user.patients)
+    @patients = policy_scope(@user.patients.where('relations.state = true'))
   end
 
   def set_notifications
