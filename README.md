@@ -26,7 +26,7 @@ You can watch the presentation of this app on the following link: https://youtu.
 ```terminal
 $ brew update
 $ bundle install
-$ Yarn instal
+$ yarn instal
 $ rails db: create
 $ rails db: migrate
 $ rails db:seed
@@ -54,17 +54,17 @@ $ bundle binstub sidekiq -- force
 Do the following, on your **terminal**:
 
 ```terminal
-sidekiq
+$ sidekiq
 ```
 * Still on the **terminal**, but on **another tab**:
 
 ```terminal
-rails s
+$ rails s
 ```
 
 * After this, you can open the app in your local server: http://localhost:3000/
 
-#### If you want to see the app working without any job, you can visit: https: www.caretaker.pt (feel free to sign up and see out features!)
+#### If you want to see the app working without any job, you can visit: www.caretaker.pt (feel free to sign up and see our features!)
 
 ### Prerequisites
 
@@ -88,28 +88,29 @@ This app have the following features:
 ### Examples
 
 I'm logged in with Rui's Account and I have Manuel as my Patient.
+
 Here is my dashboard (I have a section for all events and all notifications too - mines and the ones of my patients):
 
 ![](/readmeImgs/dashboard.png)
 
-As you can see, I have Manuel as my patient (Relations page):
+* **As you can see, I have Manuel as my patient (Relations page):**
 
 ![](/readmeImgs/Patientexample.png)
 
-I can see my calendar (no events):
+* **I can see my calendar (no events):**
 
 ![](/readmeImgs/mySchedule.png)
 
-And, I can see Manuel calendar:
+* **And, I can see Manuel calendar:**
 
 ![](/readmeImgs/manuelSchedule.png)
 
-Here are my last notifications (One saying that Manuel missed one event and other event saying that manuel did one event):
+* **Here are my last notifications (One saying that Manuel missed one event and other event saying that manuel did one event):**
 
 ![](/readmeImgs/dashboard.png)
 
-I can change the view to a simpler one.
-With this view I'm not able to add or edit events. I'm only able to see my events the notifications of those events!
+* **I can change the view to a simpler one.
+With this view I'm not able to add or edit events. I'm only able to see my events the notifications of those events!**
 
 ![](/readmeImgs/simpleview.png)
 
@@ -121,7 +122,7 @@ With this view I'm not able to add or edit events. I'm only able to see my event
 
 In this chapter, we will present you some technicalities about this project.
 
-The DB schema of the project is the following:
+* **The DB schema of the project is the following:**
 
 ![](/readmeImgs/DBschema.png)
 
