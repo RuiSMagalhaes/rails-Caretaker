@@ -1,12 +1,24 @@
 # CARETAKER
 
+Rails app generated with lewagon/rails-templates, created by the Le Wagon coding bootcamp team.
 
+This app is the result of my Le Wagon's final project.
+
+You can find it live on: http://www.caretaker.pt/
+
+It was developed by me (Rui Magalhães) and my friend Emanuel Moniz (https://github.com/emanuelmoniz/)
+
+## Table of Contents
+
+* [Getting started](#getting-started)
+* [About the app](#about-the-app)
+* [Authors](#authors)
 
 ## Getting Started
 
-1. To get this platform working on your localhost, do the following:
+1. To get this web-service working on your localhost, do the following:
 
-1.1 After cloning the project, do the following on your terminal:
+-**After cloning the project, do the following on your terminal:**
 
 ```
 #TERMINAL
@@ -17,7 +29,7 @@ rails db: create
 rails db: migrate
 rails db:seed
 ```
-1.2 On your .env file put your claudinary key, your email adress, your email app password and your host website)
+- **On your .env file put your claudinary key, your email adress, your email app password and your host website)**
 ```
 #.ENV file
 CLOUDINARY_URL= ************************************
@@ -25,7 +37,7 @@ EMAIL_ADDRESS=something@something.something
 EMAIL_APP_PASSWORD=**********
 HOST=www.something.something
 ```
-1.3 You need to install sidekiq too, for those asynchronous jobs. To do that, do the following on your terminal:
+**-You need to install sidekiq too, for those asynchronous jobs. To do that, do the following on your terminal:**
 ```
 #TERMINAL
 brew update
@@ -35,19 +47,19 @@ redis-cli FLUSHALL
 bundle binstub sidekiq
 bundle binstub sidekiq -- force
 ```
-1.4 Now, you are ready to see this project from your own machine.
-Do the following, on your terminal:
+**Now, you are ready to see this project from your own machine.
+Do the following, on your terminal:**
 ```
 #TERMINAL:
 sidekiq
 ```
-1.5 Still on the terminal, but on another tab:
+**Still on the terminal, but on another tab:**
 ```
 #TERMINAL:
 rails s
 ```
 
-**After this, you can open the app in your local server**
+**After this, you can open the app in your local server: http://localhost:3000/**
 
 2. If you want to see the app working without any job, you can visit: https: www.caretaker.pt (feel free to sign up and see out features!)
 
@@ -59,39 +71,12 @@ rails s
 4. Ruby
 5. Rails
 
-## Still on construction from now on
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+## About the app
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+This project was developed by
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
 
