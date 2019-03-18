@@ -4,7 +4,7 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 
 
 This app is the result of my Le Wagon's final project. It was developed by me (Rui Magalhães) and my friend Emanuel Moniz (https://github.com/emanuelmoniz/).
-The aim of this app is to help anyone to take care of your loved ones.
+**The aim of this app is to help anyone to take care of your loved ones.**
 
 You can find it live on: http://www.caretaker.pt/
 
