@@ -89,7 +89,7 @@ This app have the following features:
 
 I'm logged in with Rui's Account and I have Manuel as my Patient.
 
-**Here is my dashboard (I have a section for all events and all notifications too - mines and the ones of my patients):**
+* **Here is my dashboard (I have a section for all events and all notifications too - mines and the ones of my patients):**
 
 <p align="center">
   <img src="/readmeImgs/dashboard.png" width="400">
@@ -97,25 +97,34 @@ I'm logged in with Rui's Account and I have Manuel as my Patient.
 
 * **As you can see, I have Manuel as my patient (Relations page):**
 
-![](/readmeImgs/Patientexample.png)
+<p align="center">
+  <img src="/readmeImgs/Patientexample.png" width="400">
+</p>
 
 * **I can see my calendar (no events):**
 
-![](/readmeImgs/mySchedule.png)
+<p align="center">
+  <img src="/readmeImgs/mySchedule.png" width="400">
+</p>
 
 * **And, I can see Manuel calendar:**
 
-![](/readmeImgs/manuelSchedule.png)
+<p align="center">
+  <img src="/readmeImgs/manuelSchedule.png" width="400">
+</p>
 
 * **Here are my last notifications (One saying that Manuel missed one event and other event saying that manuel did one event):**
 
-![](/readmeImgs/dashboard.png)
+<p align="center">
+  <img src="/readmeImgs/dashboard.png" width="400">
+</p>
 
 * **I can change the view to a simpler one.
 With this view I'm not able to add or edit events. I'm only able to see my events the notifications of those events!**
 
-![](/readmeImgs/simpleview.png)
-
+<p align="center">
+  <img src="/readmeImgs/simpleview.png" width="400">
+</p>
 
 **NOTE: Those examples are on a mobile view. However, the web-service is totally responsive and it work on IPAD's and computers too.**
 
@@ -126,7 +135,9 @@ In this chapter, we will present you some technicalities about this project.
 
 * **The DB schema of the project is the following:**
 
-![](/readmeImgs/DBschema.png)
+<p align="center">
+  <img src="/readmeImgs/DBschema.png" width="400">
+</p>
 
 
 As you can see, we have 7 tables:
