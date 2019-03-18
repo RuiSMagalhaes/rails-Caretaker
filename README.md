@@ -18,7 +18,7 @@ It was developed by me (Rui Magalhães) and my friend Emanuel Moniz (https://git
 
 1. To get this web-service working on your localhost, do the following:
 
--**After cloning the project, do the following on your terminal:**
+* **After cloning the project, do the following on your terminal:**
 
 ```
 #TERMINAL
