@@ -91,7 +91,9 @@ I'm logged in with Rui's Account and I have Manuel as my Patient.
 
 Here is my dashboard (I have a section for all events and all notifications too - mines and the ones of my patients):
 
-![](/readmeImgs/dashboard.png =250x250)
+<img src="/readmeImgs/dashboard.png" width="300" height="300">
+
+![](/readmeImgs/dashboard.png)
 
 * **As you can see, I have Manuel as my patient (Relations page):**
 
