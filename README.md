@@ -136,7 +136,7 @@ In this chapter, we will present you some technicalities about this project.
 * **The DB schema of the project is the following:**
 
 <p align="center">
-  <img src="/readmeImgs/DBschema.png" width="400">
+  <img src="/readmeImgs/DBschema.png" width="800">
 </p>
 
 
