@@ -89,11 +89,9 @@ This app have the following features:
 
 I'm logged in with Rui's Account and I have Manuel as my Patient.
 
-Here is my dashboard (I have a section for all events and all notifications too - mines and the ones of my patients):
+**Here is my dashboard (I have a section for all events and all notifications too - mines and the ones of my patients):**
 
-<img src="/readmeImgs/dashboard.png" width="300">
-
-![](/readmeImgs/dashboard.png)
+<img src="/readmeImgs/dashboard.png" width="400" align="center">
 
 * **As you can see, I have Manuel as my patient (Relations page):**
 
