@@ -1,6 +1,7 @@
 # CARETAKER
 
-Rails app generated with lewagon/rails-templates, created by the Le Wagon coding bootcamp team.
+Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+
 
 This app is the result of my Le Wagon's final project. It was developed by me (Rui Magalhães) and my friend Emanuel Moniz (https://github.com/emanuelmoniz/).
 The aim of this app is to help anyone to take care of your loved ones.
