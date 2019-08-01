@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   # send wellcome email
-  # after_create :send_welcome_email
+  after_create :send_welcome_email
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
